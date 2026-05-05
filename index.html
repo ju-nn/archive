@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="jun / じゅん の制作物と発信をまとめた個人サイト。短編分岐ノベルゲーム『逃げ道.xlsx』、note、X、stand.fm、YouTube、TikTok。"
+      content="jun / じゅん の制作物と発信をまとめた個人サイト。ジユウノコンパス、逃げ道.xlsx、note、X、stand.fm、YouTube、TikTok。"
     />
     <title>jun | じゅん</title>
     <link rel="stylesheet" href="./styles.css" />
@@ -13,17 +13,13 @@
   <body>
     <main class="page">
       <header class="hero" aria-labelledby="page-title">
-        <p class="eyebrow">Works, notes, and everyday records</p>
-        <h1 id="page-title">jun</h1>
-        <p class="name-note">じゅん</p>
-        <p class="lead">
+        <p class="eyebrow reveal-on-load">Works, notes, and everyday records</p>
+        <h1 id="page-title" class="reveal-on-load delay-1">jun</h1>
+        <p class="name-note reveal-on-load delay-2">じゅん</p>
+        <p class="lead reveal-on-load delay-3">
           会社員の生活、身軽に暮らすこと、逃げ道を持つこと。考えたこと、作ったもの、日々の記録を置いています。
         </p>
-        <nav class="primary-actions" aria-label="主要リンク">
-          <a class="button primary" href="https://ju-nn.github.io/nigemiti-xlsx/">逃げ道.xlsx</a>
-          <a class="button" href="https://note.com/reilst" target="_blank" rel="noopener noreferrer">note</a>
-          <a class="button" href="https://x.com/reil_st" target="_blank" rel="noopener noreferrer">X</a>
-        </nav>
+        <a class="button primary hero-cta reveal-on-load delay-4" href="#works-title">作品を見る</a>
       </header>
 
       <section class="section" aria-labelledby="works-title">
@@ -32,7 +28,20 @@
           <h2 id="works-title">作ったもの</h2>
         </div>
 
-        <article class="work-card" aria-labelledby="work-nigemiti-title">
+        <article class="work-card featured-work reveal-on-scroll" aria-labelledby="work-jiyu-compass-title">
+          <div>
+            <p class="card-label">ミッション診断ツール</p>
+            <h3 id="work-jiyu-compass-title">ジユウノコンパス</h3>
+            <p>
+              貯金がうまくできない人も、毎月ギリギリの人も、働く時間を少し減らしたい人も。まずは今できる一歩から、生活を整えるミッション診断ツールです。
+            </p>
+          </div>
+          <div class="work-actions" aria-label="ジユウノコンパス のリンク">
+            <a class="button primary" href="https://ju-nn.github.io/Jiyu-Compass/">診断する</a>
+          </div>
+        </article>
+
+        <article class="work-card reveal-on-scroll" aria-labelledby="work-nigemiti-title">
           <div>
             <p class="card-label">短編分岐ノベルゲーム</p>
             <h3 id="work-nigemiti-title">逃げ道.xlsx</h3>
@@ -59,23 +68,23 @@
         </div>
 
         <div class="link-list">
-          <a class="link-card" href="https://note.com/reilst" target="_blank" rel="noopener noreferrer">
+          <a class="link-card reveal-on-scroll" href="https://note.com/reilst" target="_blank" rel="noopener noreferrer">
             <span>note</span>
             <small>考えをまとめています</small>
           </a>
-          <a class="link-card" href="https://x.com/reil_st" target="_blank" rel="noopener noreferrer">
+          <a class="link-card reveal-on-scroll" href="https://x.com/reil_st" target="_blank" rel="noopener noreferrer">
             <span>X</span>
             <small>投稿とお知らせ</small>
           </a>
-          <a class="link-card" href="https://stand.fm/channels/64a22cefb352effb9d4d0999" target="_blank" rel="noopener noreferrer">
+          <a class="link-card reveal-on-scroll" href="https://stand.fm/channels/64a22cefb352effb9d4d0999" target="_blank" rel="noopener noreferrer">
             <span>stand.fm</span>
             <small>ラジオで話しています</small>
           </a>
-          <a class="link-card" href="https://youtube.com/@junnn-vlog" target="_blank" rel="noopener noreferrer">
+          <a class="link-card reveal-on-scroll" href="https://youtube.com/@junnn-vlog" target="_blank" rel="noopener noreferrer">
             <span>YouTube</span>
             <small>暮らしのvlog</small>
           </a>
-          <a class="link-card" href="https://www.tiktok.com/@jun_minimal" target="_blank" rel="noopener noreferrer">
+          <a class="link-card reveal-on-scroll" href="https://www.tiktok.com/@jun_minimal" target="_blank" rel="noopener noreferrer">
             <span>TikTok</span>
             <small>日々の記録</small>
           </a>
@@ -86,5 +95,6 @@
         <p>© jun</p>
       </footer>
     </main>
+    <script src="./script.js"></script>
   </body>
 </html>
