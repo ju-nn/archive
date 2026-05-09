@@ -8,6 +8,12 @@ const emptyState = document.querySelector("#empty-state");
 const template = document.querySelector("#tile-template");
 const tabs = [...document.querySelectorAll(".tab")];
 
+const sourceLabels = {
+  note: "note",
+  standfm: "stand.fm",
+  works: "WORKS",
+};
+
 const displayDate = (value) => {
   const date = new Date(value);
   if (Number.isNaN(date.getTime())) return "";
@@ -52,6 +58,7 @@ const render = () => {
     tile.dataset.source = item.source;
     image.src = item.imageUrl;
     image.alt = item.title;
+    tile.querySelector(".tile-badge").textContent = sourceLabels[item.source] || item.source;
     tile.querySelector(".tile-title").textContent = item.title;
     tile.querySelector(".tile-date").textContent = item.displayDate;
     grid.append(tile);
