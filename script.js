@@ -12,7 +12,7 @@ const sourceLabels = {
   note: "note",
   standfm: "stand.fm",
   works: "WORKS",
-  youtube: "Youtube",
+  youtube: "YouTube",
   x: "X",
 };
 

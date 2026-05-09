@@ -18,7 +18,44 @@
     "rssUrl": "https://www.youtube.com/feeds/videos.xml?channel_id=UCL6G4umyzedfdT5aP9PAoKQ",
     "limit": 12
   },
-  "x": [],
+  "x": [
+    {
+      "source": "x",
+      "title": "X投稿 2026/2/23",
+      "summary": "Xに投稿した記録です。",
+      "imageUrl": "./assets/icon.png",
+      "publishedAt": "2026-02-23T07:38:56.286Z",
+      "url": "https://x.com/reil_st/status/2025837765871731152",
+      "pinned": false
+    },
+    {
+      "source": "x",
+      "title": "X投稿 2026/1/9",
+      "summary": "Xに投稿した記録です。",
+      "imageUrl": "./assets/icon.png",
+      "publishedAt": "2026-01-09T06:23:54.277Z",
+      "url": "https://x.com/reil_st/status/2009511429125362135",
+      "pinned": false
+    },
+    {
+      "source": "x",
+      "title": "X投稿 2026/1/6",
+      "summary": "Xに投稿した記録です。",
+      "imageUrl": "./assets/icon.png",
+      "publishedAt": "2026-01-06T09:46:56.147Z",
+      "url": "https://x.com/reil_st/status/2008475359994671457",
+      "pinned": false
+    },
+    {
+      "source": "x",
+      "title": "X投稿 2025/7/5",
+      "summary": "Xに投稿した記録です。",
+      "imageUrl": "./assets/icon.png",
+      "publishedAt": "2025-07-05T01:44:41.521Z",
+      "url": "https://x.com/reil_st/status/1941312244241006864",
+      "pinned": false
+    }
+  ],
   "works": [
     {
       "source": "works",
