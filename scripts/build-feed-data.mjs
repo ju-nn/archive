@@ -5,6 +5,7 @@ import { fileURLToPath } from "node:url";
 const rootDir = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const configPath = resolve(rootDir, "data", "feeds.json");
 const outputPath = resolve(rootDir, "data", "feed-items.json");
+const indexPath = resolve(rootDir, "index.html");
 const fallbackImage = "./assets/icon.png";
 
 const decodeEntities = (value = "") =>
@@ -74,9 +75,16 @@ const normalizeItem = (item) => ({
   summary: item.summary || "",
   imageUrl: item.imageUrl || fallbackImage,
   publishedAt: item.publishedAt || null,
+  displayDate: item.displayDate || formatDisplayDate(item.publishedAt),
   url: item.url,
   pinned: Boolean(item.pinned)
 });
+
+const formatDisplayDate = (dateValue) => {
+  const date = new Date(dateValue);
+  if (Number.isNaN(date.getTime())) return "";
+  return `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}に公開`;
+};
 
 const parseRssItems = (xml, source, limit) => {
   const itemMatches = [...xml.matchAll(/<item\b[\s\S]*?<\/item>/gi)].map((match) => match[0]);
@@ -148,6 +156,25 @@ const sortItems = (items) =>
     return new Date(b.publishedAt || 0) - new Date(a.publishedAt || 0);
   });
 
+const escapeScriptJson = (value) =>
+  JSON.stringify(value, null, 2)
+    .replace(/</g, "\\u003c")
+    .replace(/>/g, "\\u003e")
+    .replace(/&/g, "\\u0026");
+
+const updateEmbeddedData = async (output) => {
+  const html = await readFile(indexPath, "utf8");
+  const payload = escapeScriptJson(output);
+  const nextScript = `<script id="initial-feed-data" type="application/json">\n${payload}\n  </script>`;
+  const pattern = /<script id="initial-feed-data" type="application\/json">[\s\S]*?<\/script>/;
+
+  if (!pattern.test(html)) {
+    throw new Error("initial-feed-data script tag was not found in index.html");
+  }
+
+  await writeFile(indexPath, html.replace(pattern, nextScript), "utf8");
+};
+
 const main = async () => {
   const config = JSON.parse(await readFile(configPath, "utf8"));
   const previous = await loadPrevious();
@@ -189,6 +216,7 @@ const main = async () => {
   };
 
   await writeFile(outputPath, `${JSON.stringify(output, null, 2)}\n`, "utf8");
+  await updateEmbeddedData(output);
 
   if (errors.length > 0) {
     console.warn(`Feed build completed with warnings: ${errors.join("; ")}`);

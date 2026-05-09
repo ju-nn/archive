@@ -3,21 +3,36 @@ const state = {
   filter: "all",
 };
 
-const labels = {
-  note: "note",
-  standfm: "stand.fm",
-  works: "works",
-};
-
 const grid = document.querySelector("#tile-grid");
-const meta = document.querySelector("#feed-meta");
 const emptyState = document.querySelector("#empty-state");
 const template = document.querySelector("#tile-template");
 const tabs = [...document.querySelectorAll(".tab")];
 
-const formatCount = (items) => `${items.length}件`;
+const displayDate = (value) => {
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) return "";
+  return `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}に公開`;
+};
 
-const sourceLabel = (source) => labels[source] || source;
+const parseInitialData = () => {
+  const element = document.querySelector("#initial-feed-data");
+  if (!element?.textContent) return [];
+
+  try {
+    const data = JSON.parse(element.textContent);
+    return Array.isArray(data.items) ? data.items : [];
+  } catch (error) {
+    console.error(error);
+    return [];
+  }
+};
+
+const normalizeItems = (items) =>
+  items.filter((item) => item?.url && item?.title).map((item) => ({
+    ...item,
+    imageUrl: item.imageUrl || "./assets/icon.png",
+    displayDate: item.displayDate || displayDate(item.publishedAt),
+  }));
 
 const filteredItems = () => {
   if (state.filter === "all") return state.items;
@@ -28,7 +43,6 @@ const render = () => {
   const items = filteredItems();
   grid.replaceChildren();
   emptyState.hidden = items.length > 0;
-  meta.textContent = `${sourceLabel(state.filter)} / ${formatCount(items)}`;
 
   items.forEach((item) => {
     const tile = template.content.firstElementChild.cloneNode(true);
@@ -36,13 +50,17 @@ const render = () => {
 
     tile.href = item.url;
     tile.dataset.source = item.source;
-    image.src = item.imageUrl || "./assets/icon.png";
+    image.src = item.imageUrl;
     image.alt = item.title;
-    tile.querySelector(".tile-source").textContent = sourceLabel(item.source);
     tile.querySelector(".tile-title").textContent = item.title;
-    tile.querySelector(".tile-summary").textContent = item.summary || "";
+    tile.querySelector(".tile-date").textContent = item.displayDate;
     grid.append(tile);
   });
+};
+
+const setItems = (items) => {
+  state.items = normalizeItems(items);
+  render();
 };
 
 const setFilter = (filter) => {
@@ -57,16 +75,14 @@ const setFilter = (filter) => {
 
 const loadItems = async () => {
   try {
-    const response = await fetch("./data/feed-items.json", { cache: "no-store" });
+    const response = await fetch(new URL("./data/feed-items.json", window.location.href), { cache: "no-store" });
     if (!response.ok) throw new Error(`feed-items.json returned ${response.status}`);
     const data = await response.json();
-    state.items = Array.isArray(data.items) ? data.items : [];
-    render();
+    if (Array.isArray(data.items) && data.items.length > 0) {
+      setItems(data.items);
+    }
   } catch (error) {
-    console.error(error);
-    meta.textContent = "読み込みに失敗しました";
-    emptyState.textContent = "投稿データを読み込めませんでした。";
-    emptyState.hidden = false;
+    console.warn("Using embedded feed data.", error);
   }
 };
 
@@ -75,4 +91,5 @@ tabs.forEach((tab) => {
   tab.addEventListener("click", () => setFilter(tab.dataset.filter));
 });
 
+setItems(parseInitialData());
 loadItems();

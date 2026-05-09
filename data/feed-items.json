@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-09T21:00:29.226Z",
+  "generatedAt": "2026-05-09T21:11:00.281Z",
   "errors": [],
   "items": [
     {
@@ -8,6 +8,7 @@
       "summary": "貯金や働き方を見直すための、生活を整えるミッション診断ツールです。",
       "imageUrl": "./assets/work-jiyu-compass.png",
       "publishedAt": "2026-01-01T00:00:00.000Z",
+      "displayDate": "2026/1/1に公開",
       "url": "https://ju-nn.github.io/Jiyu-Compass/",
       "pinned": true
     },
@@ -17,6 +18,7 @@
       "summary": "会社員が月曜の朝から逃げ道を探す、短編分岐ノベルゲームです。",
       "imageUrl": "./assets/work-nigemiti.png",
       "publishedAt": "2026-01-01T00:00:00.000Z",
+      "displayDate": "2026/1/1に公開",
       "url": "https://ju-nn.github.io/nigemiti-xlsx/",
       "pinned": true
     },
@@ -26,6 +28,7 @@
       "summary": "どうも、じゅん（ https://x.com/reil_st ）です。 ノベルゲームを作りました。 続きをみる",
       "imageUrl": "https://assets.st-note.com/production/uploads/images/272780386/rectangle_large_type_2_e7a33b53f94e1896d49ad09494d1541a.png?width=800",
       "publishedAt": "2026-05-03T15:48:32.000Z",
+      "displayDate": "2026/5/4に公開",
       "url": "https://note.com/reilst/n/ndb43b3d0b062",
       "pinned": false
     },
@@ -35,6 +38,7 @@
       "summary": "どうも、じゅん（ https://x.com/reil_st ）です。 今日は「弱さを前提にした設計」について話そうと思う。 続きをみる",
       "imageUrl": "https://assets.st-note.com/production/uploads/images/272701056/rectangle_large_type_2_3f11019f37338f0182aa2e8f6da84932.png?width=800",
       "publishedAt": "2026-05-03T11:00:41.000Z",
+      "displayDate": "2026/5/3に公開",
       "url": "https://note.com/reilst/n/n1e417296c51b",
       "pinned": false
     },
@@ -44,6 +48,7 @@
       "summary": "どうも、じゅん（ https://x.com/reil_st ）です。 今日は「自由と自己管理」について話そうと思う。 続きをみる",
       "imageUrl": "https://assets.st-note.com/production/uploads/images/272485214/rectangle_large_type_2_39295fc0fcdd3485397bf4eb004affbc.png?width=800",
       "publishedAt": "2026-05-02T15:43:30.000Z",
+      "displayDate": "2026/5/3に公開",
       "url": "https://note.com/reilst/n/n41629314b8e7",
       "pinned": false
     },
@@ -53,6 +58,7 @@
       "summary": "どうも、じゅん（ https://x.com/reil_st ）です。 今日は「インデックス投資を始める前に怖かったこと」について話そうと思う。 続きをみる",
       "imageUrl": "https://assets.st-note.com/production/uploads/images/272483921/rectangle_large_type_2_93bec84112a5cc9d7eb3b26b3f6b67fd.png?width=800",
       "publishedAt": "2026-05-02T15:37:26.000Z",
+      "displayDate": "2026/5/3に公開",
       "url": "https://note.com/reilst/n/n4712257a275e",
       "pinned": false
     },
@@ -62,6 +68,7 @@
       "summary": "どうも、じゅん（ https://x.com/reil_st ）です。 今日は「早く自由になるか、後で自由になるか」について話そうと思う。 続きをみる",
       "imageUrl": "https://assets.st-note.com/production/uploads/images/272478973/rectangle_large_type_2_ac7bbc7b5a09d682d0e712decf7243d5.png?width=800",
       "publishedAt": "2026-05-02T15:09:57.000Z",
+      "displayDate": "2026/5/3に公開",
       "url": "https://note.com/reilst/n/n624cb7be69c9",
       "pinned": false
     },
@@ -71,6 +78,7 @@
       "summary": "どうも、じゅん（ https://x.com/reil_st ）です。 今日も築40年の賃貸で、定位置になった膝の上の猫🐈を撫でながら、ぼんやりと考えていた。 続きをみる",
       "imageUrl": "https://assets.st-note.com/production/uploads/images/271738826/rectangle_large_type_2_7e7f0e19b132a360ae7cac90b25f081e.png?width=800",
       "publishedAt": "2026-04-30T07:33:27.000Z",
+      "displayDate": "2026/4/30に公開",
       "url": "https://note.com/reilst/n/n82cad4c010ed",
       "pinned": false
     },
@@ -80,6 +88,7 @@
       "summary": "どうも、じゅん（ https://x.com/reil_st ）です。 今日は、家を買うか、一生賃貸でいくかという話について話そうと思う。 続きをみる",
       "imageUrl": "https://assets.st-note.com/production/uploads/images/271736705/rectangle_large_type_2_ccc13a9d64e018bdfd3b8c579c70d92f.png?width=800",
       "publishedAt": "2026-04-30T07:27:30.000Z",
+      "displayDate": "2026/4/30に公開",
       "url": "https://note.com/reilst/n/n9ec29e6be5ce",
       "pinned": false
     },
@@ -89,6 +98,7 @@
       "summary": "どうも、じゅん（ https://x.com/reil_st ）です。 最近、SNSで「資産格差」なんて言葉をよく目にする。 「20代で1000万貯めていないのは努力不足だ」とか、そういうマッ...",
       "imageUrl": "https://assets.st-note.com/production/uploads/images/271442556/rectangle_large_type_2_41ff76cd15bfd27a0a82f91b80b09572.png?width=800",
       "publishedAt": "2026-04-29T09:07:38.000Z",
+      "displayDate": "2026/4/29に公開",
       "url": "https://note.com/reilst/n/n5a50561a47c7",
       "pinned": false
     },
@@ -98,6 +108,7 @@
       "summary": "自分を底辺だと感じる理由と、2900万という余白。 1993年生まれ。ストレートで大学卒業後、会社員になり、2年後、傷病手当をもらいながら2年ニート。 また会社員に戻り、現在33歳の2026年...",
       "imageUrl": "https://assets.st-note.com/production/uploads/images/270604599/rectangle_large_type_2_20d5827f8e9449c3e7f823f16ea8f033.png?width=800",
       "publishedAt": "2026-04-26T09:45:08.000Z",
+      "displayDate": "2026/4/26に公開",
       "url": "https://note.com/reilst/n/n102e13b36942",
       "pinned": false
     },
@@ -107,6 +118,7 @@
       "summary": "在宅ワークをしていると、1日のほとんどを同じ部屋🛋️で過ごすことになる。 PCとモニターとキーボードに囲まれたデスク。 その横に、静かに葉を伸ばしている観葉植物たちがいる。 正直、世話はそこ...",
       "imageUrl": "https://assets.st-note.com/production/uploads/images/270574441/rectangle_large_type_2_89c1d62e4b635e0d9e8439b90c53b198.png?width=800",
       "publishedAt": "2026-04-26T08:13:29.000Z",
+      "displayDate": "2026/4/26に公開",
       "url": "https://note.com/reilst/n/n3075f93c97bf",
       "pinned": false
     },
@@ -116,6 +128,7 @@
       "summary": "ある日ふと、思った。 自分ってコーヒー飲みすぎじゃないか。 朝1杯。 昼1杯。 15時くらいにもう1杯。 夜もなんとなくもう1杯。 数えてみたら、毎日4杯くらい飲んでいる。 さすがにちょっと気...",
       "imageUrl": "https://assets.st-note.com/production/uploads/images/269257968/rectangle_large_type_2_2fc4498bd0b42b69058f453dbff4e609.png?width=800",
       "publishedAt": "2026-04-21T12:57:36.000Z",
+      "displayDate": "2026/4/21に公開",
       "url": "https://note.com/reilst/n/nac51d808dc2c",
       "pinned": false
     },
@@ -125,6 +138,7 @@
       "summary": "stand.fmで話した記録です。",
       "imageUrl": "https://cdn.stand.fm/coverImages/01KPDXJE6TE8JKXMKXAPMTJ56V.jpg",
       "publishedAt": "2026-04-17T14:30:54.068Z",
+      "displayDate": "2026/4/17に公開",
       "url": "https://stand.fm/episodes/69e243e5141474f759437e1d",
       "pinned": false
     },
@@ -134,6 +148,7 @@
       "summary": "stand.fmで話した記録です。",
       "imageUrl": "https://cdn.stand.fm/coverImages/01KP390SVQCV13R9PE75BMEFQZ.jpg",
       "publishedAt": "2026-04-13T11:19:20.689Z",
+      "displayDate": "2026/4/13に公開",
       "url": "https://stand.fm/episodes/69dcd100a52e36fe10736f6e",
       "pinned": false
     },
@@ -143,6 +158,7 @@
       "summary": "stand.fmで話した記録です。",
       "imageUrl": "https://cdn.stand.fm/images/01K3453QCP5BDRHMT0XEGQAV7Y.jpg",
       "publishedAt": "2026-04-08T11:11:32.609Z",
+      "displayDate": "2026/4/8に公開",
       "url": "https://stand.fm/episodes/69d637d2969b21b60c665d70",
       "pinned": false
     },
@@ -152,6 +168,7 @@
       "summary": "どうも、じゅん（ https://x.com/reil_st ）です。 今日は、電話まわりの苦手意識について話そうと思う。 続きをみる",
       "imageUrl": "https://assets.st-note.com/production/uploads/images/262921483/rectangle_large_type_2_8dc9698f4006e61b40096c4712fe99d2.png?width=800",
       "publishedAt": "2026-03-28T16:13:47.000Z",
+      "displayDate": "2026/3/29に公開",
       "url": "https://note.com/reilst/n/naef441538c1d",
       "pinned": false
     },
@@ -161,6 +178,7 @@
       "summary": "stand.fmで話した記録です。",
       "imageUrl": "https://cdn.stand.fm/coverImages/01KGSF9F55EDK40CE7N7TYYQTE.jpg",
       "publishedAt": "2026-02-06T12:37:33.369Z",
+      "displayDate": "2026/2/6に公開",
       "url": "https://stand.fm/episodes/6985e072993f124111bd8c34",
       "pinned": false
     },
@@ -170,6 +188,7 @@
       "summary": "stand.fmで話した記録です。",
       "imageUrl": "https://cdn.stand.fm/coverImages/01KDQV8JC295FFK1KH5TAT87G5.jpg",
       "publishedAt": "2025-12-30T14:41:26.463Z",
+      "displayDate": "2025/12/30に公開",
       "url": "https://stand.fm/episodes/6953e46d9b4803f510c67b58",
       "pinned": false
     },
@@ -179,6 +198,7 @@
       "summary": "stand.fmで話した記録です。",
       "imageUrl": "https://cdn.stand.fm/coverImages/01KD61TXH83KKBSDW5WW7Y21E5.jpg",
       "publishedAt": "2025-12-23T16:50:02.702Z",
+      "displayDate": "2025/12/24に公開",
       "url": "https://stand.fm/episodes/694ac80e79fa85d4a1a33ae3",
       "pinned": false
     },
@@ -188,6 +208,7 @@
       "summary": "stand.fmで話した記録です。",
       "imageUrl": "https://cdn.stand.fm/coverImages/01KB5EPCSYXK9Q69BM78YK2HE8.jpg",
       "publishedAt": "2025-11-28T14:44:26.669Z",
+      "displayDate": "2025/11/28に公開",
       "url": "https://stand.fm/episodes/6929b50b18f152e49350086e",
       "pinned": false
     },
@@ -197,6 +218,7 @@
       "summary": "stand.fmで話した記録です。",
       "imageUrl": "https://cdn.stand.fm/coverImages/01KARDT3DN5B7YJZBVA3HZY2Z8.jpg",
       "publishedAt": "2025-11-23T13:18:13.132Z",
+      "displayDate": "2025/11/23に公開",
       "url": "https://stand.fm/episodes/6923097c3ac13deccfdab22c",
       "pinned": false
     },
@@ -206,6 +228,7 @@
       "summary": "stand.fmで話した記録です。",
       "imageUrl": "https://cdn.stand.fm/coverImages/01KA9BAWDMBF9HSMMQ5Q0BW4NX.jpg",
       "publishedAt": "2025-11-20T17:00:01.306Z",
+      "displayDate": "2025/11/21に公開",
       "url": "https://stand.fm/episodes/691b51449368ea2beb4b6d67",
       "pinned": false
     },
@@ -215,6 +238,7 @@
       "summary": "stand.fmで話した記録です。",
       "imageUrl": "https://cdn.stand.fm/coverImages/01K9ADBTBGZAM05V38M2JKHCMM.jpg",
       "publishedAt": "2025-11-05T16:25:55.270Z",
+      "displayDate": "2025/11/6に公開",
       "url": "https://stand.fm/episodes/690b7a588b9f0ac22ea9c74b",
       "pinned": false
     }
