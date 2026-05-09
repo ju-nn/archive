@@ -7,8 +7,6 @@ const state = {
 };
 
 const grid = document.querySelector("#tile-grid");
-const photoGrid = document.querySelector("#photo-grid");
-const photoSection = document.querySelector(".photo-section");
 const pager = document.querySelector(".pager");
 const pagerPrev = document.querySelector("#pager-prev");
 const pagerNext = document.querySelector("#pager-next");
@@ -60,22 +58,9 @@ const normalizeItems = (items) =>
 const filteredItems = () => {
   const query = state.searchQuery.trim().toLowerCase();
   return state.items.filter((item) => {
-    if (item.source === "photo") return false;
     if (state.filter !== "all" && item.source !== state.filter) return false;
     if (!query) return true;
     return [item.title, item.summary, item.source, item.displayDate]
-      .filter(Boolean)
-      .some((value) => value.toLowerCase().includes(query));
-  });
-};
-
-const photoItems = () => {
-  const query = state.searchQuery.trim().toLowerCase();
-  return state.items.filter((item) => {
-    if (item.source !== "photo") return false;
-    if (state.filter !== "all" && state.filter !== "photo") return false;
-    if (!query) return true;
-    return [item.title, item.summary, item.displayDate]
       .filter(Boolean)
       .some((value) => value.toLowerCase().includes(query));
   });
@@ -120,10 +105,27 @@ const render = () => {
   const pages = totalPages(items.length);
   const pageItems = items.slice((state.page - 1) * PAGE_SIZE, state.page * PAGE_SIZE);
   grid.replaceChildren();
-  photoGrid.replaceChildren();
   emptyState.hidden = items.length > 0;
 
   pageItems.forEach((item, index) => {
+    if (item.source === "photo") {
+      const card = photoTemplate.content.firstElementChild.cloneNode(true);
+      const image = card.querySelector(".photo-image");
+      const title = card.querySelector(".tile-title");
+      const description = card.querySelector(".tile-description");
+      const date = card.querySelector(".tile-date");
+      image.src = item.imageUrl;
+      image.alt = item.title;
+      card.style.setProperty("--tile-delay", `${Math.min(index, 12) * 40}ms`);
+      card.dataset.source = "photo";
+      title.textContent = item.title;
+      description.hidden = false;
+      description.textContent = "Photo";
+      date.textContent = item.displayDate;
+      grid.append(card);
+      return;
+    }
+
     const tile = template.content.firstElementChild.cloneNode(true);
     const image = tile.querySelector(".tile-image");
 
@@ -144,18 +146,7 @@ const render = () => {
     grid.append(tile);
   });
 
-  const photos = photoItems();
-  photos.forEach((item) => {
-    const card = photoTemplate.content.firstElementChild.cloneNode(true);
-    const image = card.querySelector(".photo-image");
-    image.src = item.imageUrl;
-    image.alt = item.title;
-    photoGrid.append(card);
-  });
-
-  const showPhotos = state.filter === "all" || state.filter === "photo";
-  photoSection.hidden = !showPhotos || photos.length === 0;
-  grid.hidden = state.filter === "photo";
+  grid.hidden = false;
 
   syncPager(items);
   if (pages === 1) {

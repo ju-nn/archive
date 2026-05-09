@@ -10,7 +10,7 @@
       "title": "Photo 1",
       "summary": "",
       "imageUrl": "./assets/photos/R0001443.JPG",
-      "publishedAt": "2026-05-10T00:00:00.000Z",
+      "takenAt": "2024-09-15T18:06:09.000Z",
       "url": "./assets/photos/R0001443.JPG",
       "pinned": false
     },
@@ -19,7 +19,7 @@
       "title": "Photo 2",
       "summary": "",
       "imageUrl": "./assets/photos/R0001452.JPG",
-      "publishedAt": "2026-05-10T00:00:00.000Z",
+      "takenAt": "2024-09-15T22:18:12.000Z",
       "url": "./assets/photos/R0001452.JPG",
       "pinned": false
     },
@@ -28,7 +28,7 @@
       "title": "Photo 3",
       "summary": "",
       "imageUrl": "./assets/photos/R0001505.JPG",
-      "publishedAt": "2026-05-10T00:00:00.000Z",
+      "takenAt": "2024-10-25T10:10:30.000Z",
       "url": "./assets/photos/R0001505.JPG",
       "pinned": false
     },
@@ -37,7 +37,7 @@
       "title": "Photo 4",
       "summary": "",
       "imageUrl": "./assets/photos/R0001623.JPG",
-      "publishedAt": "2026-05-10T00:00:00.000Z",
+      "takenAt": "2024-10-27T21:11:50.000Z",
       "url": "./assets/photos/R0001623.JPG",
       "pinned": false
     },
@@ -46,7 +46,7 @@
       "title": "Photo 5",
       "summary": "",
       "imageUrl": "./assets/photos/R0001899.JPG",
-      "publishedAt": "2026-05-10T00:00:00.000Z",
+      "takenAt": "2026-01-18T16:16:53.000Z",
       "url": "./assets/photos/R0001899.JPG",
       "pinned": false
     }

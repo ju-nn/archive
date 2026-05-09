@@ -99,6 +99,13 @@ const findImage = (source) => {
   return htmlImage?.[1] ? decodeEntities(htmlImage[1]) : fallbackImage;
 };
 
+const formatDisplayDate = (dateValue, source = "") => {
+  const date = new Date(dateValue);
+  if (Number.isNaN(date.getTime())) return "";
+  const suffix = source === "photo" ? "に撮影" : "に公開";
+  return `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}${suffix}`;
+};
+
 const normalizeItem = (item) => ({
   source: item.source,
   title: item.title || "untitled",
@@ -106,16 +113,11 @@ const normalizeItem = (item) => ({
   summary: item.summary || "",
   imageUrl: item.imageUrl || fallbackImage,
   publishedAt: item.publishedAt || null,
-  displayDate: item.displayDate || formatDisplayDate(item.publishedAt),
+  takenAt: item.takenAt || null,
+  displayDate: item.displayDate || formatDisplayDate(item.takenAt || item.publishedAt, item.source),
   url: item.url,
   pinned: Boolean(item.pinned)
 });
-
-const formatDisplayDate = (dateValue) => {
-  const date = new Date(dateValue);
-  if (Number.isNaN(date.getTime())) return "";
-  return `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}に公開`;
-};
 
 const parseRssItems = (xml, source, limit) => {
   const itemMatches = [...xml.matchAll(/<item\b[\s\S]*?<\/item>/gi)].map((match) => match[0]);
