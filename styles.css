@@ -233,7 +233,7 @@ h2 {
 
 .work-thumb {
   width: 100%;
-  max-width: 320px;
+  max-width: 280px;
   height: auto;
   border: 1px solid var(--line);
   border-radius: 8px;
@@ -242,6 +242,7 @@ h2 {
 }
 
 .featured-work .work-thumb {
+  max-width: 240px;
   background: transparent;
   border: none;
 }
