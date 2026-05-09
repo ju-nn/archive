@@ -1,10 +1,16 @@
 const state = {
   items: [],
   filter: "all",
+  searchOpen: false,
+  searchQuery: "",
 };
 
 const grid = document.querySelector("#tile-grid");
 const emptyState = document.querySelector("#empty-state");
+const searchPanel = document.querySelector("#search-panel");
+const searchToggle = document.querySelector("#search-toggle");
+const searchInput = document.querySelector("#search-input");
+const searchHint = document.querySelector("#search-hint");
 const template = document.querySelector("#tile-template");
 const tabs = [...document.querySelectorAll(".tab")];
 
@@ -13,7 +19,6 @@ const sourceLabels = {
   standfm: "stand.fm",
   works: "WORKS",
   youtube: "YouTube",
-  x: "X",
 };
 
 const displayDate = (value) => {
@@ -43,8 +48,32 @@ const normalizeItems = (items) =>
   }));
 
 const filteredItems = () => {
-  if (state.filter === "all") return state.items;
-  return state.items.filter((item) => item.source === state.filter);
+  const query = state.searchQuery.trim().toLowerCase();
+  return state.items.filter((item) => {
+    if (state.filter !== "all" && item.source !== state.filter) return false;
+    if (!query) return true;
+    return [item.title, item.summary, item.source, item.displayDate]
+      .filter(Boolean)
+      .some((value) => value.toLowerCase().includes(query));
+  });
+};
+
+const syncTabs = () => {
+  const sources = new Set(state.items.map((item) => item.source));
+  tabs.forEach((tab) => {
+    const filter = tab.dataset.filter;
+    tab.hidden = filter !== "all" && !sources.has(filter);
+  });
+
+  if (state.filter !== "all" && !sources.has(state.filter)) {
+    state.filter = "all";
+  }
+};
+
+const syncSearch = () => {
+  searchPanel.hidden = !state.searchOpen;
+  searchToggle.setAttribute("aria-expanded", String(state.searchOpen));
+  searchHint.textContent = state.searchQuery ? `「${state.searchQuery}」で検索中` : "";
 };
 
 const render = () => {
@@ -52,12 +81,13 @@ const render = () => {
   grid.replaceChildren();
   emptyState.hidden = items.length > 0;
 
-  items.forEach((item) => {
+  items.forEach((item, index) => {
     const tile = template.content.firstElementChild.cloneNode(true);
     const image = tile.querySelector(".tile-image");
 
     tile.href = item.url;
     tile.dataset.source = item.source;
+    tile.style.setProperty("--tile-delay", `${Math.min(index, 12) * 40}ms`);
     image.src = item.imageUrl;
     image.alt = item.title;
     tile.querySelector(".tile-badge").textContent = sourceLabels[item.source] || item.source;
@@ -69,6 +99,8 @@ const render = () => {
 
 const setItems = (items) => {
   state.items = normalizeItems(items);
+  syncTabs();
+  syncSearch();
   render();
 };
 
@@ -79,6 +111,12 @@ const setFilter = (filter) => {
     tab.classList.toggle("is-active", isActive);
     tab.setAttribute("aria-selected", String(isActive));
   });
+  render();
+};
+
+const setSearchQuery = (query) => {
+  state.searchQuery = query;
+  syncSearch();
   render();
 };
 
@@ -98,6 +136,31 @@ const loadItems = async () => {
 tabs.forEach((tab) => {
   tab.setAttribute("role", "tab");
   tab.addEventListener("click", () => setFilter(tab.dataset.filter));
+});
+
+searchToggle.addEventListener("click", () => {
+  state.searchOpen = !state.searchOpen;
+  syncSearch();
+  if (state.searchOpen) {
+    searchInput.focus();
+  } else {
+    searchInput.value = "";
+    setSearchQuery("");
+  }
+});
+
+searchInput.addEventListener("input", () => {
+  setSearchQuery(searchInput.value);
+});
+
+searchInput.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") {
+    searchInput.value = "";
+    setSearchQuery("");
+    state.searchOpen = false;
+    syncSearch();
+    searchToggle.focus();
+  }
 });
 
 setItems(parseInitialData());

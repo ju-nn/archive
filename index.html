@@ -4,19 +4,19 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="jun / じゅん の制作物と発信を、works・note・stand.fm・YouTube・Xのタイルでまとめた個人サイト。" />
+  <meta name="description" content="jun / じゅん の制作物と発信を、works・note・stand.fm・YouTubeのタイルでまとめた個人サイト。" />
   <link rel="canonical" href="https://ju-nn.github.io/archive/" />
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="ja_JP" />
   <meta property="og:site_name" content="jun | じゅん" />
   <meta property="og:url" content="https://ju-nn.github.io/archive/" />
   <meta property="og:title" content="jun | じゅん" />
-  <meta property="og:description" content="jun / じゅん の制作物と発信を、works・note・stand.fm・YouTube・Xのタイルでまとめた個人サイト。" />
+  <meta property="og:description" content="jun / じゅん の制作物と発信を、works・note・stand.fm・YouTubeのタイルでまとめた個人サイト。" />
   <meta property="og:image" content="https://ju-nn.github.io/archive/assets/icon.png" />
   <meta property="og:image:alt" content="junのアイコン" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="jun | じゅん" />
-  <meta name="twitter:description" content="jun / じゅん の制作物と発信を、works・note・stand.fm・YouTube・Xのタイルでまとめた個人サイト。" />
+  <meta name="twitter:description" content="jun / じゅん の制作物と発信を、works・note・stand.fm・YouTubeのタイルでまとめた個人サイト。" />
   <meta name="twitter:image" content="https://ju-nn.github.io/archive/assets/icon.png" />
   <link rel="icon" href="./assets/icon.png" type="image/png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -45,8 +45,31 @@
             <path d="M11.2 3h1.6v18h-1.6V3Zm-4 4h1.6v10H7.2V7Zm8 0h1.6v10h-1.6V7Zm-12 4h1.6v4H3.2v-4Zm16 0h1.6v4h-1.6v-4Z" />
           </svg>
         </a>
+        <a class="icon-link" href="https://www.youtube.com/@junnn-vlog" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M21.8 8.2c-.2-1-1-1.8-2-2-1.8-.4-7.8-.4-7.8-.4s-6 0-7.8.4c-1 .2-1.8 1-2 2-.4 1.8-.4 3.8-.4 3.8s0 2 .4 3.8c.2 1 1 1.8 2 2 1.8.4 7.8.4 7.8.4s6 0 7.8-.4c1-.2 1.8-1 2-2 .4-1.8.4-3.8.4-3.8s0-2-.4-3.8ZM10 15.1V8.9l5.4 3.1L10 15.1Z" />
+          </svg>
+        </a>
+        <a class="icon-link" href="https://x.com/reil_st" target="_blank" rel="noopener noreferrer" aria-label="X">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M14.2 10.6 21.2 3h-1.7l-6.1 6.6L8.6 3H3l7.4 10.1L3 21h1.7l6.5-7 5.2 7H22l-7.8-10.4Zm-2.3 2.5-.8-1.1L5.2 4.3h2.6l4.8 6.4.8 1.1 6.2 8h-2.6l-5.1-6.7Z" />
+          </svg>
+        </a>
+        <button class="icon-link icon-button" type="button" id="search-toggle" aria-label="検索" aria-expanded="false" aria-controls="search-panel">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M10.5 4.5a6 6 0 1 1 0 12 6 6 0 0 1 0-12Zm0 2a4 4 0 1 0 0 8 4 4 0 0 0 0-8Zm4.9 8.3 3.5 3.5-1.4 1.4-3.5-3.5 1.4-1.4Z" />
+          </svg>
+        </button>
       </div>
     </header>
+
+    <section class="search-panel" id="search-panel" hidden aria-label="サイト内検索">
+      <label class="search-field" for="search-input">
+        <span class="sr-only">検索</span>
+        <input id="search-input" type="search" placeholder="タイトルを検索" autocomplete="off" />
+      </label>
+      <p class="search-hint" id="search-hint" aria-live="polite"></p>
+    </section>
 
     <nav class="tabs" aria-label="表示カテゴリ">
       <button class="tab is-active" type="button" data-filter="all">すべて</button>
@@ -54,7 +77,6 @@
       <button class="tab" type="button" data-filter="note">note</button>
       <button class="tab" type="button" data-filter="standfm">stand.fm</button>
       <button class="tab" type="button" data-filter="youtube">YouTube</button>
-      <button class="tab" type="button" data-filter="x">X</button>
     </nav>
 
     <section class="feed-section" aria-label="投稿一覧">
@@ -76,7 +98,7 @@
     <div class="footer-inner">
       <div>
         <p class="footer-brand">jun archive</p>
-        <p class="footer-copy">works・note・stand.fm・YouTube・Xをまとめた個人アーカイブ</p>
+        <p class="footer-copy">works・note・stand.fm・YouTubeをまとめた個人アーカイブ</p>
       </div>
       <nav class="footer-links" aria-label="フッターリンク">
         <a href="https://note.com/reilst" target="_blank" rel="noopener noreferrer">note</a>
@@ -100,7 +122,7 @@
 
   <script id="initial-feed-data" type="application/json">
 {
-  "generatedAt": "2026-05-09T22:21:32.937Z",
+  "generatedAt": "2026-05-09T22:49:21.981Z",
   "errors": [],
   "items": [
     {
@@ -274,16 +296,6 @@
       "pinned": false
     },
     {
-      "source": "x",
-      "title": "ヘッドマッサージ🐈‍⬛",
-      "summary": "Xに投稿した記録です。",
-      "imageUrl": "./assets/icon.png",
-      "publishedAt": "2026-02-23T07:38:56.286Z",
-      "displayDate": "2026/2/23に公開",
-      "url": "https://x.com/reil_st/status/2025837765871731152",
-      "pinned": false
-    },
-    {
       "source": "standfm",
       "title": "2025年のベストバイなど語る",
       "summary": "stand.fmで話した記録です。",
@@ -341,26 +353,6 @@
       "publishedAt": "2026-01-18T10:09:09.000Z",
       "displayDate": "2026/1/18に公開",
       "url": "https://www.youtube.com/watch?v=lrDSvgnkfSs",
-      "pinned": false
-    },
-    {
-      "source": "x",
-      "title": "夜道 #iPhone #dazz",
-      "summary": "Xに投稿した記録です。",
-      "imageUrl": "./assets/icon.png",
-      "publishedAt": "2026-01-09T06:23:54.277Z",
-      "displayDate": "2026/1/9に公開",
-      "url": "https://x.com/reil_st/status/2009511429125362135",
-      "pinned": false
-    },
-    {
-      "source": "x",
-      "title": "🏝️ #gr3x",
-      "summary": "Xに投稿した記録です。",
-      "imageUrl": "./assets/icon.png",
-      "publishedAt": "2026-01-06T09:46:56.147Z",
-      "displayDate": "2026/1/6に公開",
-      "url": "https://x.com/reil_st/status/2008475359994671457",
       "pinned": false
     },
     {
@@ -454,6 +446,26 @@
       "pinned": false
     },
     {
+      "source": "standfm",
+      "title": "雑談（冬対策/雑談の難しさ/猫のTikTok初めて感じる猫パワー）",
+      "summary": "stand.fmで話した記録です。",
+      "imageUrl": "https://cdn.stand.fm/coverImages/01K8GMTBVDJ7SN4E3TB7K7NYVA.jpg",
+      "publishedAt": "2025-10-27T14:14:02.342Z",
+      "displayDate": "2025/10/27に公開",
+      "url": "https://stand.fm/episodes/68fe4902083d606cd61ea10c",
+      "pinned": false
+    },
+    {
+      "source": "standfm",
+      "title": "わからないことが増えると、人生は急につまらなくなる",
+      "summary": "stand.fmで話した記録です。",
+      "imageUrl": "https://cdn.stand.fm/coverImages/01K8GKC8Z8Z59H14PFWS8DKT8E.jpg",
+      "publishedAt": "2025-10-26T15:50:08.327Z",
+      "displayDate": "2025/10/27に公開",
+      "url": "https://stand.fm/episodes/68fe431bf6eb873719bd7baa",
+      "pinned": false
+    },
+    {
       "source": "youtube",
       "title": "保護猫よぞらとひなた",
       "summary": "",
@@ -461,6 +473,236 @@
       "publishedAt": "2025-10-26T13:46:04.000Z",
       "displayDate": "2025/10/26に公開",
       "url": "https://www.youtube.com/shorts/9f4oxsEYEEM",
+      "pinned": false
+    },
+    {
+      "source": "standfm",
+      "title": "欲しいものを買うくらいなら働かない",
+      "summary": "stand.fmで話した記録です。",
+      "imageUrl": "https://cdn.stand.fm/coverImages/01K83PJTWHS8MYJC8R7YGV5KNS.jpg",
+      "publishedAt": "2025-10-23T14:35:01.348Z",
+      "displayDate": "2025/10/23に公開",
+      "url": "https://stand.fm/episodes/68f7a84c8c931041da50d031",
+      "pinned": false
+    },
+    {
+      "source": "standfm",
+      "title": "ポケモンZA、にゅうめん、健康診断最低評価の話",
+      "summary": "stand.fmで話した記録です。",
+      "imageUrl": "https://cdn.stand.fm/images/01K3453QCP5BDRHMT0XEGQAV7Y.jpg",
+      "publishedAt": "2025-10-21T14:43:36.929Z",
+      "displayDate": "2025/10/21に公開",
+      "url": "https://stand.fm/episodes/68f79bf48c931041da50cf76",
+      "pinned": false
+    },
+    {
+      "source": "standfm",
+      "title": "大人になってゲームがクリアできなくなった話",
+      "summary": "stand.fmで話した記録です。",
+      "imageUrl": "https://cdn.stand.fm/coverImages/01K74W85VZ8NG44MGN0DB05VMM.jpg",
+      "publishedAt": "2025-10-09T16:18:58.195Z",
+      "displayDate": "2025/10/10に公開",
+      "url": "https://stand.fm/episodes/68e7e04741845ed437877632",
+      "pinned": false
+    },
+    {
+      "source": "standfm",
+      "title": "質問コーナー🙋色々答える",
+      "summary": "stand.fmで話した記録です。",
+      "imageUrl": "https://cdn.stand.fm/coverImages/01K72B0F6Z3MFEY2KCHZQS9BMS.jpg",
+      "publishedAt": "2025-10-08T16:38:49.280Z",
+      "displayDate": "2025/10/9に公開",
+      "url": "https://stand.fm/episodes/68e6938463759aabad9b557a",
+      "pinned": false
+    },
+    {
+      "source": "standfm",
+      "title": "“好きなことを仕事にする”って、大人になっても嫌いな食べものがないくらいの運だと",
+      "summary": "stand.fmで話した記録です。",
+      "imageUrl": "https://cdn.stand.fm/images/01K3453QCP5BDRHMT0XEGQAV7Y.jpg",
+      "publishedAt": "2025-10-07T09:26:49.336Z",
+      "displayDate": "2025/10/7に公開",
+      "url": "https://stand.fm/episodes/68e4dcca1bdbea44ccb6d305",
+      "pinned": false
+    },
+    {
+      "source": "standfm",
+      "title": "雑談（今の仕事、無印の蒸籠蒸し、余暇の過ごし方）",
+      "summary": "stand.fmで話した記録です。",
+      "imageUrl": "https://cdn.stand.fm/coverImages/01K6DSTE6E8SMP10KHW93BPD8R.jpg",
+      "publishedAt": "2025-09-30T17:13:55.720Z",
+      "displayDate": "2025/10/1に公開",
+      "url": "https://stand.fm/episodes/68dc0fac2004ddf1f58d960f",
+      "pinned": false
+    },
+    {
+      "source": "standfm",
+      "title": "生活防衛資金の先にある精神防衛資金を目指そう",
+      "summary": "stand.fmで話した記録です。",
+      "imageUrl": "https://cdn.stand.fm/coverImages/01K6B5C4SXRS8EAD0QZWENS4N0.jpg",
+      "publishedAt": "2025-09-30T11:09:01.630Z",
+      "displayDate": "2025/9/30に公開",
+      "url": "https://stand.fm/episodes/68dab5c75ba2cbdfbae9c171",
+      "pinned": false
+    },
+    {
+      "source": "standfm",
+      "title": "自由な生活で意外と困ることを考える",
+      "summary": "stand.fmで話した記録です。",
+      "imageUrl": "https://cdn.stand.fm/coverImages/01K6AW3SNYDCW3EB67VAGV3NNF.jpg",
+      "publishedAt": "2025-09-29T13:56:08.883Z",
+      "displayDate": "2025/9/29に公開",
+      "url": "https://stand.fm/episodes/68da8fd931fc51f8b38ce0ea",
+      "pinned": false
+    },
+    {
+      "source": "standfm",
+      "title": "家の近くにあるとうれしいもの、嫌なもの",
+      "summary": "stand.fmで話した記録です。",
+      "imageUrl": "https://cdn.stand.fm/coverImages/01K60H81PV5D703TM2DQE9H8AS.jpg",
+      "publishedAt": "2025-09-26T14:00:06.417Z",
+      "displayDate": "2025/9/26に公開",
+      "url": "https://stand.fm/episodes/68d5449d41b9fbaa9b47b5c0",
+      "pinned": false
+    },
+    {
+      "source": "standfm",
+      "title": "今の仕事やお金の状況、生活を語る/自営業辞めて会社員に戻った理由",
+      "summary": "stand.fmで話した記録です。",
+      "imageUrl": "https://cdn.stand.fm/images/01K3453QCP5BDRHMT0XEGQAV7Y.jpg",
+      "publishedAt": "2025-09-25T12:52:29.072Z",
+      "displayDate": "2025/9/25に公開",
+      "url": "https://stand.fm/episodes/68d53ad9890f460a4736b47a",
+      "pinned": false
+    },
+    {
+      "source": "standfm",
+      "title": "株のポートフォリオの方向性を考えた",
+      "summary": "stand.fmで話した記録です。",
+      "imageUrl": "https://cdn.stand.fm/coverImages/01K5VEV893KMS77JECH44W4TEV.jpg",
+      "publishedAt": "2025-09-23T14:15:25.458Z",
+      "displayDate": "2025/9/23に公開",
+      "url": "https://stand.fm/episodes/68d2ab6d3d8601a3dfeaac4a",
+      "pinned": false
+    },
+    {
+      "source": "standfm",
+      "title": "セミリタイア生活への期待/vlogの方向性について考える夜",
+      "summary": "stand.fmで話した記録です。",
+      "imageUrl": "https://cdn.stand.fm/coverImages/01K5VE79K1BC2X9N470BF1F5G6.jpg",
+      "publishedAt": "2025-09-23T14:04:55.779Z",
+      "displayDate": "2025/9/23に公開",
+      "url": "https://stand.fm/episodes/68d2a8df1eef77c9318a8a0e",
+      "pinned": false
+    },
+    {
+      "source": "standfm",
+      "title": "質問に答える回。欲しいもの、よかったことなど",
+      "summary": "stand.fmで話した記録です。",
+      "imageUrl": "https://cdn.stand.fm/coverImages/01K59FB3FH2K2S1TQX46TE9RCY.jpg",
+      "publishedAt": "2025-09-16T14:38:01.800Z",
+      "displayDate": "2025/9/16に公開",
+      "url": "https://stand.fm/episodes/68c9762857db7e19ac07647c",
+      "pinned": false
+    },
+    {
+      "source": "standfm",
+      "title": "子猫2匹を飼い始めて3ヶ月の感想",
+      "summary": "stand.fmで話した記録です。",
+      "imageUrl": "https://cdn.stand.fm/coverImages/01K56TTKE3M430GXE5FJ9R25WQ.jpg",
+      "publishedAt": "2025-09-15T14:00:55.457Z",
+      "displayDate": "2025/9/15に公開",
+      "url": "https://stand.fm/episodes/68c81bfbd2bf41aa329bcc7a",
+      "pinned": false
+    },
+    {
+      "source": "standfm",
+      "title": "会社員を辞めたいけど、自営業は向いてなかった話",
+      "summary": "stand.fmで話した記録です。",
+      "imageUrl": "https://cdn.stand.fm/coverImages/01K56SQFG42RNP8E5QH9D11T3F.jpg",
+      "publishedAt": "2025-09-15T13:41:44.677Z",
+      "displayDate": "2025/9/15に公開",
+      "url": "https://stand.fm/episodes/68c8177cd2bf41aa329bcc33",
+      "pinned": false
+    },
+    {
+      "source": "standfm",
+      "title": "投資の数字よりも“心の余裕”がリターンだった話",
+      "summary": "stand.fmで話した記録です。",
+      "imageUrl": "https://cdn.stand.fm/images/01K3453QCP5BDRHMT0XEGQAV7Y.jpg",
+      "publishedAt": "2025-09-10T11:30:03.262Z",
+      "displayDate": "2025/9/10に公開",
+      "url": "https://stand.fm/episodes/68bf02d6818a2551bef383f2",
+      "pinned": false
+    },
+    {
+      "source": "standfm",
+      "title": "ミニマリストになったらセミリタイアを目指してた話",
+      "summary": "stand.fmで話した記録です。",
+      "imageUrl": "https://cdn.stand.fm/images/01K3453QCP5BDRHMT0XEGQAV7Y.jpg",
+      "publishedAt": "2025-09-09T22:14:01.440Z",
+      "displayDate": "2025/9/10に公開",
+      "url": "https://stand.fm/episodes/68bf00fc7d42b45d0030819d",
+      "pinned": false
+    },
+    {
+      "source": "standfm",
+      "title": "買ってよかった家電と家具",
+      "summary": "stand.fmで話した記録です。",
+      "imageUrl": "https://cdn.stand.fm/images/01K3453QCP5BDRHMT0XEGQAV7Y.jpg",
+      "publishedAt": "2025-09-08T22:15:03.025Z",
+      "displayDate": "2025/9/9に公開",
+      "url": "https://stand.fm/episodes/68befeb90637f9fce742bf7b",
+      "pinned": false
+    },
+    {
+      "source": "standfm",
+      "title": "なぜ働きたくないのか？",
+      "summary": "stand.fmで話した記録です。",
+      "imageUrl": "https://cdn.stand.fm/images/01K3453QCP5BDRHMT0XEGQAV7Y.jpg",
+      "publishedAt": "2025-09-02T03:00:05.853Z",
+      "displayDate": "2025/9/2に公開",
+      "url": "https://stand.fm/episodes/68b5c43ae75adf615ec1c95a",
+      "pinned": false
+    },
+    {
+      "source": "standfm",
+      "title": "vlogを初めて、体感する継続の難しさ",
+      "summary": "stand.fmで話した記録です。",
+      "imageUrl": "https://cdn.stand.fm/images/01K3453QCP5BDRHMT0XEGQAV7Y.jpg",
+      "publishedAt": "2025-09-01T15:45:09.808Z",
+      "displayDate": "2025/9/2に公開",
+      "url": "https://stand.fm/episodes/68b5bf51124b30d92376a0bc",
+      "pinned": false
+    },
+    {
+      "source": "standfm",
+      "title": "ルーチン作業と創造的な作業、どっちが心地いい？",
+      "summary": "stand.fmで話した記録です。",
+      "imageUrl": "https://cdn.stand.fm/images/01K3453QCP5BDRHMT0XEGQAV7Y.jpg",
+      "publishedAt": "2025-09-01T15:22:05.090Z",
+      "displayDate": "2025/9/2に公開",
+      "url": "https://stand.fm/episodes/68b5ba0c1512b216cd1ef8d8",
+      "pinned": false
+    },
+    {
+      "source": "standfm",
+      "title": "ゲーム会社を辞めて、フルリモートエンジニアになるまで",
+      "summary": "stand.fmで話した記録です。",
+      "imageUrl": "https://cdn.stand.fm/images/01K3453QCP5BDRHMT0XEGQAV7Y.jpg",
+      "publishedAt": "2025-08-26T09:33:27.796Z",
+      "displayDate": "2025/8/26に公開",
+      "url": "https://stand.fm/episodes/68ad7f534b1f318b6169dbc0",
+      "pinned": false
+    },
+    {
+      "source": "standfm",
+      "title": "セミリタイアを目指して株をコツコツ買ってる話",
+      "summary": "stand.fmで話した記録です。",
+      "imageUrl": "https://cdn.stand.fm/coverImages/01K3EC5W338S51P1W2S149QFB0.jpg",
+      "publishedAt": "2025-08-24T15:47:39.347Z",
+      "displayDate": "2025/8/25に公開",
+      "url": "https://stand.fm/episodes/68a5fedfc5cf735132f014eb",
       "pinned": false
     },
     {
@@ -474,13 +716,13 @@
       "pinned": false
     },
     {
-      "source": "x",
-      "title": "🐟サカナみました",
-      "summary": "Xに投稿した記録です。",
-      "imageUrl": "./assets/icon.png",
-      "publishedAt": "2025-07-05T01:44:41.521Z",
-      "displayDate": "2025/7/5に公開",
-      "url": "https://x.com/reil_st/status/1941312244241006864",
+      "source": "standfm",
+      "title": "初めての1人喋り。自己紹介",
+      "summary": "stand.fmで話した記録です。",
+      "imageUrl": "https://cdn.stand.fm/coverImages/01K344Y7NVCRS3YNDG38R2NVSS.jpg",
+      "publishedAt": "2025-08-20T16:28:24.420Z",
+      "displayDate": "2025/8/21に公開",
+      "url": "https://stand.fm/episodes/68a5f795c5cf735132f014af",
       "pinned": false
     }
   ]

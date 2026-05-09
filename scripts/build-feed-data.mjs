@@ -52,6 +52,33 @@ const fetchText = async (url) => {
   return response.text();
 };
 
+const fetchGraphql = async (query, variables) => {
+  const response = await fetch("https://stand.fm/api/graphql", {
+    method: "POST",
+    headers: {
+      "user-agent": "jun-archive-feed-builder/1.0",
+      "App-Agent": "jun-archive-feed-builder/1.0",
+      accept: "application/json",
+      "content-type": "application/json"
+    },
+    body: JSON.stringify({ query, variables })
+  });
+
+  if (!response.ok) {
+    throw new Error(`https://stand.fm/api/graphql returned ${response.status}`);
+  }
+
+  const payload = await response.json();
+  if (payload.errors?.length) {
+    const message = payload.errors.map((error) => error.message).filter(Boolean).join("; ") || "stand.fm graphql request failed";
+    throw new Error(message);
+  }
+
+  return payload.data;
+};
+
+const toStandfmNodeId = (channelId) => Buffer.from(`Channel:${channelId}`).toString("base64");
+
 const findImage = (source) => {
   const thumbnail = textBetween(source, "media:thumbnail");
   if (thumbnail) return thumbnail;
@@ -126,34 +153,107 @@ const parseYouTubeItems = (xml, limit) => {
   });
 };
 
-const parseStandfmPage = (html, config) => {
-  const episodeBlocks = [...html.matchAll(/"__typename":"Episode"[\s\S]*?(?=},"client:|},"RXBpc|<\/script>)/g)]
-    .map((match) => match[0])
-    .slice(0, config.limit);
+const STAND_FM_CHANNEL_EPISODES_QUERY = `query ChannelEpisodesFragmentPaginationQuery(
+  $after: String
+  $first: Int = 10
+  $id: ID!
+) {
+  node(id: $id) {
+    __typename
+    ...ChannelEpisodesFragment_2HEEH6
+    id
+  }
+}
 
-  const imageByRef = new Map(
-    [...html.matchAll(/"__id":"client:([^"]+?:image)"[\s\S]*?"url":"([^"]+)"/g)].map((match) => [
-      match[1],
-      match[2].replace(/\\u002F/g, "/")
-    ])
-  );
+fragment ChannelEpisodesFragment_2HEEH6 on Channel {
+  episodes(first: $first, after: $after) {
+    edges {
+      node {
+        episodeId
+        title
+        publishedAt
+        image {
+          url
+        }
+        id
+        __typename
+      }
+      cursor
+    }
+    pageInfo {
+      endCursor
+      hasNextPage
+    }
+  }
+  pinnedEpisode {
+    episodeId
+    title
+    publishedAt
+    image {
+      url
+    }
+    id
+  }
+  streamingLive {
+    liveId
+    id
+  }
+  id
+}`;
 
-  return episodeBlocks.map((block) => {
-    const episodeId = block.match(/"episodeId":"([^"]+)"/)?.[1];
-    const title = block.match(/"title":"((?:\\"|[^"])*)"/)?.[1]?.replace(/\\"/g, '"');
-    const publishedAt = Number(block.match(/"publishedAt":(\d+)/)?.[1] || 0);
-    const imageRef = block.match(/"image":\{"__ref":"client:([^"]+?:image)"\}/)?.[1];
-
-    return normalizeItem({
-      source: "standfm",
-      title,
-      summary: "stand.fmで話した記録です。",
-      imageUrl: imageByRef.get(imageRef) || fallbackImage,
-      publishedAt: publishedAt ? new Date(publishedAt).toISOString() : null,
-      url: episodeId ? `https://stand.fm/episodes/${episodeId}` : config.channelUrl,
-      pinned: false
-    });
+const normalizeStandfmEpisode = (episode, pinned = false) =>
+  normalizeItem({
+    source: "standfm",
+    title: episode?.title || "untitled",
+    summary: "stand.fmで話した記録です。",
+    imageUrl: episode?.image?.url || fallbackImage,
+    publishedAt: episode?.publishedAt ? new Date(episode.publishedAt).toISOString() : null,
+    url: episode?.episodeId ? `https://stand.fm/episodes/${episode.episodeId}` : "",
+    pinned: false
   });
+
+const fetchStandfmItems = async (channelId, pageSize = 100) => {
+  const items = [];
+  const seenCursors = new Set();
+  let after = null;
+  let pinnedAdded = false;
+  const nodeId = toStandfmNodeId(channelId);
+
+  while (true) {
+    const data = await fetchGraphql(STAND_FM_CHANNEL_EPISODES_QUERY, {
+      id: nodeId,
+      first: pageSize,
+      after
+    });
+
+    const channel = data?.node;
+    if (!channel || channel.__typename !== "Channel") {
+      throw new Error("stand.fm channel data was not returned");
+    }
+
+    if (!pinnedAdded && channel.pinnedEpisode?.episodeId) {
+      items.push(normalizeStandfmEpisode(channel.pinnedEpisode, true));
+      pinnedAdded = true;
+    }
+
+    const connection = channel.episodes;
+    const edges = connection?.edges || [];
+    for (const edge of edges) {
+      const episode = edge?.node;
+      if (episode?.episodeId) {
+        items.push(normalizeStandfmEpisode(episode));
+      }
+    }
+
+    const pageInfo = connection?.pageInfo;
+    if (!pageInfo?.hasNextPage) break;
+    if (!pageInfo.endCursor || seenCursors.has(pageInfo.endCursor)) break;
+
+    seenCursors.add(pageInfo.endCursor);
+    after = pageInfo.endCursor;
+  }
+
+  return items;
 };
 
 const loadPrevious = async () => {
@@ -216,12 +316,7 @@ const main = async () => {
   }
 
   try {
-    const standSource = config.standfm.rssUrl
-      ? await fetchText(config.standfm.rssUrl)
-      : await fetchText(config.standfm.channelUrl);
-    fetchedBySource.standfm = config.standfm.rssUrl
-        ? parseRssItems(standSource, "standfm", config.standfm.limit)
-        : parseStandfmPage(standSource, config.standfm);
+    fetchedBySource.standfm = await fetchStandfmItems(config.standfm.channelId);
   } catch (error) {
     errors.push(`stand.fm: ${error.message}`);
   }
@@ -234,7 +329,6 @@ const main = async () => {
   }
 
   const works = (config.works || []).map(normalizeItem);
-  const manualItems = (config.x || []).map(normalizeItem);
   const previousItems = previous.items || [];
   const remoteItems = ["note", "standfm", "youtube"].flatMap((source) => {
     const current = fetchedBySource[source];
@@ -244,7 +338,7 @@ const main = async () => {
   const output = {
     generatedAt: new Date().toISOString(),
     errors,
-    items: sortItems(uniqueByUrl([...works, ...manualItems, ...remoteItems]))
+    items: sortItems(uniqueByUrl([...works, ...remoteItems]))
   };
 
   await writeFile(outputPath, `${JSON.stringify(output, null, 2)}\n`, "utf8");

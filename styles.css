@@ -15,8 +15,6 @@
   --works-soft: #eef4ff;
   --youtube-accent: #ff0033;
   --youtube-soft: #fff0f2;
-  --x-accent: #111111;
-  --x-soft: #f3f3f3;
   color: var(--ink);
   background: var(--bg);
   font-family: "Noto Sans JP", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic", Meiryo, sans-serif;
@@ -82,7 +80,7 @@ button {
 
 .header-links {
   display: flex;
-  gap: 20px;
+  gap: 16px;
   align-items: center;
 }
 
@@ -95,10 +93,56 @@ button {
   text-decoration: none;
 }
 
+.icon-button {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
 .icon-link svg {
   width: 22px;
   height: 22px;
   fill: currentColor;
+}
+
+.search-panel {
+  display: grid;
+  gap: 10px;
+  margin: -12px 0 22px;
+  animation: fade-in 180ms ease both;
+}
+
+.search-field {
+  display: flex;
+  align-items: center;
+}
+
+.search-field input {
+  width: 100%;
+  min-height: 44px;
+  padding: 0 16px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--ink);
+  font: inherit;
+  outline: none;
+  transition:
+    border-color 160ms ease,
+    box-shadow 160ms ease;
+}
+
+.search-field input:focus {
+  border-color: var(--ink);
+  box-shadow: 0 0 0 3px rgba(31, 41, 51, 0.08);
+}
+
+.search-hint {
+  min-height: 1em;
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
 }
 
 .tabs {
@@ -118,6 +162,7 @@ button {
   background: transparent;
   cursor: pointer;
   font-size: 16px;
+  transition: color 160ms ease;
 }
 
 .tab::after {
@@ -155,6 +200,8 @@ button {
   gap: 14px;
   color: var(--ink);
   text-decoration: none;
+  animation: tile-pop 220ms ease both;
+  animation-delay: var(--tile-delay, 0ms);
 }
 
 .tile-media {
@@ -168,12 +215,14 @@ button {
   overflow: hidden;
   transition:
     background 180ms ease,
-    transform 180ms ease;
+    transform 180ms ease,
+    box-shadow 180ms ease;
 }
 
 .tile:hover .tile-media {
   background: var(--thumb-strong);
   transform: translateY(-1px);
+  box-shadow: 0 10px 24px rgba(31, 41, 51, 0.05);
 }
 
 .tile-badge {
@@ -238,14 +287,6 @@ button {
   color: var(--youtube-accent);
 }
 
-.tile[data-source="x"] .tile-media {
-  background: var(--x-soft);
-}
-
-.tile[data-source="x"] .tile-badge {
-  color: var(--x-accent);
-}
-
 .tile[data-source="note"]:hover .tile-media {
   background: #e4f6f0;
 }
@@ -262,8 +303,8 @@ button {
   background: #ffe4e8;
 }
 
-.tile[data-source="x"]:hover .tile-media {
-  background: #e9e9e9;
+.tile:focus-visible .tile-media {
+  box-shadow: 0 0 0 3px rgba(31, 41, 51, 0.12);
 }
 
 .tile-title {
@@ -446,6 +487,11 @@ button {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .search-panel,
+  .tile {
+    animation: none;
+  }
+
   .tile-media {
     transition: none;
   }
@@ -453,4 +499,38 @@ button {
   .tile:hover .tile-media {
     transform: none;
   }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes tile-pop {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }

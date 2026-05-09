@@ -7,9 +7,7 @@
   "standfm": {
     "source": "standfm",
     "channelId": "64a22cefb352effb9d4d0999",
-    "channelUrl": "https://stand.fm/channels/64a22cefb352effb9d4d0999",
-    "rssUrl": "",
-    "limit": 12
+    "channelUrl": "https://stand.fm/channels/64a22cefb352effb9d4d0999"
   },
   "youtube": {
     "source": "youtube",
@@ -18,44 +16,6 @@
     "rssUrl": "https://www.youtube.com/feeds/videos.xml?channel_id=UCL6G4umyzedfdT5aP9PAoKQ",
     "limit": 12
   },
-  "x": [
-    {
-      "source": "x",
-      "title": "ヘッドマッサージ🐈‍⬛",
-      "summary": "Xに投稿した記録です。",
-      "imageUrl": "./assets/icon.png",
-      "publishedAt": "2026-02-23T07:38:56.286Z",
-      "url": "https://x.com/reil_st/status/2025837765871731152",
-      "pinned": false
-    },
-    {
-      "source": "x",
-      "title": "夜道 #iPhone #dazz",
-      "summary": "Xに投稿した記録です。",
-      "imageUrl": "./assets/icon.png",
-      "publishedAt": "2026-01-09T06:23:54.277Z",
-      "url": "https://x.com/reil_st/status/2009511429125362135",
-      "pinned": false
-    },
-    {
-      "source": "x",
-      "title": "🏝️ #gr3x",
-      "summary": "Xに投稿した記録です。",
-      "imageUrl": "./assets/icon.png",
-      "publishedAt": "2026-01-06T09:46:56.147Z",
-      "url": "https://x.com/reil_st/status/2008475359994671457",
-      "pinned": false
-    },
-    {
-      "source": "x",
-      "title": "🐟サカナみました",
-      "summary": "Xに投稿した記録です。",
-      "imageUrl": "./assets/icon.png",
-      "publishedAt": "2025-07-05T01:44:41.521Z",
-      "url": "https://x.com/reil_st/status/1941312244241006864",
-      "pinned": false
-    }
-  ],
   "works": [
     {
       "source": "works",
