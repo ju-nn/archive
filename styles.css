@@ -13,9 +13,13 @@
   --standfm-soft: #fff2f5;
   --works-accent: #3f66a3;
   --works-soft: #eef4ff;
+  --youtube-accent: #b44444;
+  --youtube-soft: #fff1f1;
+  --x-accent: #2f3741;
+  --x-soft: #f2f4f7;
   color: var(--ink);
   background: var(--bg);
-  font-family: "Yu Gothic UI", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+  font-family: "Noto Sans JP", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic", Meiryo, sans-serif;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -180,9 +184,8 @@ button {
   align-items: center;
   min-height: 23px;
   padding: 0 9px;
-  border: 1px solid currentColor;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.76);
+  background: rgba(255, 255, 255, 0.72);
   font-size: 11px;
   font-weight: 700;
   line-height: 1;
@@ -204,8 +207,7 @@ button {
 }
 
 .tile[data-source="note"] .tile-media {
-  border-color: rgba(37, 112, 96, 0.16);
-  background: linear-gradient(180deg, var(--note-soft), #f7fbf9);
+  background: var(--note-soft);
 }
 
 .tile[data-source="note"] .tile-badge {
@@ -213,8 +215,7 @@ button {
 }
 
 .tile[data-source="standfm"] .tile-media {
-  border-color: rgba(162, 75, 95, 0.18);
-  background: linear-gradient(180deg, var(--standfm-soft), #fff8fa);
+  background: var(--standfm-soft);
 }
 
 .tile[data-source="standfm"] .tile-badge {
@@ -222,24 +223,47 @@ button {
 }
 
 .tile[data-source="works"] .tile-media {
-  border-color: rgba(63, 102, 163, 0.18);
-  background: linear-gradient(180deg, var(--works-soft), #f7faff);
+  background: var(--works-soft);
 }
 
 .tile[data-source="works"] .tile-badge {
   color: var(--works-accent);
 }
 
+.tile[data-source="youtube"] .tile-media {
+  background: var(--youtube-soft);
+}
+
+.tile[data-source="youtube"] .tile-badge {
+  color: var(--youtube-accent);
+}
+
+.tile[data-source="x"] .tile-media {
+  background: var(--x-soft);
+}
+
+.tile[data-source="x"] .tile-badge {
+  color: var(--x-accent);
+}
+
 .tile[data-source="note"]:hover .tile-media {
-  background: linear-gradient(180deg, #e8f5ef, #f3faf7);
+  background: #e8f5ef;
 }
 
 .tile[data-source="standfm"]:hover .tile-media {
-  background: linear-gradient(180deg, #ffe9ef, #fff5f8);
+  background: #ffe9ef;
 }
 
 .tile[data-source="works"]:hover .tile-media {
-  background: linear-gradient(180deg, #e5efff, #f3f7ff);
+  background: #e5efff;
+}
+
+.tile[data-source="youtube"]:hover .tile-media {
+  background: #ffe6e6;
+}
+
+.tile[data-source="x"]:hover .tile-media {
+  background: #e9edf2;
 }
 
 .tile-title {

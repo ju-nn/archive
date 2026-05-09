@@ -12,6 +12,8 @@ const sourceLabels = {
   note: "note",
   standfm: "stand.fm",
   works: "WORKS",
+  youtube: "Youtube",
+  x: "X",
 };
 
 const displayDate = (value) => {
