@@ -1,0 +1,34 @@
+{
+  "note": {
+    "source": "note",
+    "rssUrl": "https://note.com/reilst/rss",
+    "limit": 12
+  },
+  "standfm": {
+    "source": "standfm",
+    "channelId": "64a22cefb352effb9d4d0999",
+    "channelUrl": "https://stand.fm/channels/64a22cefb352effb9d4d0999",
+    "rssUrl": "",
+    "limit": 12
+  },
+  "works": [
+    {
+      "source": "works",
+      "title": "ジユウノコンパス",
+      "summary": "貯金や働き方を見直すための、生活を整えるミッション診断ツールです。",
+      "imageUrl": "./assets/work-jiyu-compass.png",
+      "publishedAt": "2026-01-01T00:00:00.000Z",
+      "url": "https://ju-nn.github.io/Jiyu-Compass/",
+      "pinned": true
+    },
+    {
+      "source": "works",
+      "title": "逃げ道.xlsx",
+      "summary": "会社員が月曜の朝から逃げ道を探す、短編分岐ノベルゲームです。",
+      "imageUrl": "./assets/work-nigemiti.png",
+      "publishedAt": "2026-01-01T00:00:00.000Z",
+      "url": "https://ju-nn.github.io/nigemiti-xlsx/",
+      "pinned": true
+    }
+  ]
+}

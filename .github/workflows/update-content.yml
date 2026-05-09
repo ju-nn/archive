@@ -1,0 +1,30 @@
+name: Update content
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "15 19 * * *"
+
+permissions:
+  contents: write
+
+jobs:
+  update-content:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Build feed data
+        run: node scripts/build-feed-data.mjs
+
+      - name: Commit updated feed data
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore: update feed data"
+          file_pattern: data/feed-items.json
