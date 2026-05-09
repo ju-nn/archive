@@ -3,22 +3,32 @@ const state = {
   filter: "all",
   searchOpen: false,
   searchQuery: "",
+  page: 1,
 };
 
 const grid = document.querySelector("#tile-grid");
+const photoGrid = document.querySelector("#photo-grid");
+const photoSection = document.querySelector(".photo-section");
+const pager = document.querySelector(".pager");
+const pagerPrev = document.querySelector("#pager-prev");
+const pagerNext = document.querySelector("#pager-next");
+const pagerStatus = document.querySelector("#pager-status");
 const emptyState = document.querySelector("#empty-state");
 const searchPanel = document.querySelector("#search-panel");
 const searchToggle = document.querySelector("#search-toggle");
 const searchInput = document.querySelector("#search-input");
 const searchHint = document.querySelector("#search-hint");
 const template = document.querySelector("#tile-template");
+const photoTemplate = document.querySelector("#photo-template");
 const tabs = [...document.querySelectorAll(".tab")];
+const PAGE_SIZE = 9;
 
 const sourceLabels = {
   note: "note",
   standfm: "stand.fm",
   works: "WORKS",
   youtube: "YouTube",
+  photo: "Photo",
 };
 
 const displayDate = (value) => {
@@ -50,6 +60,7 @@ const normalizeItems = (items) =>
 const filteredItems = () => {
   const query = state.searchQuery.trim().toLowerCase();
   return state.items.filter((item) => {
+    if (item.source === "photo") return false;
     if (state.filter !== "all" && item.source !== state.filter) return false;
     if (!query) return true;
     return [item.title, item.summary, item.source, item.displayDate]
@@ -57,6 +68,20 @@ const filteredItems = () => {
       .some((value) => value.toLowerCase().includes(query));
   });
 };
+
+const photoItems = () => {
+  const query = state.searchQuery.trim().toLowerCase();
+  return state.items.filter((item) => {
+    if (item.source !== "photo") return false;
+    if (state.filter !== "all" && state.filter !== "photo") return false;
+    if (!query) return true;
+    return [item.title, item.summary, item.displayDate]
+      .filter(Boolean)
+      .some((value) => value.toLowerCase().includes(query));
+  });
+};
+
+const totalPages = (count) => Math.max(1, Math.ceil(count / PAGE_SIZE));
 
 const syncTabs = () => {
   const sources = new Set(state.items.map((item) => item.source));
@@ -72,16 +97,33 @@ const syncTabs = () => {
 
 const syncSearch = () => {
   searchPanel.hidden = !state.searchOpen;
+  searchPanel.setAttribute("aria-hidden", String(!state.searchOpen));
   searchToggle.setAttribute("aria-expanded", String(state.searchOpen));
   searchHint.textContent = state.searchQuery ? `「${state.searchQuery}」で検索中` : "";
 };
 
+const syncPager = (items) => {
+  const pages = totalPages(items.length);
+  if (state.page > pages) {
+    state.page = pages;
+  }
+  const current = items.length === 0 ? 0 : state.page;
+  const hasMany = items.length > PAGE_SIZE;
+  pager.hidden = !hasMany;
+  pagerPrev.hidden = !hasMany || current <= 1;
+  pagerNext.hidden = !hasMany || current >= pages;
+  pagerStatus.textContent = hasMany ? `${current} / ${pages} ページ` : "";
+};
+
 const render = () => {
   const items = filteredItems();
+  const pages = totalPages(items.length);
+  const pageItems = items.slice((state.page - 1) * PAGE_SIZE, state.page * PAGE_SIZE);
   grid.replaceChildren();
+  photoGrid.replaceChildren();
   emptyState.hidden = items.length > 0;
 
-  items.forEach((item, index) => {
+  pageItems.forEach((item, index) => {
     const tile = template.content.firstElementChild.cloneNode(true);
     const image = tile.querySelector(".tile-image");
 
@@ -92,20 +134,48 @@ const render = () => {
     image.alt = item.title;
     tile.querySelector(".tile-badge").textContent = sourceLabels[item.source] || item.source;
     tile.querySelector(".tile-title").textContent = item.title;
+    const descriptionElement = tile.querySelector(".tile-description");
+    const description = item.source === "works" ? item.summary : "";
+    if (description) {
+      descriptionElement.hidden = false;
+      descriptionElement.textContent = description;
+    }
     tile.querySelector(".tile-date").textContent = item.displayDate;
     grid.append(tile);
   });
+
+  const photos = photoItems();
+  photos.forEach((item) => {
+    const card = photoTemplate.content.firstElementChild.cloneNode(true);
+    const image = card.querySelector(".photo-image");
+    image.src = item.imageUrl;
+    image.alt = item.title;
+    photoGrid.append(card);
+  });
+
+  const showPhotos = state.filter === "all" || state.filter === "photo";
+  photoSection.hidden = !showPhotos || photos.length === 0;
+  grid.hidden = state.filter === "photo";
+
+  syncPager(items);
+  if (pages === 1) {
+    grid.dataset.pageCount = "1";
+  } else {
+    grid.dataset.pageCount = String(pages);
+  }
 };
 
 const setItems = (items) => {
   state.items = normalizeItems(items);
   syncTabs();
   syncSearch();
+  state.page = 1;
   render();
 };
 
 const setFilter = (filter) => {
   state.filter = filter;
+  state.page = 1;
   tabs.forEach((tab) => {
     const isActive = tab.dataset.filter === filter;
     tab.classList.toggle("is-active", isActive);
@@ -116,6 +186,7 @@ const setFilter = (filter) => {
 
 const setSearchQuery = (query) => {
   state.searchQuery = query;
+  state.page = 1;
   syncSearch();
   render();
 };
@@ -163,5 +234,22 @@ searchInput.addEventListener("keydown", (event) => {
   }
 });
 
+pagerPrev.addEventListener("click", () => {
+  if (state.page > 1) {
+    state.page -= 1;
+    render();
+  }
+});
+
+pagerNext.addEventListener("click", () => {
+  state.page += 1;
+  render();
+});
+
+document.querySelector("#brand-home").addEventListener("click", () => {
+  window.location.reload();
+});
+
 setItems(parseInitialData());
 loadItems();
+syncSearch();

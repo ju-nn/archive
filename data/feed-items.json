@@ -1,11 +1,12 @@
 {
-  "generatedAt": "2026-05-09T22:49:21.981Z",
+  "generatedAt": "2026-05-09T23:28:22.363Z",
   "errors": [],
   "items": [
     {
       "source": "works",
       "title": "ジユウノコンパス",
-      "summary": "貯金や働き方を見直すための、生活を整えるミッション診断ツールです。",
+      "kind": "",
+      "summary": "今の自分の資産から、自分の位置を知り、今できる一歩を知るための診断サイトです。",
       "imageUrl": "./assets/work-jiyu-compass.png",
       "publishedAt": "2026-01-01T00:00:00.000Z",
       "displayDate": "2026/1/1に公開",
@@ -15,7 +16,8 @@
     {
       "source": "works",
       "title": "逃げ道.xlsx",
-      "summary": "会社員が月曜の朝から逃げ道を探す、短編分岐ノベルゲームです。",
+      "kind": "",
+      "summary": "会社を辞めたい会社員のための、分岐ノベルゲームです。",
       "imageUrl": "./assets/work-nigemiti.png",
       "publishedAt": "2026-01-01T00:00:00.000Z",
       "displayDate": "2026/1/1に公開",
@@ -23,8 +25,64 @@
       "pinned": true
     },
     {
+      "source": "photo",
+      "title": "Photo 1",
+      "kind": "",
+      "summary": "",
+      "imageUrl": "./assets/photos/R0001443.JPG",
+      "publishedAt": "2026-05-10T00:00:00.000Z",
+      "displayDate": "2026/5/10に公開",
+      "url": "./assets/photos/R0001443.JPG",
+      "pinned": false
+    },
+    {
+      "source": "photo",
+      "title": "Photo 2",
+      "kind": "",
+      "summary": "",
+      "imageUrl": "./assets/photos/R0001452.JPG",
+      "publishedAt": "2026-05-10T00:00:00.000Z",
+      "displayDate": "2026/5/10に公開",
+      "url": "./assets/photos/R0001452.JPG",
+      "pinned": false
+    },
+    {
+      "source": "photo",
+      "title": "Photo 3",
+      "kind": "",
+      "summary": "",
+      "imageUrl": "./assets/photos/R0001505.JPG",
+      "publishedAt": "2026-05-10T00:00:00.000Z",
+      "displayDate": "2026/5/10に公開",
+      "url": "./assets/photos/R0001505.JPG",
+      "pinned": false
+    },
+    {
+      "source": "photo",
+      "title": "Photo 4",
+      "kind": "",
+      "summary": "",
+      "imageUrl": "./assets/photos/R0001623.JPG",
+      "publishedAt": "2026-05-10T00:00:00.000Z",
+      "displayDate": "2026/5/10に公開",
+      "url": "./assets/photos/R0001623.JPG",
+      "pinned": false
+    },
+    {
+      "source": "photo",
+      "title": "Photo 5",
+      "kind": "",
+      "summary": "",
+      "imageUrl": "./assets/photos/R0001899.JPG",
+      "publishedAt": "2026-05-10T00:00:00.000Z",
+      "displayDate": "2026/5/10に公開",
+      "url": "./assets/photos/R0001899.JPG",
+      "pinned": false
+    },
+    {
       "source": "note",
       "title": "【無料ゲーム公開】働き方と生活の分岐を描いたノベルゲームを作った話。",
+      "kind": "",
       "summary": "どうも、じゅん（ https://x.com/reil_st ）です。 ノベルゲームを作りました。 続きをみる",
       "imageUrl": "https://assets.st-note.com/production/uploads/images/272780386/rectangle_large_type_2_e7a33b53f94e1896d49ad09494d1541a.png?width=800",
       "publishedAt": "2026-05-03T15:48:32.000Z",
@@ -35,6 +93,7 @@
     {
       "source": "note",
       "title": "自分を強くするより、弱いまま回る環境を作る方が現実的だった。",
+      "kind": "",
       "summary": "どうも、じゅん（ https://x.com/reil_st ）です。 今日は「弱さを前提にした設計」について話そうと思う。 続きをみる",
       "imageUrl": "https://assets.st-note.com/production/uploads/images/272701056/rectangle_large_type_2_3f11019f37338f0182aa2e8f6da84932.png?width=800",
       "publishedAt": "2026-05-03T11:00:41.000Z",
@@ -45,6 +104,7 @@
     {
       "source": "note",
       "title": "週3労働やセミリタイアは、本当に楽なのか。自由の裏側にある自己管理の話。",
+      "kind": "",
       "summary": "どうも、じゅん（ https://x.com/reil_st ）です。 今日は「自由と自己管理」について話そうと思う。 続きをみる",
       "imageUrl": "https://assets.st-note.com/production/uploads/images/272485214/rectangle_large_type_2_39295fc0fcdd3485397bf4eb004affbc.png?width=800",
       "publishedAt": "2026-05-02T15:43:30.000Z",
@@ -55,6 +115,7 @@
     {
       "source": "note",
       "title": "株を始めたかったのに怖くて動けなかった僕が、25歳でインデックス投資を始めた理由。",
+      "kind": "",
       "summary": "どうも、じゅん（ https://x.com/reil_st ）です。 今日は「インデックス投資を始める前に怖かったこと」について話そうと思う。 続きをみる",
       "imageUrl": "https://assets.st-note.com/production/uploads/images/272483921/rectangle_large_type_2_93bec84112a5cc9d7eb3b26b3f6b67fd.png?width=800",
       "publishedAt": "2026-05-02T15:37:26.000Z",
@@ -65,6 +126,7 @@
     {
       "source": "note",
       "title": "すぐ自由になるか、資産を作って後で自由になるか。僕が正社員を続けて4%ルール側を選んだ理由",
+      "kind": "",
       "summary": "どうも、じゅん（ https://x.com/reil_st ）です。 今日は「早く自由になるか、後で自由になるか」について話そうと思う。 続きをみる",
       "imageUrl": "https://assets.st-note.com/production/uploads/images/272478973/rectangle_large_type_2_ac7bbc7b5a09d682d0e712decf7243d5.png?width=800",
       "publishedAt": "2026-05-02T15:09:57.000Z",
@@ -75,6 +137,7 @@
     {
       "source": "note",
       "title": "この世界は「生まれ」で決まる部分が多すぎるのに、なぜ社会は「努力」を前提に設計されているのか。",
+      "kind": "",
       "summary": "どうも、じゅん（ https://x.com/reil_st ）です。 今日も築40年の賃貸で、定位置になった膝の上の猫🐈を撫でながら、ぼんやりと考えていた。 続きをみる",
       "imageUrl": "https://assets.st-note.com/production/uploads/images/271738826/rectangle_large_type_2_7e7f0e19b132a360ae7cac90b25f081e.png?width=800",
       "publishedAt": "2026-04-30T07:33:27.000Z",
@@ -85,6 +148,7 @@
     {
       "source": "note",
       "title": "セミリタイアを見据えた、家を買わないという選択。",
+      "kind": "",
       "summary": "どうも、じゅん（ https://x.com/reil_st ）です。 今日は、家を買うか、一生賃貸でいくかという話について話そうと思う。 続きをみる",
       "imageUrl": "https://assets.st-note.com/production/uploads/images/271736705/rectangle_large_type_2_ccc13a9d64e018bdfd3b8c579c70d92f.png?width=800",
       "publishedAt": "2026-04-30T07:27:30.000Z",
@@ -95,6 +159,7 @@
     {
       "source": "note",
       "title": "資産があってもなくても、そこに“格差”はない。ただの「生き方」の違い。",
+      "kind": "",
       "summary": "どうも、じゅん（ https://x.com/reil_st ）です。 最近、SNSで「資産格差」なんて言葉をよく目にする。 「20代で1000万貯めていないのは努力不足だ」とか、そういうマッ...",
       "imageUrl": "https://assets.st-note.com/production/uploads/images/271442556/rectangle_large_type_2_41ff76cd15bfd27a0a82f91b80b09572.png?width=800",
       "publishedAt": "2026-04-29T09:07:38.000Z",
@@ -105,6 +170,7 @@
     {
       "source": "note",
       "title": "資産を貯めても、自分を底辺だと感じる理由",
+      "kind": "",
       "summary": "自分を底辺だと感じる理由と、2900万という余白。 1993年生まれ。ストレートで大学卒業後、会社員になり、2年後、傷病手当をもらいながら2年ニート。 また会社員に戻り、現在33歳の2026年...",
       "imageUrl": "https://assets.st-note.com/production/uploads/images/270604599/rectangle_large_type_2_20d5827f8e9449c3e7f823f16ea8f033.png?width=800",
       "publishedAt": "2026-04-26T09:45:08.000Z",
@@ -115,6 +181,7 @@
     {
       "source": "note",
       "title": "少しずつ育つ。植物と、静かな時間。",
+      "kind": "",
       "summary": "在宅ワークをしていると、1日のほとんどを同じ部屋🛋️で過ごすことになる。 PCとモニターとキーボードに囲まれたデスク。 その横に、静かに葉を伸ばしている観葉植物たちがいる。 正直、世話はそこ...",
       "imageUrl": "https://assets.st-note.com/production/uploads/images/270574441/rectangle_large_type_2_89c1d62e4b635e0d9e8439b90c53b198.png?width=800",
       "publishedAt": "2026-04-26T08:13:29.000Z",
@@ -125,6 +192,7 @@
     {
       "source": "note",
       "title": "毎日コーヒー4杯生活、いくらかかってるのか調べたけど飲み続けることにした",
+      "kind": "",
       "summary": "ある日ふと、思った。 自分ってコーヒー飲みすぎじゃないか。 朝1杯。 昼1杯。 15時くらいにもう1杯。 夜もなんとなくもう1杯。 数えてみたら、毎日4杯くらい飲んでいる。 さすがにちょっと気...",
       "imageUrl": "https://assets.st-note.com/production/uploads/images/269257968/rectangle_large_type_2_2fc4498bd0b42b69058f453dbff4e609.png?width=800",
       "publishedAt": "2026-04-21T12:57:36.000Z",
@@ -135,6 +203,7 @@
     {
       "source": "standfm",
       "title": "仕事趣味の話、働きたくない人ほどお金の使い方が上手くなる話",
+      "kind": "",
       "summary": "stand.fmで話した記録です。",
       "imageUrl": "https://cdn.stand.fm/coverImages/01KPDXJE6TE8JKXMKXAPMTJ56V.jpg",
       "publishedAt": "2026-04-17T14:30:54.068Z",
@@ -145,6 +214,7 @@
     {
       "source": "standfm",
       "title": "怠惰な人間なのに、楽するためには頑張れるって話",
+      "kind": "",
       "summary": "stand.fmで話した記録です。",
       "imageUrl": "https://cdn.stand.fm/coverImages/01KP390SVQCV13R9PE75BMEFQZ.jpg",
       "publishedAt": "2026-04-13T11:19:20.689Z",
@@ -155,6 +225,7 @@
     {
       "source": "standfm",
       "title": "数ヶ月ぶりに近況を語る。ポケモンやりすぎかも。",
+      "kind": "",
       "summary": "stand.fmで話した記録です。",
       "imageUrl": "https://cdn.stand.fm/images/01K3453QCP5BDRHMT0XEGQAV7Y.jpg",
       "publishedAt": "2026-04-08T11:11:32.609Z",
@@ -165,6 +236,7 @@
     {
       "source": "note",
       "title": "電話が苦手な在宅エンジニアが、無理せず仕事を回すために決めたこと",
+      "kind": "",
       "summary": "どうも、じゅん（ https://x.com/reil_st ）です。 今日は、電話まわりの苦手意識について話そうと思う。 続きをみる",
       "imageUrl": "https://assets.st-note.com/production/uploads/images/262921483/rectangle_large_type_2_8dc9698f4006e61b40096c4712fe99d2.png?width=800",
       "publishedAt": "2026-03-28T16:13:47.000Z",
@@ -175,6 +247,7 @@
     {
       "source": "standfm",
       "title": "2025年のベストバイなど語る",
+      "kind": "",
       "summary": "stand.fmで話した記録です。",
       "imageUrl": "https://cdn.stand.fm/coverImages/01KGSF9F55EDK40CE7N7TYYQTE.jpg",
       "publishedAt": "2026-02-06T12:37:33.369Z",
@@ -185,6 +258,7 @@
     {
       "source": "youtube",
       "title": "眠たすぎる時の猫🐈",
+      "kind": "",
       "summary": "#iphone #保護猫 #猫 #猫のいる暮らし",
       "imageUrl": "https://i3.ytimg.com/vi/JdPgHbzEeII/hqdefault.jpg",
       "publishedAt": "2026-01-29T03:00:20.000Z",
@@ -195,6 +269,7 @@
     {
       "source": "youtube",
       "title": "猫と暮らす｜サウナと天一で脳が弾けた🧠",
+      "kind": "",
       "summary": "",
       "imageUrl": "https://i2.ytimg.com/vi/eAh2v2Dwbcw/hqdefault.jpg",
       "publishedAt": "2026-01-28T21:00:47.000Z",
@@ -205,6 +280,7 @@
     {
       "source": "youtube",
       "title": "姉妹猫の戦い🐈‍⬛🐈",
+      "kind": "",
       "summary": "",
       "imageUrl": "https://i1.ytimg.com/vi/l9l-YOvna0c/hqdefault.jpg",
       "publishedAt": "2026-01-28T16:11:44.000Z",
@@ -215,6 +291,7 @@
     {
       "source": "youtube",
       "title": "猫と暮らす｜カメラのことを考えながら歩く夜",
+      "kind": "",
       "summary": "夜を歩きながら、考えごと。 帰ると、姉妹猫がいる。 #vlog #猫 #猫のいる暮らし #保護猫 #姉妹猫 #在宅エンジニア #iPhone #OsmoPocket3",
       "imageUrl": "https://i4.ytimg.com/vi/_CxtsM8qS5U/hqdefault.jpg",
       "publishedAt": "2026-01-21T17:37:49.000Z",
@@ -225,6 +302,7 @@
     {
       "source": "youtube",
       "title": "【散歩ラジオ】夜の川をosmo pocket3 低照度モードで撮影してみる。",
+      "kind": "",
       "summary": "",
       "imageUrl": "https://i1.ytimg.com/vi/lrDSvgnkfSs/hqdefault.jpg",
       "publishedAt": "2026-01-18T10:09:09.000Z",
@@ -235,6 +313,7 @@
     {
       "source": "standfm",
       "title": "高校の同窓会にいってきたよ",
+      "kind": "",
       "summary": "stand.fmで話した記録です。",
       "imageUrl": "https://cdn.stand.fm/coverImages/01KDQV8JC295FFK1KH5TAT87G5.jpg",
       "publishedAt": "2025-12-30T14:41:26.463Z",
@@ -245,6 +324,7 @@
     {
       "source": "standfm",
       "title": "雑に近況雑談",
+      "kind": "",
       "summary": "stand.fmで話した記録です。",
       "imageUrl": "https://cdn.stand.fm/coverImages/01KD61TXH83KKBSDW5WW7Y21E5.jpg",
       "publishedAt": "2025-12-23T16:50:02.702Z",
@@ -255,6 +335,7 @@
     {
       "source": "standfm",
       "title": "悲しいことが起きました😢出社回帰の波🌊",
+      "kind": "",
       "summary": "stand.fmで話した記録です。",
       "imageUrl": "https://cdn.stand.fm/coverImages/01KB5EPCSYXK9Q69BM78YK2HE8.jpg",
       "publishedAt": "2025-11-28T14:44:26.669Z",
@@ -265,6 +346,7 @@
     {
       "source": "standfm",
       "title": "コーヒーライフを一歩進めました☕️デロンギのコーヒーマシンを買った‼️",
+      "kind": "",
       "summary": "stand.fmで話した記録です。",
       "imageUrl": "https://cdn.stand.fm/coverImages/01KARDT3DN5B7YJZBVA3HZY2Z8.jpg",
       "publishedAt": "2025-11-23T13:18:13.132Z",
@@ -275,6 +357,7 @@
     {
       "source": "standfm",
       "title": "近況報告と先延ばし癖の悩み",
+      "kind": "",
       "summary": "stand.fmで話した記録です。",
       "imageUrl": "https://cdn.stand.fm/coverImages/01KA9BAWDMBF9HSMMQ5Q0BW4NX.jpg",
       "publishedAt": "2025-11-20T17:00:01.306Z",
@@ -285,6 +368,7 @@
     {
       "source": "youtube",
       "title": "#cat #ねこ #猫 #cutecat #保護猫",
+      "kind": "",
       "summary": "",
       "imageUrl": "https://i3.ytimg.com/vi/jYpM93SiPYo/hqdefault.jpg",
       "publishedAt": "2025-11-13T09:39:22.000Z",
@@ -295,6 +379,7 @@
     {
       "source": "youtube",
       "title": "#cat #cutecat #保護猫 #猫 #ねこ",
+      "kind": "",
       "summary": "",
       "imageUrl": "https://i3.ytimg.com/vi/BB8zMzYI2qs/hqdefault.jpg",
       "publishedAt": "2025-11-13T09:37:25.000Z",
@@ -305,6 +390,7 @@
     {
       "source": "youtube",
       "title": "#cat #cutecat #保護猫",
+      "kind": "",
       "summary": "",
       "imageUrl": "https://i3.ytimg.com/vi/60kAPmIbOXU/hqdefault.jpg",
       "publishedAt": "2025-11-13T07:53:08.000Z",
@@ -315,6 +401,7 @@
     {
       "source": "standfm",
       "title": "近況報告　新幹線で東京/株価が好調/虫歯が…",
+      "kind": "",
       "summary": "stand.fmで話した記録です。",
       "imageUrl": "https://cdn.stand.fm/coverImages/01K9ADBTBGZAM05V38M2JKHCMM.jpg",
       "publishedAt": "2025-11-05T16:25:55.270Z",
@@ -325,6 +412,7 @@
     {
       "source": "standfm",
       "title": "雑談（冬対策/雑談の難しさ/猫のTikTok初めて感じる猫パワー）",
+      "kind": "",
       "summary": "stand.fmで話した記録です。",
       "imageUrl": "https://cdn.stand.fm/coverImages/01K8GMTBVDJ7SN4E3TB7K7NYVA.jpg",
       "publishedAt": "2025-10-27T14:14:02.342Z",
@@ -335,6 +423,7 @@
     {
       "source": "standfm",
       "title": "わからないことが増えると、人生は急につまらなくなる",
+      "kind": "",
       "summary": "stand.fmで話した記録です。",
       "imageUrl": "https://cdn.stand.fm/coverImages/01K8GKC8Z8Z59H14PFWS8DKT8E.jpg",
       "publishedAt": "2025-10-26T15:50:08.327Z",
@@ -345,6 +434,7 @@
     {
       "source": "youtube",
       "title": "保護猫よぞらとひなた",
+      "kind": "",
       "summary": "",
       "imageUrl": "https://i2.ytimg.com/vi/9f4oxsEYEEM/hqdefault.jpg",
       "publishedAt": "2025-10-26T13:46:04.000Z",
@@ -355,6 +445,7 @@
     {
       "source": "standfm",
       "title": "欲しいものを買うくらいなら働かない",
+      "kind": "",
       "summary": "stand.fmで話した記録です。",
       "imageUrl": "https://cdn.stand.fm/coverImages/01K83PJTWHS8MYJC8R7YGV5KNS.jpg",
       "publishedAt": "2025-10-23T14:35:01.348Z",
@@ -365,6 +456,7 @@
     {
       "source": "standfm",
       "title": "ポケモンZA、にゅうめん、健康診断最低評価の話",
+      "kind": "",
       "summary": "stand.fmで話した記録です。",
       "imageUrl": "https://cdn.stand.fm/images/01K3453QCP5BDRHMT0XEGQAV7Y.jpg",
       "publishedAt": "2025-10-21T14:43:36.929Z",
@@ -375,6 +467,7 @@
     {
       "source": "standfm",
       "title": "大人になってゲームがクリアできなくなった話",
+      "kind": "",
       "summary": "stand.fmで話した記録です。",
       "imageUrl": "https://cdn.stand.fm/coverImages/01K74W85VZ8NG44MGN0DB05VMM.jpg",
       "publishedAt": "2025-10-09T16:18:58.195Z",
@@ -385,6 +478,7 @@
     {
       "source": "standfm",
       "title": "質問コーナー🙋色々答える",
+      "kind": "",
       "summary": "stand.fmで話した記録です。",
       "imageUrl": "https://cdn.stand.fm/coverImages/01K72B0F6Z3MFEY2KCHZQS9BMS.jpg",
       "publishedAt": "2025-10-08T16:38:49.280Z",
@@ -395,6 +489,7 @@
     {
       "source": "standfm",
       "title": "“好きなことを仕事にする”って、大人になっても嫌いな食べものがないくらいの運だと",
+      "kind": "",
       "summary": "stand.fmで話した記録です。",
       "imageUrl": "https://cdn.stand.fm/images/01K3453QCP5BDRHMT0XEGQAV7Y.jpg",
       "publishedAt": "2025-10-07T09:26:49.336Z",
@@ -405,6 +500,7 @@
     {
       "source": "standfm",
       "title": "雑談（今の仕事、無印の蒸籠蒸し、余暇の過ごし方）",
+      "kind": "",
       "summary": "stand.fmで話した記録です。",
       "imageUrl": "https://cdn.stand.fm/coverImages/01K6DSTE6E8SMP10KHW93BPD8R.jpg",
       "publishedAt": "2025-09-30T17:13:55.720Z",
@@ -415,6 +511,7 @@
     {
       "source": "standfm",
       "title": "生活防衛資金の先にある精神防衛資金を目指そう",
+      "kind": "",
       "summary": "stand.fmで話した記録です。",
       "imageUrl": "https://cdn.stand.fm/coverImages/01K6B5C4SXRS8EAD0QZWENS4N0.jpg",
       "publishedAt": "2025-09-30T11:09:01.630Z",
@@ -425,6 +522,7 @@
     {
       "source": "standfm",
       "title": "自由な生活で意外と困ることを考える",
+      "kind": "",
       "summary": "stand.fmで話した記録です。",
       "imageUrl": "https://cdn.stand.fm/coverImages/01K6AW3SNYDCW3EB67VAGV3NNF.jpg",
       "publishedAt": "2025-09-29T13:56:08.883Z",
@@ -435,6 +533,7 @@
     {
       "source": "standfm",
       "title": "家の近くにあるとうれしいもの、嫌なもの",
+      "kind": "",
       "summary": "stand.fmで話した記録です。",
       "imageUrl": "https://cdn.stand.fm/coverImages/01K60H81PV5D703TM2DQE9H8AS.jpg",
       "publishedAt": "2025-09-26T14:00:06.417Z",
@@ -445,6 +544,7 @@
     {
       "source": "standfm",
       "title": "今の仕事やお金の状況、生活を語る/自営業辞めて会社員に戻った理由",
+      "kind": "",
       "summary": "stand.fmで話した記録です。",
       "imageUrl": "https://cdn.stand.fm/images/01K3453QCP5BDRHMT0XEGQAV7Y.jpg",
       "publishedAt": "2025-09-25T12:52:29.072Z",
@@ -455,6 +555,7 @@
     {
       "source": "standfm",
       "title": "株のポートフォリオの方向性を考えた",
+      "kind": "",
       "summary": "stand.fmで話した記録です。",
       "imageUrl": "https://cdn.stand.fm/coverImages/01K5VEV893KMS77JECH44W4TEV.jpg",
       "publishedAt": "2025-09-23T14:15:25.458Z",
@@ -465,6 +566,7 @@
     {
       "source": "standfm",
       "title": "セミリタイア生活への期待/vlogの方向性について考える夜",
+      "kind": "",
       "summary": "stand.fmで話した記録です。",
       "imageUrl": "https://cdn.stand.fm/coverImages/01K5VE79K1BC2X9N470BF1F5G6.jpg",
       "publishedAt": "2025-09-23T14:04:55.779Z",
@@ -475,6 +577,7 @@
     {
       "source": "standfm",
       "title": "質問に答える回。欲しいもの、よかったことなど",
+      "kind": "",
       "summary": "stand.fmで話した記録です。",
       "imageUrl": "https://cdn.stand.fm/coverImages/01K59FB3FH2K2S1TQX46TE9RCY.jpg",
       "publishedAt": "2025-09-16T14:38:01.800Z",
@@ -485,6 +588,7 @@
     {
       "source": "standfm",
       "title": "子猫2匹を飼い始めて3ヶ月の感想",
+      "kind": "",
       "summary": "stand.fmで話した記録です。",
       "imageUrl": "https://cdn.stand.fm/coverImages/01K56TTKE3M430GXE5FJ9R25WQ.jpg",
       "publishedAt": "2025-09-15T14:00:55.457Z",
@@ -495,6 +599,7 @@
     {
       "source": "standfm",
       "title": "会社員を辞めたいけど、自営業は向いてなかった話",
+      "kind": "",
       "summary": "stand.fmで話した記録です。",
       "imageUrl": "https://cdn.stand.fm/coverImages/01K56SQFG42RNP8E5QH9D11T3F.jpg",
       "publishedAt": "2025-09-15T13:41:44.677Z",
@@ -505,6 +610,7 @@
     {
       "source": "standfm",
       "title": "投資の数字よりも“心の余裕”がリターンだった話",
+      "kind": "",
       "summary": "stand.fmで話した記録です。",
       "imageUrl": "https://cdn.stand.fm/images/01K3453QCP5BDRHMT0XEGQAV7Y.jpg",
       "publishedAt": "2025-09-10T11:30:03.262Z",
@@ -515,6 +621,7 @@
     {
       "source": "standfm",
       "title": "ミニマリストになったらセミリタイアを目指してた話",
+      "kind": "",
       "summary": "stand.fmで話した記録です。",
       "imageUrl": "https://cdn.stand.fm/images/01K3453QCP5BDRHMT0XEGQAV7Y.jpg",
       "publishedAt": "2025-09-09T22:14:01.440Z",
@@ -525,6 +632,7 @@
     {
       "source": "standfm",
       "title": "買ってよかった家電と家具",
+      "kind": "",
       "summary": "stand.fmで話した記録です。",
       "imageUrl": "https://cdn.stand.fm/images/01K3453QCP5BDRHMT0XEGQAV7Y.jpg",
       "publishedAt": "2025-09-08T22:15:03.025Z",
@@ -535,6 +643,7 @@
     {
       "source": "standfm",
       "title": "なぜ働きたくないのか？",
+      "kind": "",
       "summary": "stand.fmで話した記録です。",
       "imageUrl": "https://cdn.stand.fm/images/01K3453QCP5BDRHMT0XEGQAV7Y.jpg",
       "publishedAt": "2025-09-02T03:00:05.853Z",
@@ -545,6 +654,7 @@
     {
       "source": "standfm",
       "title": "vlogを初めて、体感する継続の難しさ",
+      "kind": "",
       "summary": "stand.fmで話した記録です。",
       "imageUrl": "https://cdn.stand.fm/images/01K3453QCP5BDRHMT0XEGQAV7Y.jpg",
       "publishedAt": "2025-09-01T15:45:09.808Z",
@@ -555,6 +665,7 @@
     {
       "source": "standfm",
       "title": "ルーチン作業と創造的な作業、どっちが心地いい？",
+      "kind": "",
       "summary": "stand.fmで話した記録です。",
       "imageUrl": "https://cdn.stand.fm/images/01K3453QCP5BDRHMT0XEGQAV7Y.jpg",
       "publishedAt": "2025-09-01T15:22:05.090Z",
@@ -565,6 +676,7 @@
     {
       "source": "standfm",
       "title": "ゲーム会社を辞めて、フルリモートエンジニアになるまで",
+      "kind": "",
       "summary": "stand.fmで話した記録です。",
       "imageUrl": "https://cdn.stand.fm/images/01K3453QCP5BDRHMT0XEGQAV7Y.jpg",
       "publishedAt": "2025-08-26T09:33:27.796Z",
@@ -575,6 +687,7 @@
     {
       "source": "standfm",
       "title": "セミリタイアを目指して株をコツコツ買ってる話",
+      "kind": "",
       "summary": "stand.fmで話した記録です。",
       "imageUrl": "https://cdn.stand.fm/coverImages/01K3EC5W338S51P1W2S149QFB0.jpg",
       "publishedAt": "2025-08-24T15:47:39.347Z",
@@ -585,6 +698,7 @@
     {
       "source": "youtube",
       "title": "Osmo Pocket3を手に入れ、とうとうVlogを始める夏。",
+      "kind": "",
       "summary": "ハードルをさげてなんとか継続したい 【プロフィール】 ・ゆるミニマリスト ・節約投資でセミリタイアを目指してる ・保護猫2匹と暮らしてる ・趣味はゲームと植物とカメラ 【機材】 ・Osmo P...",
       "imageUrl": "https://i2.ytimg.com/vi/iCFHN7PldVE/hqdefault.jpg",
       "publishedAt": "2025-08-21T11:39:15.000Z",
@@ -595,6 +709,7 @@
     {
       "source": "standfm",
       "title": "初めての1人喋り。自己紹介",
+      "kind": "",
       "summary": "stand.fmで話した記録です。",
       "imageUrl": "https://cdn.stand.fm/coverImages/01K344Y7NVCRS3YNDG38R2NVSS.jpg",
       "publishedAt": "2025-08-20T16:28:24.420Z",

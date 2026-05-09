@@ -4,6 +4,53 @@
     "rssUrl": "https://note.com/reilst/rss",
     "limit": 12
   },
+  "photo": [
+    {
+      "source": "photo",
+      "title": "Photo 1",
+      "summary": "",
+      "imageUrl": "./assets/photos/R0001443.JPG",
+      "publishedAt": "2026-05-10T00:00:00.000Z",
+      "url": "./assets/photos/R0001443.JPG",
+      "pinned": false
+    },
+    {
+      "source": "photo",
+      "title": "Photo 2",
+      "summary": "",
+      "imageUrl": "./assets/photos/R0001452.JPG",
+      "publishedAt": "2026-05-10T00:00:00.000Z",
+      "url": "./assets/photos/R0001452.JPG",
+      "pinned": false
+    },
+    {
+      "source": "photo",
+      "title": "Photo 3",
+      "summary": "",
+      "imageUrl": "./assets/photos/R0001505.JPG",
+      "publishedAt": "2026-05-10T00:00:00.000Z",
+      "url": "./assets/photos/R0001505.JPG",
+      "pinned": false
+    },
+    {
+      "source": "photo",
+      "title": "Photo 4",
+      "summary": "",
+      "imageUrl": "./assets/photos/R0001623.JPG",
+      "publishedAt": "2026-05-10T00:00:00.000Z",
+      "url": "./assets/photos/R0001623.JPG",
+      "pinned": false
+    },
+    {
+      "source": "photo",
+      "title": "Photo 5",
+      "summary": "",
+      "imageUrl": "./assets/photos/R0001899.JPG",
+      "publishedAt": "2026-05-10T00:00:00.000Z",
+      "url": "./assets/photos/R0001899.JPG",
+      "pinned": false
+    }
+  ],
   "standfm": {
     "source": "standfm",
     "channelId": "64a22cefb352effb9d4d0999",
@@ -20,7 +67,7 @@
     {
       "source": "works",
       "title": "ジユウノコンパス",
-      "summary": "貯金や働き方を見直すための、生活を整えるミッション診断ツールです。",
+      "summary": "今の自分の資産から、自分の位置を知り、今できる一歩を知るための診断サイトです。",
       "imageUrl": "./assets/work-jiyu-compass.png",
       "publishedAt": "2026-01-01T00:00:00.000Z",
       "url": "https://ju-nn.github.io/Jiyu-Compass/",
@@ -29,7 +76,7 @@
     {
       "source": "works",
       "title": "逃げ道.xlsx",
-      "summary": "会社員が月曜の朝から逃げ道を探す、短編分岐ノベルゲームです。",
+      "summary": "会社を辞めたい会社員のための、分岐ノベルゲームです。",
       "imageUrl": "./assets/work-nigemiti.png",
       "publishedAt": "2026-01-01T00:00:00.000Z",
       "url": "https://ju-nn.github.io/nigemiti-xlsx/",

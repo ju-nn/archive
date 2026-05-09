@@ -102,6 +102,7 @@ const findImage = (source) => {
 const normalizeItem = (item) => ({
   source: item.source,
   title: item.title || "untitled",
+  kind: item.kind || "",
   summary: item.summary || "",
   imageUrl: item.imageUrl || fallbackImage,
   publishedAt: item.publishedAt || null,
@@ -329,6 +330,7 @@ const main = async () => {
   }
 
   const works = (config.works || []).map(normalizeItem);
+  const photos = (config.photo || []).map(normalizeItem);
   const previousItems = previous.items || [];
   const remoteItems = ["note", "standfm", "youtube"].flatMap((source) => {
     const current = fetchedBySource[source];
@@ -338,7 +340,7 @@ const main = async () => {
   const output = {
     generatedAt: new Date().toISOString(),
     errors,
-    items: sortItems(uniqueByUrl([...works, ...remoteItems]))
+    items: sortItems(uniqueByUrl([...works, ...photos, ...remoteItems]))
   };
 
   await writeFile(outputPath, `${JSON.stringify(output, null, 2)}\n`, "utf8");
