@@ -27,4 +27,4 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "chore: update feed data"
-          file_pattern: data/feed-items.json
+          file_pattern: data/feed-items.json index.html

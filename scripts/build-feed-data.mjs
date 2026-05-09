@@ -56,6 +56,9 @@ const findImage = (source) => {
   const thumbnail = textBetween(source, "media:thumbnail");
   if (thumbnail) return thumbnail;
 
+  const thumbnailUrl = source.match(/<media:thumbnail[^>]+url="([^"]+)"/i);
+  if (thumbnailUrl?.[1]) return decodeEntities(thumbnailUrl[1]);
+
   const media = source.match(/<media:content[^>]+url="([^"]+)"/i);
   if (media?.[1]) return decodeEntities(media[1]);
 
@@ -98,6 +101,26 @@ const parseRssItems = (xml, source, limit) => {
       imageUrl: findImage(item),
       publishedAt: new Date(textBetween(item, "pubDate") || textBetween(item, "dc:date")).toISOString(),
       url: textBetween(item, "link"),
+      pinned: false
+    });
+  });
+};
+
+const parseYouTubeItems = (xml, limit) => {
+  const entryMatches = [...xml.matchAll(/<entry\b[\s\S]*?<\/entry>/gi)].map((match) => match[0]);
+
+  return entryMatches.slice(0, limit).map((entry) => {
+    const url = entry.match(/<link[^>]+rel="alternate"[^>]+href="([^"]+)"/i)?.[1]
+      || entry.match(/<link[^>]+href="([^"]+)"/i)?.[1];
+    const description = textBetween(entry, "media:description");
+
+    return normalizeItem({
+      source: "youtube",
+      title: textBetween(entry, "media:title") || textBetween(entry, "title"),
+      summary: truncate(description),
+      imageUrl: findImage(entry),
+      publishedAt: new Date(textBetween(entry, "published") || textBetween(entry, "updated")).toISOString(),
+      url: decodeEntities(url),
       pinned: false
     });
   });
@@ -180,7 +203,8 @@ const main = async () => {
   const previous = await loadPrevious();
   const fetchedBySource = {
     note: [],
-    standfm: []
+    standfm: [],
+    youtube: []
   };
   const errors = [];
 
@@ -202,9 +226,17 @@ const main = async () => {
     errors.push(`stand.fm: ${error.message}`);
   }
 
+  try {
+    const youtubeXml = await fetchText(config.youtube.rssUrl);
+    fetchedBySource.youtube = parseYouTubeItems(youtubeXml, config.youtube.limit);
+  } catch (error) {
+    errors.push(`YouTube: ${error.message}`);
+  }
+
   const works = (config.works || []).map(normalizeItem);
+  const manualItems = (config.x || []).map(normalizeItem);
   const previousItems = previous.items || [];
-  const remoteItems = ["note", "standfm"].flatMap((source) => {
+  const remoteItems = ["note", "standfm", "youtube"].flatMap((source) => {
     const current = fetchedBySource[source];
     if (current.length > 0) return current;
     return previousItems.filter((item) => item.source === source);
@@ -212,7 +244,7 @@ const main = async () => {
   const output = {
     generatedAt: new Date().toISOString(),
     errors,
-    items: sortItems(uniqueByUrl([...works, ...remoteItems]))
+    items: sortItems(uniqueByUrl([...works, ...manualItems, ...remoteItems]))
   };
 
   await writeFile(outputPath, `${JSON.stringify(output, null, 2)}\n`, "utf8");

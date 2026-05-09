@@ -11,6 +11,14 @@
     "rssUrl": "",
     "limit": 12
   },
+  "youtube": {
+    "source": "youtube",
+    "channelId": "UCL6G4umyzedfdT5aP9PAoKQ",
+    "channelUrl": "https://www.youtube.com/@junnn-vlog",
+    "rssUrl": "https://www.youtube.com/feeds/videos.xml?channel_id=UCL6G4umyzedfdT5aP9PAoKQ",
+    "limit": 12
+  },
+  "x": [],
   "works": [
     {
       "source": "works",
