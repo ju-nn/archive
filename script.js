@@ -26,8 +26,14 @@ const photoModalPrev = document.querySelector("#photo-modal-prev");
 const photoModalNext = document.querySelector("#photo-modal-next");
 const photoModalImage = document.querySelector("#photo-modal-image");
 const photoModalCaption = document.querySelector("#photo-modal-caption");
+const tocToggle = document.querySelector("#toc-toggle");
+const tocClose = document.querySelector("#toc-close");
+const tocPanel = document.querySelector("#toc-panel");
+const tocSide = document.querySelector("#toc-side");
+const tocMain = document.querySelector("#toc-main");
 const tabs = [...document.querySelectorAll(".tab")];
 const initialFilter = new URLSearchParams(window.location.search).get("filter");
+const initialView = new URLSearchParams(window.location.search).get("view");
 const PAGE_SIZE = 15;
 
 const sourceLabels = {
@@ -97,6 +103,26 @@ const filteredItems = () => {
 const filteredPhotoItems = () => filteredItems().filter((item) => item.source === "photo");
 
 const totalPages = (count) => Math.max(1, Math.ceil(count / PAGE_SIZE));
+
+const monthKey = (value) => {
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) return "";
+  return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}`;
+};
+
+const monthLabel = (value) => {
+  const date = new Date(`${value}-01T00:00:00.000Z`);
+  if (Number.isNaN(date.getTime())) return value;
+  return `${date.getFullYear()}年${date.getMonth() + 1}月`;
+};
+
+const tocSourceLabels = {
+  note: "note",
+  standfm: "stand.fm",
+  works: "制作物",
+  youtube: "YouTube",
+  photo: "写真",
+};
 
 const scrollToFeedTop = () => {
   window.scrollTo({ top: 0, behavior: "smooth" });
@@ -202,12 +228,99 @@ const render = () => {
   }
 };
 
+const renderToc = () => {
+  const items = sortItems(normalizeItems(state.items)).filter((item) => Boolean(item.publishedAt));
+  const grouped = new Map();
+
+  items.forEach((item) => {
+    const key = monthKey(item.publishedAt);
+    if (!key) return;
+    if (!grouped.has(key)) grouped.set(key, []);
+    grouped.get(key).push(item);
+  });
+
+  tocSide.replaceChildren();
+  tocMain.replaceChildren();
+
+  const yearGroups = new Map();
+  [...grouped.keys()].sort((a, b) => b.localeCompare(a)).forEach((key) => {
+    const year = key.slice(0, 4);
+    if (!yearGroups.has(year)) yearGroups.set(year, []);
+    yearGroups.get(year).push(key);
+  });
+
+  yearGroups.forEach((monthKeys, year) => {
+    const yearLink = document.createElement("a");
+    yearLink.href = `#toc-year-${year}`;
+    yearLink.textContent = `${year}年`;
+    tocSide.append(yearLink);
+
+    monthKeys.forEach((key) => {
+      const monthLink = document.createElement("a");
+      monthLink.href = `#toc-month-${key}`;
+      monthLink.textContent = monthLabel(key);
+      tocSide.append(monthLink);
+    });
+
+    const group = document.createElement("section");
+    group.className = "toc-group";
+    group.id = `toc-year-${year}`;
+
+    const heading = document.createElement("h3");
+    heading.textContent = `${year}年`;
+    group.append(heading);
+
+    const list = document.createElement("div");
+    list.className = "toc-list";
+
+    monthKeys.forEach((key) => {
+      const monthSection = document.createElement("section");
+      monthSection.id = `toc-month-${key}`;
+
+      grouped.get(key).forEach((item) => {
+        const row = document.createElement("a");
+        row.className = "toc-row";
+        row.href = item.url;
+        row.target = "_blank";
+        row.rel = "noopener noreferrer";
+        const badge = document.createElement("span");
+        badge.className = "toc-badge";
+        badge.textContent = tocSourceLabels[item.source] || item.source || "";
+        const title = document.createElement("span");
+        title.className = "toc-title";
+        title.textContent = item.title;
+        const date = document.createElement("span");
+        date.className = "toc-date";
+        date.textContent = item.displayDate?.replace("に公開", "") || "";
+        row.append(badge, title, date);
+        monthSection.append(row);
+      });
+
+      list.append(monthSection);
+    });
+
+    group.append(list);
+    tocMain.append(group);
+  });
+};
+
+const setView = (view) => {
+  const showToc = view === "toc";
+  tocPanel.hidden = !showToc;
+  tocToggle.setAttribute("aria-expanded", String(showToc));
+  document.body.classList.toggle("is-toc-view", showToc);
+  if (showToc) {
+    tocPanel.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+};
+
 const setItems = (items) => {
   state.items = sortItems(normalizeItems(items));
   syncTabs();
   syncSearch();
   state.page = 1;
   render();
+  renderToc();
 };
 
 const setFilter = (filter) => {
@@ -359,10 +472,21 @@ document.querySelector("#brand-home").addEventListener("click", () => {
   window.location.reload();
 });
 
+tocToggle.addEventListener("click", () => {
+  const showToc = tocPanel.hidden;
+  setView(showToc ? "toc" : "feed");
+});
+
+tocClose.addEventListener("click", () => setView("feed"));
+
 setItems(parseInitialData());
 if (tabs.some((tab) => tab.dataset.filter === initialFilter)) {
   setFilter(initialFilter);
 }
 loadItems();
 syncSearch();
+renderToc();
+if (initialView === "toc") {
+  setView("toc");
+}
 photoModal.hidden = true;
