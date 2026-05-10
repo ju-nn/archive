@@ -1,12 +1,15 @@
 import { readFile, writeFile } from "node:fs/promises";
+import { execFile } from "node:child_process";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
+import { promisify } from "node:util";
 
 const rootDir = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const configPath = resolve(rootDir, "data", "feeds.json");
 const outputPath = resolve(rootDir, "data", "feed-items.json");
 const indexPath = resolve(rootDir, "index.html");
 const fallbackImage = "./assets/icon.png";
+const execFileAsync = promisify(execFile);
 
 const decodeEntities = (value = "") =>
   value
@@ -106,6 +109,99 @@ const formatDisplayDate = (dateValue, source = "") => {
   return `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}${suffix}`;
 };
 
+const readPhotoExif = async (photoPath) => {
+  const script = `
+from pathlib import Path
+import json
+from PIL import Image
+from PIL.ExifTags import TAGS
+
+path = Path(${JSON.stringify(photoPath)})
+img = Image.open(path)
+exif = img.getexif()
+data = {TAGS.get(tag, str(tag)): exif.get(tag) for tag in exif.keys()}
+try:
+    data.update({TAGS.get(tag, str(tag)): value for tag, value in exif.get_ifd(34665).items()})
+except Exception:
+    pass
+try:
+    data.update({TAGS.get(tag, str(tag)): value for tag, value in exif.get_ifd(34853).items()})
+except Exception:
+    pass
+print(json.dumps(data, ensure_ascii=False, default=str))
+`.trim();
+
+  const { stdout } = await execFileAsync("python", ["-c", script], {
+    cwd: rootDir,
+    windowsHide: true,
+    maxBuffer: 1024 * 1024
+  });
+
+  return JSON.parse(stdout || "{}");
+};
+
+const rationalToNumber = (value) => {
+  if (Array.isArray(value) && value.length === 2 && value[1]) {
+    return value[0] / value[1];
+  }
+  if (typeof value === "number") return value;
+  if (typeof value === "string") return Number(value);
+  return Number.NaN;
+};
+
+const formatAperture = (value) => {
+  const number = rationalToNumber(value);
+  if (!Number.isFinite(number)) return "";
+  return `f/${number % 1 === 0 ? number.toFixed(0) : number.toFixed(1)}`;
+};
+
+const formatExposure = (value) => {
+  const number = rationalToNumber(value);
+  if (!Number.isFinite(number) || number <= 0) return "";
+  if (number >= 1) return `${number % 1 === 0 ? number.toFixed(0) : number.toFixed(1)}秒`;
+  const denominator = Math.round(1 / number);
+  return `1/${denominator}秒`;
+};
+
+const formatFocalLength = (value) => {
+  const number = rationalToNumber(value);
+  if (!Number.isFinite(number)) return "";
+  return `${number % 1 === 0 ? number.toFixed(0) : number.toFixed(1)}mm`;
+};
+
+const formatFocalLength35mm = (value) => {
+  const number = rationalToNumber(value);
+  if (!Number.isFinite(number)) return "";
+  return `${number.toFixed(0)}mm相当`;
+};
+
+const exifDateToIso = (value) => {
+  if (typeof value !== "string") return null;
+  const match = value.trim().match(/^(\d{4}):(\d{2}):(\d{2})[ T](\d{2}):(\d{2}):(\d{2})$/);
+  if (!match) return null;
+  const [, year, month, day, hour, minute, second] = match;
+  return new Date(`${year}-${month}-${day}T${hour}:${minute}:${second}`).toISOString();
+};
+
+const normalizePhotoExif = (photoPath, exif = {}) => {
+  const make = typeof exif.Make === "string" ? exif.Make.trim() : "";
+  const model = typeof exif.Model === "string" ? exif.Model.trim() : "";
+  const lensModel = typeof exif.LensModel === "string" ? exif.LensModel.trim() : "";
+  const iso = exif.ISOSpeedRatings ?? exif.PhotographicSensitivity ?? "";
+  const camera = model || make || "";
+  return {
+    camera,
+    lensModel,
+    aperture: formatAperture(exif.FNumber || exif.ApertureValue),
+    exposureTime: formatExposure(exif.ExposureTime),
+    iso: iso ? `ISO ${iso}` : "",
+    focalLength: formatFocalLength(exif.FocalLength),
+    focalLength35mm: formatFocalLength35mm(exif.FocalLengthIn35mmFilm),
+    takenAt: exifDateToIso(exif.DateTimeOriginal || exif.DateTime),
+    photoPath
+  };
+};
+
 const normalizeItem = (item) => ({
   source: item.source,
   title: item.title || "untitled",
@@ -114,6 +210,13 @@ const normalizeItem = (item) => ({
   imageUrl: item.imageUrl || fallbackImage,
   publishedAt: item.publishedAt || null,
   takenAt: item.takenAt || null,
+  camera: item.camera || "",
+  lensModel: item.lensModel || "",
+  aperture: item.aperture || "",
+  exposureTime: item.exposureTime || "",
+  iso: item.iso || "",
+  focalLength: item.focalLength || "",
+  focalLength35mm: item.focalLength35mm || "",
   displayDate: item.displayDate || formatDisplayDate(item.takenAt || item.publishedAt, item.source),
   url: item.url,
   pinned: Boolean(item.pinned)
@@ -279,7 +382,9 @@ const uniqueByUrl = (items) => {
 const sortItems = (items) =>
   [...items].sort((a, b) => {
     if (a.pinned !== b.pinned) return a.pinned ? -1 : 1;
-    return new Date(b.publishedAt || 0) - new Date(a.publishedAt || 0);
+    const aDate = a.takenAt || a.publishedAt || 0;
+    const bDate = b.takenAt || b.publishedAt || 0;
+    return new Date(bDate) - new Date(aDate);
   });
 
 const escapeScriptJson = (value) =>
@@ -332,7 +437,14 @@ const main = async () => {
   }
 
   const works = (config.works || []).map(normalizeItem);
-  const photos = (config.photo || []).map(normalizeItem);
+  const photos = [];
+  for (const item of config.photo || []) {
+    const exif = await readPhotoExif(resolve(rootDir, item.url || item.imageUrl || ""));
+    photos.push(normalizeItem({
+      ...item,
+      ...normalizePhotoExif(item.url || item.imageUrl || "", exif)
+    }));
+  }
   const previousItems = previous.items || [];
   const remoteItems = ["note", "standfm", "youtube"].flatMap((source) => {
     const current = fetchedBySource[source];

@@ -4,19 +4,19 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="jun / じゅん の制作物と発信を、works・note・stand.fm・YouTubeのタイルでまとめた個人サイト。" />
+  <meta name="description" content="jun / じゅん の制作物と発信を、制作物・note・stand.fm・YouTubeのタイルでまとめた個人サイト。" />
   <link rel="canonical" href="https://ju-nn.github.io/archive/" />
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="ja_JP" />
   <meta property="og:site_name" content="jun | じゅん" />
   <meta property="og:url" content="https://ju-nn.github.io/archive/" />
   <meta property="og:title" content="jun | じゅん" />
-  <meta property="og:description" content="jun / じゅん の制作物と発信を、works・note・stand.fm・YouTubeのタイルでまとめた個人サイト。" />
+  <meta property="og:description" content="jun / じゅん の制作物と発信を、制作物・note・stand.fm・YouTubeのタイルでまとめた個人サイト。" />
   <meta property="og:image" content="https://ju-nn.github.io/archive/assets/icon.png" />
   <meta property="og:image:alt" content="junのアイコン" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="jun | じゅん" />
-  <meta name="twitter:description" content="jun / じゅん の制作物と発信を、works・note・stand.fm・YouTubeのタイルでまとめた個人サイト。" />
+  <meta name="twitter:description" content="jun / じゅん の制作物と発信を、制作物・note・stand.fm・YouTubeのタイルでまとめた個人サイト。" />
   <meta name="twitter:image" content="https://ju-nn.github.io/archive/assets/icon.png" />
   <link rel="icon" href="./assets/icon.png" type="image/png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -35,6 +35,13 @@
       </button>
 
       <div class="header-links" aria-label="外部リンク">
+        <button class="toc-launcher" type="button" id="toc-toggle" aria-label="目次を開く" aria-expanded="false" aria-controls="toc-panel">
+          <span class="toc-launcher-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+              <path d="M7 4h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Zm0 2v12h10V6H7Zm2 2h6v1.5H9V8Zm0 3h6v1.5H9V11Zm0 3h4v1.5H9V14Z" />
+            </svg>
+          </span>
+        </button>
         <a class="icon-link" href="https://note.com/reilst" target="_blank" rel="noopener noreferrer" aria-label="note">
           <svg viewBox="0 0 24 24" aria-hidden="true">
             <path d="M6.2 4.6h8.3l3.3 3.5v11.3H6.2V4.6Zm7.6 1.7v2.6h2.5l-2.5-2.6ZM8 6.2v11.6h8.1V10.5h-4V6.2H8Zm1.6 7h4.9v1.4H9.6v-1.4Zm0-3h3.6v1.4H9.6v-1.4Z" />
@@ -73,8 +80,8 @@
 
     <nav class="tabs" aria-label="表示カテゴリ">
       <button class="tab is-active" type="button" data-filter="all">すべて</button>
-      <button class="tab" type="button" data-filter="photo">photo</button>
-      <button class="tab" type="button" data-filter="works">works</button>
+      <button class="tab" type="button" data-filter="photo">写真</button>
+      <button class="tab" type="button" data-filter="works">制作物</button>
       <button class="tab" type="button" data-filter="note">note</button>
       <button class="tab" type="button" data-filter="standfm">stand.fm</button>
       <button class="tab" type="button" data-filter="youtube">YouTube</button>
@@ -88,6 +95,20 @@
         <button class="pager-button" type="button" id="pager-next">次のページへ</button>
       </div>
       <p id="empty-state" class="empty-state" hidden>このカテゴリの投稿はまだありません。</p>
+    </section>
+
+    <section class="toc-panel" id="toc-panel" hidden aria-label="目次">
+      <div class="toc-panel-header">
+        <div>
+          <p class="toc-kicker">目次</p>
+          <h2>投稿の一覧</h2>
+        </div>
+        <button class="toc-close" type="button" id="toc-close" aria-label="目次を閉じる">閉じる</button>
+      </div>
+      <div class="toc-layout">
+        <nav class="toc-side" id="toc-side" aria-label="年月の索引"></nav>
+        <div class="toc-main" id="toc-main"></div>
+      </div>
     </section>
 
     <section class="profile-card" aria-label="プロフィール">
@@ -104,7 +125,7 @@
     <div class="footer-inner">
       <div>
         <p class="footer-brand">jun archive</p>
-        <p class="footer-copy">works・note・stand.fm・YouTubeをまとめた個人アーカイブ</p>
+        <p class="footer-copy">制作物・note・stand.fm・YouTubeをまとめた個人アーカイブ</p>
       </div>
       <nav class="footer-links" aria-label="フッターリンク">
         <a href="https://note.com/reilst" target="_blank" rel="noopener noreferrer">note</a>
@@ -119,6 +140,7 @@
     <a class="tile" target="_blank" rel="noopener noreferrer">
         <span class="tile-media">
           <span class="tile-badge"></span>
+          <span class="tile-pin" aria-hidden="true"></span>
           <img class="tile-image" alt="" loading="lazy" />
         </span>
         <span class="tile-title"></span>
@@ -130,29 +152,52 @@
   <template id="photo-template">
     <figure class="photo-card tile">
       <span class="tile-media photo-media">
-        <span class="tile-badge">Photo</span>
+        <span class="tile-badge">写真</span>
         <img class="photo-image" alt="" loading="lazy" />
       </span>
-      <span class="tile-title"></span>
-      <span class="tile-description"></span>
       <span class="tile-date"></span>
     </figure>
   </template>
 
+  <dialog class="photo-modal" id="photo-modal" aria-label="写真ビューア" hidden>
+    <button class="photo-modal-close" type="button" id="photo-modal-close" aria-label="閉じる">×</button>
+    <button class="photo-modal-nav photo-modal-prev" type="button" id="photo-modal-prev" aria-label="前の写真">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M14.7 5.3 8 12l6.7 6.7-1.4 1.4L5.2 12l8.1-8.1 1.4 1.4Z" />
+      </svg>
+    </button>
+    <figure class="photo-modal-content">
+      <img class="photo-modal-image" id="photo-modal-image" alt="" />
+      <figcaption class="photo-modal-date" id="photo-modal-caption"></figcaption>
+    </figure>
+    <button class="photo-modal-nav photo-modal-next" type="button" id="photo-modal-next" aria-label="次の写真">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M9.3 5.3 16 12l-6.7 6.7-1.4-1.4L13.4 12 7.9 6.7l1.4-1.4Z" />
+      </svg>
+    </button>
+  </dialog>
+
   <script id="initial-feed-data" type="application/json">
 {
-  "generatedAt": "2026-05-09T23:37:15.975Z",
+  "generatedAt": "2026-05-10T01:48:22.843Z",
   "errors": [],
   "items": [
     {
       "source": "works",
       "title": "ジユウノコンパス",
       "kind": "",
-      "summary": "今の自分の資産から、自分の位置を知り、今できる一歩を知るための診断サイトです。",
+      "summary": "収入や支出から、今の立ち位置と次の一歩がわかる診断ができます。",
       "imageUrl": "./assets/work-jiyu-compass.png",
-      "publishedAt": "2026-01-01T00:00:00.000Z",
+      "publishedAt": "2026-05-10T00:00:00.000Z",
       "takenAt": null,
-      "displayDate": "2026/1/1に公開",
+      "camera": "",
+      "lensModel": "",
+      "aperture": "",
+      "exposureTime": "",
+      "iso": "",
+      "focalLength": "",
+      "focalLength35mm": "",
+      "displayDate": "2026/5/10に公開",
       "url": "https://ju-nn.github.io/Jiyu-Compass/",
       "pinned": true
     },
@@ -160,11 +205,18 @@
       "source": "works",
       "title": "逃げ道.xlsx",
       "kind": "",
-      "summary": "会社を辞めたい会社員のための、分岐ノベルゲームです。",
+      "summary": "会社を辞めたい会社員が主人公の分岐ノベルゲームです。",
       "imageUrl": "./assets/work-nigemiti.png",
-      "publishedAt": "2026-01-01T00:00:00.000Z",
+      "publishedAt": "2026-05-04T00:00:00.000Z",
       "takenAt": null,
-      "displayDate": "2026/1/1に公開",
+      "camera": "",
+      "lensModel": "",
+      "aperture": "",
+      "exposureTime": "",
+      "iso": "",
+      "focalLength": "",
+      "focalLength35mm": "",
+      "displayDate": "2026/5/4に公開",
       "url": "https://ju-nn.github.io/nigemiti-xlsx/",
       "pinned": true
     },
@@ -176,6 +228,13 @@
       "imageUrl": "https://assets.st-note.com/production/uploads/images/272780386/rectangle_large_type_2_e7a33b53f94e1896d49ad09494d1541a.png?width=800",
       "publishedAt": "2026-05-03T15:48:32.000Z",
       "takenAt": null,
+      "camera": "",
+      "lensModel": "",
+      "aperture": "",
+      "exposureTime": "",
+      "iso": "",
+      "focalLength": "",
+      "focalLength35mm": "",
       "displayDate": "2026/5/4に公開",
       "url": "https://note.com/reilst/n/ndb43b3d0b062",
       "pinned": false
@@ -188,6 +247,13 @@
       "imageUrl": "https://assets.st-note.com/production/uploads/images/272701056/rectangle_large_type_2_3f11019f37338f0182aa2e8f6da84932.png?width=800",
       "publishedAt": "2026-05-03T11:00:41.000Z",
       "takenAt": null,
+      "camera": "",
+      "lensModel": "",
+      "aperture": "",
+      "exposureTime": "",
+      "iso": "",
+      "focalLength": "",
+      "focalLength35mm": "",
       "displayDate": "2026/5/3に公開",
       "url": "https://note.com/reilst/n/n1e417296c51b",
       "pinned": false
@@ -200,6 +266,13 @@
       "imageUrl": "https://assets.st-note.com/production/uploads/images/272485214/rectangle_large_type_2_39295fc0fcdd3485397bf4eb004affbc.png?width=800",
       "publishedAt": "2026-05-02T15:43:30.000Z",
       "takenAt": null,
+      "camera": "",
+      "lensModel": "",
+      "aperture": "",
+      "exposureTime": "",
+      "iso": "",
+      "focalLength": "",
+      "focalLength35mm": "",
       "displayDate": "2026/5/3に公開",
       "url": "https://note.com/reilst/n/n41629314b8e7",
       "pinned": false
@@ -212,6 +285,13 @@
       "imageUrl": "https://assets.st-note.com/production/uploads/images/272483921/rectangle_large_type_2_93bec84112a5cc9d7eb3b26b3f6b67fd.png?width=800",
       "publishedAt": "2026-05-02T15:37:26.000Z",
       "takenAt": null,
+      "camera": "",
+      "lensModel": "",
+      "aperture": "",
+      "exposureTime": "",
+      "iso": "",
+      "focalLength": "",
+      "focalLength35mm": "",
       "displayDate": "2026/5/3に公開",
       "url": "https://note.com/reilst/n/n4712257a275e",
       "pinned": false
@@ -224,6 +304,13 @@
       "imageUrl": "https://assets.st-note.com/production/uploads/images/272478973/rectangle_large_type_2_ac7bbc7b5a09d682d0e712decf7243d5.png?width=800",
       "publishedAt": "2026-05-02T15:09:57.000Z",
       "takenAt": null,
+      "camera": "",
+      "lensModel": "",
+      "aperture": "",
+      "exposureTime": "",
+      "iso": "",
+      "focalLength": "",
+      "focalLength35mm": "",
       "displayDate": "2026/5/3に公開",
       "url": "https://note.com/reilst/n/n624cb7be69c9",
       "pinned": false
@@ -236,6 +323,13 @@
       "imageUrl": "https://assets.st-note.com/production/uploads/images/271738826/rectangle_large_type_2_7e7f0e19b132a360ae7cac90b25f081e.png?width=800",
       "publishedAt": "2026-04-30T07:33:27.000Z",
       "takenAt": null,
+      "camera": "",
+      "lensModel": "",
+      "aperture": "",
+      "exposureTime": "",
+      "iso": "",
+      "focalLength": "",
+      "focalLength35mm": "",
       "displayDate": "2026/4/30に公開",
       "url": "https://note.com/reilst/n/n82cad4c010ed",
       "pinned": false
@@ -248,6 +342,13 @@
       "imageUrl": "https://assets.st-note.com/production/uploads/images/271736705/rectangle_large_type_2_ccc13a9d64e018bdfd3b8c579c70d92f.png?width=800",
       "publishedAt": "2026-04-30T07:27:30.000Z",
       "takenAt": null,
+      "camera": "",
+      "lensModel": "",
+      "aperture": "",
+      "exposureTime": "",
+      "iso": "",
+      "focalLength": "",
+      "focalLength35mm": "",
       "displayDate": "2026/4/30に公開",
       "url": "https://note.com/reilst/n/n9ec29e6be5ce",
       "pinned": false
@@ -260,6 +361,13 @@
       "imageUrl": "https://assets.st-note.com/production/uploads/images/271442556/rectangle_large_type_2_41ff76cd15bfd27a0a82f91b80b09572.png?width=800",
       "publishedAt": "2026-04-29T09:07:38.000Z",
       "takenAt": null,
+      "camera": "",
+      "lensModel": "",
+      "aperture": "",
+      "exposureTime": "",
+      "iso": "",
+      "focalLength": "",
+      "focalLength35mm": "",
       "displayDate": "2026/4/29に公開",
       "url": "https://note.com/reilst/n/n5a50561a47c7",
       "pinned": false
@@ -272,6 +380,13 @@
       "imageUrl": "https://assets.st-note.com/production/uploads/images/270604599/rectangle_large_type_2_20d5827f8e9449c3e7f823f16ea8f033.png?width=800",
       "publishedAt": "2026-04-26T09:45:08.000Z",
       "takenAt": null,
+      "camera": "",
+      "lensModel": "",
+      "aperture": "",
+      "exposureTime": "",
+      "iso": "",
+      "focalLength": "",
+      "focalLength35mm": "",
       "displayDate": "2026/4/26に公開",
       "url": "https://note.com/reilst/n/n102e13b36942",
       "pinned": false
@@ -284,6 +399,13 @@
       "imageUrl": "https://assets.st-note.com/production/uploads/images/270574441/rectangle_large_type_2_89c1d62e4b635e0d9e8439b90c53b198.png?width=800",
       "publishedAt": "2026-04-26T08:13:29.000Z",
       "takenAt": null,
+      "camera": "",
+      "lensModel": "",
+      "aperture": "",
+      "exposureTime": "",
+      "iso": "",
+      "focalLength": "",
+      "focalLength35mm": "",
       "displayDate": "2026/4/26に公開",
       "url": "https://note.com/reilst/n/n3075f93c97bf",
       "pinned": false
@@ -296,6 +418,13 @@
       "imageUrl": "https://assets.st-note.com/production/uploads/images/269257968/rectangle_large_type_2_2fc4498bd0b42b69058f453dbff4e609.png?width=800",
       "publishedAt": "2026-04-21T12:57:36.000Z",
       "takenAt": null,
+      "camera": "",
+      "lensModel": "",
+      "aperture": "",
+      "exposureTime": "",
+      "iso": "",
+      "focalLength": "",
+      "focalLength35mm": "",
       "displayDate": "2026/4/21に公開",
       "url": "https://note.com/reilst/n/nac51d808dc2c",
       "pinned": false
@@ -308,6 +437,13 @@
       "imageUrl": "https://cdn.stand.fm/coverImages/01KPDXJE6TE8JKXMKXAPMTJ56V.jpg",
       "publishedAt": "2026-04-17T14:30:54.068Z",
       "takenAt": null,
+      "camera": "",
+      "lensModel": "",
+      "aperture": "",
+      "exposureTime": "",
+      "iso": "",
+      "focalLength": "",
+      "focalLength35mm": "",
       "displayDate": "2026/4/17に公開",
       "url": "https://stand.fm/episodes/69e243e5141474f759437e1d",
       "pinned": false
@@ -320,6 +456,13 @@
       "imageUrl": "https://cdn.stand.fm/coverImages/01KP390SVQCV13R9PE75BMEFQZ.jpg",
       "publishedAt": "2026-04-13T11:19:20.689Z",
       "takenAt": null,
+      "camera": "",
+      "lensModel": "",
+      "aperture": "",
+      "exposureTime": "",
+      "iso": "",
+      "focalLength": "",
+      "focalLength35mm": "",
       "displayDate": "2026/4/13に公開",
       "url": "https://stand.fm/episodes/69dcd100a52e36fe10736f6e",
       "pinned": false
@@ -332,6 +475,13 @@
       "imageUrl": "https://cdn.stand.fm/images/01K3453QCP5BDRHMT0XEGQAV7Y.jpg",
       "publishedAt": "2026-04-08T11:11:32.609Z",
       "takenAt": null,
+      "camera": "",
+      "lensModel": "",
+      "aperture": "",
+      "exposureTime": "",
+      "iso": "",
+      "focalLength": "",
+      "focalLength35mm": "",
       "displayDate": "2026/4/8に公開",
       "url": "https://stand.fm/episodes/69d637d2969b21b60c665d70",
       "pinned": false
@@ -344,6 +494,13 @@
       "imageUrl": "https://assets.st-note.com/production/uploads/images/262921483/rectangle_large_type_2_8dc9698f4006e61b40096c4712fe99d2.png?width=800",
       "publishedAt": "2026-03-28T16:13:47.000Z",
       "takenAt": null,
+      "camera": "",
+      "lensModel": "",
+      "aperture": "",
+      "exposureTime": "",
+      "iso": "",
+      "focalLength": "",
+      "focalLength35mm": "",
       "displayDate": "2026/3/29に公開",
       "url": "https://note.com/reilst/n/naef441538c1d",
       "pinned": false
@@ -356,6 +513,13 @@
       "imageUrl": "https://cdn.stand.fm/coverImages/01KGSF9F55EDK40CE7N7TYYQTE.jpg",
       "publishedAt": "2026-02-06T12:37:33.369Z",
       "takenAt": null,
+      "camera": "",
+      "lensModel": "",
+      "aperture": "",
+      "exposureTime": "",
+      "iso": "",
+      "focalLength": "",
+      "focalLength35mm": "",
       "displayDate": "2026/2/6に公開",
       "url": "https://stand.fm/episodes/6985e072993f124111bd8c34",
       "pinned": false
@@ -368,6 +532,13 @@
       "imageUrl": "https://i3.ytimg.com/vi/JdPgHbzEeII/hqdefault.jpg",
       "publishedAt": "2026-01-29T03:00:20.000Z",
       "takenAt": null,
+      "camera": "",
+      "lensModel": "",
+      "aperture": "",
+      "exposureTime": "",
+      "iso": "",
+      "focalLength": "",
+      "focalLength35mm": "",
       "displayDate": "2026/1/29に公開",
       "url": "https://www.youtube.com/watch?v=JdPgHbzEeII",
       "pinned": false
@@ -380,6 +551,13 @@
       "imageUrl": "https://i2.ytimg.com/vi/eAh2v2Dwbcw/hqdefault.jpg",
       "publishedAt": "2026-01-28T21:00:47.000Z",
       "takenAt": null,
+      "camera": "",
+      "lensModel": "",
+      "aperture": "",
+      "exposureTime": "",
+      "iso": "",
+      "focalLength": "",
+      "focalLength35mm": "",
       "displayDate": "2026/1/29に公開",
       "url": "https://www.youtube.com/watch?v=eAh2v2Dwbcw",
       "pinned": false
@@ -392,6 +570,13 @@
       "imageUrl": "https://i1.ytimg.com/vi/l9l-YOvna0c/hqdefault.jpg",
       "publishedAt": "2026-01-28T16:11:44.000Z",
       "takenAt": null,
+      "camera": "",
+      "lensModel": "",
+      "aperture": "",
+      "exposureTime": "",
+      "iso": "",
+      "focalLength": "",
+      "focalLength35mm": "",
       "displayDate": "2026/1/29に公開",
       "url": "https://www.youtube.com/watch?v=l9l-YOvna0c",
       "pinned": false
@@ -404,6 +589,13 @@
       "imageUrl": "https://i4.ytimg.com/vi/_CxtsM8qS5U/hqdefault.jpg",
       "publishedAt": "2026-01-21T17:37:49.000Z",
       "takenAt": null,
+      "camera": "",
+      "lensModel": "",
+      "aperture": "",
+      "exposureTime": "",
+      "iso": "",
+      "focalLength": "",
+      "focalLength35mm": "",
       "displayDate": "2026/1/22に公開",
       "url": "https://www.youtube.com/watch?v=_CxtsM8qS5U",
       "pinned": false
@@ -416,8 +608,34 @@
       "imageUrl": "https://i1.ytimg.com/vi/lrDSvgnkfSs/hqdefault.jpg",
       "publishedAt": "2026-01-18T10:09:09.000Z",
       "takenAt": null,
+      "camera": "",
+      "lensModel": "",
+      "aperture": "",
+      "exposureTime": "",
+      "iso": "",
+      "focalLength": "",
+      "focalLength35mm": "",
       "displayDate": "2026/1/18に公開",
       "url": "https://www.youtube.com/watch?v=lrDSvgnkfSs",
+      "pinned": false
+    },
+    {
+      "source": "photo",
+      "title": "写真 5",
+      "kind": "",
+      "summary": "",
+      "imageUrl": "./assets/photos/R0001899.JPG",
+      "publishedAt": null,
+      "takenAt": "2026-01-18T07:16:53.000Z",
+      "camera": "RICOH GR IIIx",
+      "lensModel": "",
+      "aperture": "f/2.8",
+      "exposureTime": "1/25秒",
+      "iso": "ISO 800",
+      "focalLength": "26mm",
+      "focalLength35mm": "40mm相当",
+      "displayDate": "2026/1/18に撮影",
+      "url": "./assets/photos/R0001899.JPG",
       "pinned": false
     },
     {
@@ -428,6 +646,13 @@
       "imageUrl": "https://cdn.stand.fm/coverImages/01KDQV8JC295FFK1KH5TAT87G5.jpg",
       "publishedAt": "2025-12-30T14:41:26.463Z",
       "takenAt": null,
+      "camera": "",
+      "lensModel": "",
+      "aperture": "",
+      "exposureTime": "",
+      "iso": "",
+      "focalLength": "",
+      "focalLength35mm": "",
       "displayDate": "2025/12/30に公開",
       "url": "https://stand.fm/episodes/6953e46d9b4803f510c67b58",
       "pinned": false
@@ -440,6 +665,13 @@
       "imageUrl": "https://cdn.stand.fm/coverImages/01KD61TXH83KKBSDW5WW7Y21E5.jpg",
       "publishedAt": "2025-12-23T16:50:02.702Z",
       "takenAt": null,
+      "camera": "",
+      "lensModel": "",
+      "aperture": "",
+      "exposureTime": "",
+      "iso": "",
+      "focalLength": "",
+      "focalLength35mm": "",
       "displayDate": "2025/12/24に公開",
       "url": "https://stand.fm/episodes/694ac80e79fa85d4a1a33ae3",
       "pinned": false
@@ -452,6 +684,13 @@
       "imageUrl": "https://cdn.stand.fm/coverImages/01KB5EPCSYXK9Q69BM78YK2HE8.jpg",
       "publishedAt": "2025-11-28T14:44:26.669Z",
       "takenAt": null,
+      "camera": "",
+      "lensModel": "",
+      "aperture": "",
+      "exposureTime": "",
+      "iso": "",
+      "focalLength": "",
+      "focalLength35mm": "",
       "displayDate": "2025/11/28に公開",
       "url": "https://stand.fm/episodes/6929b50b18f152e49350086e",
       "pinned": false
@@ -464,6 +703,13 @@
       "imageUrl": "https://cdn.stand.fm/coverImages/01KARDT3DN5B7YJZBVA3HZY2Z8.jpg",
       "publishedAt": "2025-11-23T13:18:13.132Z",
       "takenAt": null,
+      "camera": "",
+      "lensModel": "",
+      "aperture": "",
+      "exposureTime": "",
+      "iso": "",
+      "focalLength": "",
+      "focalLength35mm": "",
       "displayDate": "2025/11/23に公開",
       "url": "https://stand.fm/episodes/6923097c3ac13deccfdab22c",
       "pinned": false
@@ -476,6 +722,13 @@
       "imageUrl": "https://cdn.stand.fm/coverImages/01KA9BAWDMBF9HSMMQ5Q0BW4NX.jpg",
       "publishedAt": "2025-11-20T17:00:01.306Z",
       "takenAt": null,
+      "camera": "",
+      "lensModel": "",
+      "aperture": "",
+      "exposureTime": "",
+      "iso": "",
+      "focalLength": "",
+      "focalLength35mm": "",
       "displayDate": "2025/11/21に公開",
       "url": "https://stand.fm/episodes/691b51449368ea2beb4b6d67",
       "pinned": false
@@ -488,6 +741,13 @@
       "imageUrl": "https://i3.ytimg.com/vi/jYpM93SiPYo/hqdefault.jpg",
       "publishedAt": "2025-11-13T09:39:22.000Z",
       "takenAt": null,
+      "camera": "",
+      "lensModel": "",
+      "aperture": "",
+      "exposureTime": "",
+      "iso": "",
+      "focalLength": "",
+      "focalLength35mm": "",
       "displayDate": "2025/11/13に公開",
       "url": "https://www.youtube.com/shorts/jYpM93SiPYo",
       "pinned": false
@@ -500,6 +760,13 @@
       "imageUrl": "https://i3.ytimg.com/vi/BB8zMzYI2qs/hqdefault.jpg",
       "publishedAt": "2025-11-13T09:37:25.000Z",
       "takenAt": null,
+      "camera": "",
+      "lensModel": "",
+      "aperture": "",
+      "exposureTime": "",
+      "iso": "",
+      "focalLength": "",
+      "focalLength35mm": "",
       "displayDate": "2025/11/13に公開",
       "url": "https://www.youtube.com/shorts/BB8zMzYI2qs",
       "pinned": false
@@ -512,6 +779,13 @@
       "imageUrl": "https://i3.ytimg.com/vi/60kAPmIbOXU/hqdefault.jpg",
       "publishedAt": "2025-11-13T07:53:08.000Z",
       "takenAt": null,
+      "camera": "",
+      "lensModel": "",
+      "aperture": "",
+      "exposureTime": "",
+      "iso": "",
+      "focalLength": "",
+      "focalLength35mm": "",
       "displayDate": "2025/11/13に公開",
       "url": "https://www.youtube.com/shorts/60kAPmIbOXU",
       "pinned": false
@@ -524,6 +798,13 @@
       "imageUrl": "https://cdn.stand.fm/coverImages/01K9ADBTBGZAM05V38M2JKHCMM.jpg",
       "publishedAt": "2025-11-05T16:25:55.270Z",
       "takenAt": null,
+      "camera": "",
+      "lensModel": "",
+      "aperture": "",
+      "exposureTime": "",
+      "iso": "",
+      "focalLength": "",
+      "focalLength35mm": "",
       "displayDate": "2025/11/6に公開",
       "url": "https://stand.fm/episodes/690b7a588b9f0ac22ea9c74b",
       "pinned": false
@@ -536,6 +817,13 @@
       "imageUrl": "https://cdn.stand.fm/coverImages/01K8GMTBVDJ7SN4E3TB7K7NYVA.jpg",
       "publishedAt": "2025-10-27T14:14:02.342Z",
       "takenAt": null,
+      "camera": "",
+      "lensModel": "",
+      "aperture": "",
+      "exposureTime": "",
+      "iso": "",
+      "focalLength": "",
+      "focalLength35mm": "",
       "displayDate": "2025/10/27に公開",
       "url": "https://stand.fm/episodes/68fe4902083d606cd61ea10c",
       "pinned": false
@@ -548,6 +836,13 @@
       "imageUrl": "https://cdn.stand.fm/coverImages/01K8GKC8Z8Z59H14PFWS8DKT8E.jpg",
       "publishedAt": "2025-10-26T15:50:08.327Z",
       "takenAt": null,
+      "camera": "",
+      "lensModel": "",
+      "aperture": "",
+      "exposureTime": "",
+      "iso": "",
+      "focalLength": "",
+      "focalLength35mm": "",
       "displayDate": "2025/10/27に公開",
       "url": "https://stand.fm/episodes/68fe431bf6eb873719bd7baa",
       "pinned": false
@@ -560,6 +855,13 @@
       "imageUrl": "https://i2.ytimg.com/vi/9f4oxsEYEEM/hqdefault.jpg",
       "publishedAt": "2025-10-26T13:46:04.000Z",
       "takenAt": null,
+      "camera": "",
+      "lensModel": "",
+      "aperture": "",
+      "exposureTime": "",
+      "iso": "",
+      "focalLength": "",
+      "focalLength35mm": "",
       "displayDate": "2025/10/26に公開",
       "url": "https://www.youtube.com/shorts/9f4oxsEYEEM",
       "pinned": false
@@ -572,6 +874,13 @@
       "imageUrl": "https://cdn.stand.fm/coverImages/01K83PJTWHS8MYJC8R7YGV5KNS.jpg",
       "publishedAt": "2025-10-23T14:35:01.348Z",
       "takenAt": null,
+      "camera": "",
+      "lensModel": "",
+      "aperture": "",
+      "exposureTime": "",
+      "iso": "",
+      "focalLength": "",
+      "focalLength35mm": "",
       "displayDate": "2025/10/23に公開",
       "url": "https://stand.fm/episodes/68f7a84c8c931041da50d031",
       "pinned": false
@@ -584,6 +893,13 @@
       "imageUrl": "https://cdn.stand.fm/images/01K3453QCP5BDRHMT0XEGQAV7Y.jpg",
       "publishedAt": "2025-10-21T14:43:36.929Z",
       "takenAt": null,
+      "camera": "",
+      "lensModel": "",
+      "aperture": "",
+      "exposureTime": "",
+      "iso": "",
+      "focalLength": "",
+      "focalLength35mm": "",
       "displayDate": "2025/10/21に公開",
       "url": "https://stand.fm/episodes/68f79bf48c931041da50cf76",
       "pinned": false
@@ -596,6 +912,13 @@
       "imageUrl": "https://cdn.stand.fm/coverImages/01K74W85VZ8NG44MGN0DB05VMM.jpg",
       "publishedAt": "2025-10-09T16:18:58.195Z",
       "takenAt": null,
+      "camera": "",
+      "lensModel": "",
+      "aperture": "",
+      "exposureTime": "",
+      "iso": "",
+      "focalLength": "",
+      "focalLength35mm": "",
       "displayDate": "2025/10/10に公開",
       "url": "https://stand.fm/episodes/68e7e04741845ed437877632",
       "pinned": false
@@ -608,6 +931,13 @@
       "imageUrl": "https://cdn.stand.fm/coverImages/01K72B0F6Z3MFEY2KCHZQS9BMS.jpg",
       "publishedAt": "2025-10-08T16:38:49.280Z",
       "takenAt": null,
+      "camera": "",
+      "lensModel": "",
+      "aperture": "",
+      "exposureTime": "",
+      "iso": "",
+      "focalLength": "",
+      "focalLength35mm": "",
       "displayDate": "2025/10/9に公開",
       "url": "https://stand.fm/episodes/68e6938463759aabad9b557a",
       "pinned": false
@@ -620,6 +950,13 @@
       "imageUrl": "https://cdn.stand.fm/images/01K3453QCP5BDRHMT0XEGQAV7Y.jpg",
       "publishedAt": "2025-10-07T09:26:49.336Z",
       "takenAt": null,
+      "camera": "",
+      "lensModel": "",
+      "aperture": "",
+      "exposureTime": "",
+      "iso": "",
+      "focalLength": "",
+      "focalLength35mm": "",
       "displayDate": "2025/10/7に公開",
       "url": "https://stand.fm/episodes/68e4dcca1bdbea44ccb6d305",
       "pinned": false
@@ -632,6 +969,13 @@
       "imageUrl": "https://cdn.stand.fm/coverImages/01K6DSTE6E8SMP10KHW93BPD8R.jpg",
       "publishedAt": "2025-09-30T17:13:55.720Z",
       "takenAt": null,
+      "camera": "",
+      "lensModel": "",
+      "aperture": "",
+      "exposureTime": "",
+      "iso": "",
+      "focalLength": "",
+      "focalLength35mm": "",
       "displayDate": "2025/10/1に公開",
       "url": "https://stand.fm/episodes/68dc0fac2004ddf1f58d960f",
       "pinned": false
@@ -644,6 +988,13 @@
       "imageUrl": "https://cdn.stand.fm/coverImages/01K6B5C4SXRS8EAD0QZWENS4N0.jpg",
       "publishedAt": "2025-09-30T11:09:01.630Z",
       "takenAt": null,
+      "camera": "",
+      "lensModel": "",
+      "aperture": "",
+      "exposureTime": "",
+      "iso": "",
+      "focalLength": "",
+      "focalLength35mm": "",
       "displayDate": "2025/9/30に公開",
       "url": "https://stand.fm/episodes/68dab5c75ba2cbdfbae9c171",
       "pinned": false
@@ -656,6 +1007,13 @@
       "imageUrl": "https://cdn.stand.fm/coverImages/01K6AW3SNYDCW3EB67VAGV3NNF.jpg",
       "publishedAt": "2025-09-29T13:56:08.883Z",
       "takenAt": null,
+      "camera": "",
+      "lensModel": "",
+      "aperture": "",
+      "exposureTime": "",
+      "iso": "",
+      "focalLength": "",
+      "focalLength35mm": "",
       "displayDate": "2025/9/29に公開",
       "url": "https://stand.fm/episodes/68da8fd931fc51f8b38ce0ea",
       "pinned": false
@@ -668,6 +1026,13 @@
       "imageUrl": "https://cdn.stand.fm/coverImages/01K60H81PV5D703TM2DQE9H8AS.jpg",
       "publishedAt": "2025-09-26T14:00:06.417Z",
       "takenAt": null,
+      "camera": "",
+      "lensModel": "",
+      "aperture": "",
+      "exposureTime": "",
+      "iso": "",
+      "focalLength": "",
+      "focalLength35mm": "",
       "displayDate": "2025/9/26に公開",
       "url": "https://stand.fm/episodes/68d5449d41b9fbaa9b47b5c0",
       "pinned": false
@@ -680,6 +1045,13 @@
       "imageUrl": "https://cdn.stand.fm/images/01K3453QCP5BDRHMT0XEGQAV7Y.jpg",
       "publishedAt": "2025-09-25T12:52:29.072Z",
       "takenAt": null,
+      "camera": "",
+      "lensModel": "",
+      "aperture": "",
+      "exposureTime": "",
+      "iso": "",
+      "focalLength": "",
+      "focalLength35mm": "",
       "displayDate": "2025/9/25に公開",
       "url": "https://stand.fm/episodes/68d53ad9890f460a4736b47a",
       "pinned": false
@@ -692,6 +1064,13 @@
       "imageUrl": "https://cdn.stand.fm/coverImages/01K5VEV893KMS77JECH44W4TEV.jpg",
       "publishedAt": "2025-09-23T14:15:25.458Z",
       "takenAt": null,
+      "camera": "",
+      "lensModel": "",
+      "aperture": "",
+      "exposureTime": "",
+      "iso": "",
+      "focalLength": "",
+      "focalLength35mm": "",
       "displayDate": "2025/9/23に公開",
       "url": "https://stand.fm/episodes/68d2ab6d3d8601a3dfeaac4a",
       "pinned": false
@@ -704,6 +1083,13 @@
       "imageUrl": "https://cdn.stand.fm/coverImages/01K5VE79K1BC2X9N470BF1F5G6.jpg",
       "publishedAt": "2025-09-23T14:04:55.779Z",
       "takenAt": null,
+      "camera": "",
+      "lensModel": "",
+      "aperture": "",
+      "exposureTime": "",
+      "iso": "",
+      "focalLength": "",
+      "focalLength35mm": "",
       "displayDate": "2025/9/23に公開",
       "url": "https://stand.fm/episodes/68d2a8df1eef77c9318a8a0e",
       "pinned": false
@@ -716,6 +1102,13 @@
       "imageUrl": "https://cdn.stand.fm/coverImages/01K59FB3FH2K2S1TQX46TE9RCY.jpg",
       "publishedAt": "2025-09-16T14:38:01.800Z",
       "takenAt": null,
+      "camera": "",
+      "lensModel": "",
+      "aperture": "",
+      "exposureTime": "",
+      "iso": "",
+      "focalLength": "",
+      "focalLength35mm": "",
       "displayDate": "2025/9/16に公開",
       "url": "https://stand.fm/episodes/68c9762857db7e19ac07647c",
       "pinned": false
@@ -728,6 +1121,13 @@
       "imageUrl": "https://cdn.stand.fm/coverImages/01K56TTKE3M430GXE5FJ9R25WQ.jpg",
       "publishedAt": "2025-09-15T14:00:55.457Z",
       "takenAt": null,
+      "camera": "",
+      "lensModel": "",
+      "aperture": "",
+      "exposureTime": "",
+      "iso": "",
+      "focalLength": "",
+      "focalLength35mm": "",
       "displayDate": "2025/9/15に公開",
       "url": "https://stand.fm/episodes/68c81bfbd2bf41aa329bcc7a",
       "pinned": false
@@ -740,6 +1140,13 @@
       "imageUrl": "https://cdn.stand.fm/coverImages/01K56SQFG42RNP8E5QH9D11T3F.jpg",
       "publishedAt": "2025-09-15T13:41:44.677Z",
       "takenAt": null,
+      "camera": "",
+      "lensModel": "",
+      "aperture": "",
+      "exposureTime": "",
+      "iso": "",
+      "focalLength": "",
+      "focalLength35mm": "",
       "displayDate": "2025/9/15に公開",
       "url": "https://stand.fm/episodes/68c8177cd2bf41aa329bcc33",
       "pinned": false
@@ -752,6 +1159,13 @@
       "imageUrl": "https://cdn.stand.fm/images/01K3453QCP5BDRHMT0XEGQAV7Y.jpg",
       "publishedAt": "2025-09-10T11:30:03.262Z",
       "takenAt": null,
+      "camera": "",
+      "lensModel": "",
+      "aperture": "",
+      "exposureTime": "",
+      "iso": "",
+      "focalLength": "",
+      "focalLength35mm": "",
       "displayDate": "2025/9/10に公開",
       "url": "https://stand.fm/episodes/68bf02d6818a2551bef383f2",
       "pinned": false
@@ -764,6 +1178,13 @@
       "imageUrl": "https://cdn.stand.fm/images/01K3453QCP5BDRHMT0XEGQAV7Y.jpg",
       "publishedAt": "2025-09-09T22:14:01.440Z",
       "takenAt": null,
+      "camera": "",
+      "lensModel": "",
+      "aperture": "",
+      "exposureTime": "",
+      "iso": "",
+      "focalLength": "",
+      "focalLength35mm": "",
       "displayDate": "2025/9/10に公開",
       "url": "https://stand.fm/episodes/68bf00fc7d42b45d0030819d",
       "pinned": false
@@ -776,6 +1197,13 @@
       "imageUrl": "https://cdn.stand.fm/images/01K3453QCP5BDRHMT0XEGQAV7Y.jpg",
       "publishedAt": "2025-09-08T22:15:03.025Z",
       "takenAt": null,
+      "camera": "",
+      "lensModel": "",
+      "aperture": "",
+      "exposureTime": "",
+      "iso": "",
+      "focalLength": "",
+      "focalLength35mm": "",
       "displayDate": "2025/9/9に公開",
       "url": "https://stand.fm/episodes/68befeb90637f9fce742bf7b",
       "pinned": false
@@ -788,6 +1216,13 @@
       "imageUrl": "https://cdn.stand.fm/images/01K3453QCP5BDRHMT0XEGQAV7Y.jpg",
       "publishedAt": "2025-09-02T03:00:05.853Z",
       "takenAt": null,
+      "camera": "",
+      "lensModel": "",
+      "aperture": "",
+      "exposureTime": "",
+      "iso": "",
+      "focalLength": "",
+      "focalLength35mm": "",
       "displayDate": "2025/9/2に公開",
       "url": "https://stand.fm/episodes/68b5c43ae75adf615ec1c95a",
       "pinned": false
@@ -800,6 +1235,13 @@
       "imageUrl": "https://cdn.stand.fm/images/01K3453QCP5BDRHMT0XEGQAV7Y.jpg",
       "publishedAt": "2025-09-01T15:45:09.808Z",
       "takenAt": null,
+      "camera": "",
+      "lensModel": "",
+      "aperture": "",
+      "exposureTime": "",
+      "iso": "",
+      "focalLength": "",
+      "focalLength35mm": "",
       "displayDate": "2025/9/2に公開",
       "url": "https://stand.fm/episodes/68b5bf51124b30d92376a0bc",
       "pinned": false
@@ -812,6 +1254,13 @@
       "imageUrl": "https://cdn.stand.fm/images/01K3453QCP5BDRHMT0XEGQAV7Y.jpg",
       "publishedAt": "2025-09-01T15:22:05.090Z",
       "takenAt": null,
+      "camera": "",
+      "lensModel": "",
+      "aperture": "",
+      "exposureTime": "",
+      "iso": "",
+      "focalLength": "",
+      "focalLength35mm": "",
       "displayDate": "2025/9/2に公開",
       "url": "https://stand.fm/episodes/68b5ba0c1512b216cd1ef8d8",
       "pinned": false
@@ -824,6 +1273,13 @@
       "imageUrl": "https://cdn.stand.fm/images/01K3453QCP5BDRHMT0XEGQAV7Y.jpg",
       "publishedAt": "2025-08-26T09:33:27.796Z",
       "takenAt": null,
+      "camera": "",
+      "lensModel": "",
+      "aperture": "",
+      "exposureTime": "",
+      "iso": "",
+      "focalLength": "",
+      "focalLength35mm": "",
       "displayDate": "2025/8/26に公開",
       "url": "https://stand.fm/episodes/68ad7f534b1f318b6169dbc0",
       "pinned": false
@@ -836,6 +1292,13 @@
       "imageUrl": "https://cdn.stand.fm/coverImages/01K3EC5W338S51P1W2S149QFB0.jpg",
       "publishedAt": "2025-08-24T15:47:39.347Z",
       "takenAt": null,
+      "camera": "",
+      "lensModel": "",
+      "aperture": "",
+      "exposureTime": "",
+      "iso": "",
+      "focalLength": "",
+      "focalLength35mm": "",
       "displayDate": "2025/8/25に公開",
       "url": "https://stand.fm/episodes/68a5fedfc5cf735132f014eb",
       "pinned": false
@@ -848,6 +1311,13 @@
       "imageUrl": "https://i2.ytimg.com/vi/iCFHN7PldVE/hqdefault.jpg",
       "publishedAt": "2025-08-21T11:39:15.000Z",
       "takenAt": null,
+      "camera": "",
+      "lensModel": "",
+      "aperture": "",
+      "exposureTime": "",
+      "iso": "",
+      "focalLength": "",
+      "focalLength35mm": "",
       "displayDate": "2025/8/21に公開",
       "url": "https://www.youtube.com/watch?v=iCFHN7PldVE",
       "pinned": false
@@ -860,68 +1330,91 @@
       "imageUrl": "https://cdn.stand.fm/coverImages/01K344Y7NVCRS3YNDG38R2NVSS.jpg",
       "publishedAt": "2025-08-20T16:28:24.420Z",
       "takenAt": null,
+      "camera": "",
+      "lensModel": "",
+      "aperture": "",
+      "exposureTime": "",
+      "iso": "",
+      "focalLength": "",
+      "focalLength35mm": "",
       "displayDate": "2025/8/21に公開",
       "url": "https://stand.fm/episodes/68a5f795c5cf735132f014af",
       "pinned": false
     },
     {
       "source": "photo",
-      "title": "Photo 1",
+      "title": "写真 4",
       "kind": "",
       "summary": "",
-      "imageUrl": "./assets/photos/R0001443.JPG",
+      "imageUrl": "./assets/photos/R0001623.JPG",
       "publishedAt": null,
-      "takenAt": "2024-09-15T18:06:09.000Z",
-      "displayDate": "2024/9/16に撮影",
-      "url": "./assets/photos/R0001443.JPG",
+      "takenAt": "2024-10-27T12:11:50.000Z",
+      "camera": "RICOH GR IIIx",
+      "lensModel": "",
+      "aperture": "f/2.8",
+      "exposureTime": "1/3秒",
+      "iso": "ISO 1250",
+      "focalLength": "26mm",
+      "focalLength35mm": "40mm相当",
+      "displayDate": "2024/10/27に撮影",
+      "url": "./assets/photos/R0001623.JPG",
       "pinned": false
     },
     {
       "source": "photo",
-      "title": "Photo 2",
-      "kind": "",
-      "summary": "",
-      "imageUrl": "./assets/photos/R0001452.JPG",
-      "publishedAt": null,
-      "takenAt": "2024-09-15T22:18:12.000Z",
-      "displayDate": "2024/9/16に撮影",
-      "url": "./assets/photos/R0001452.JPG",
-      "pinned": false
-    },
-    {
-      "source": "photo",
-      "title": "Photo 3",
+      "title": "写真 3",
       "kind": "",
       "summary": "",
       "imageUrl": "./assets/photos/R0001505.JPG",
       "publishedAt": null,
-      "takenAt": "2024-10-25T10:10:30.000Z",
+      "takenAt": "2024-10-25T01:10:30.000Z",
+      "camera": "RICOH GR IIIx",
+      "lensModel": "",
+      "aperture": "f/2.8",
+      "exposureTime": "1/2000秒",
+      "iso": "ISO 200",
+      "focalLength": "26mm",
+      "focalLength35mm": "40mm相当",
       "displayDate": "2024/10/25に撮影",
       "url": "./assets/photos/R0001505.JPG",
       "pinned": false
     },
     {
       "source": "photo",
-      "title": "Photo 4",
+      "title": "写真 2",
       "kind": "",
       "summary": "",
-      "imageUrl": "./assets/photos/R0001623.JPG",
+      "imageUrl": "./assets/photos/R0001452.JPG",
       "publishedAt": null,
-      "takenAt": "2024-10-27T21:11:50.000Z",
-      "displayDate": "2024/10/28に撮影",
-      "url": "./assets/photos/R0001623.JPG",
+      "takenAt": "2024-09-15T13:18:12.000Z",
+      "camera": "RICOH GR IIIx",
+      "lensModel": "",
+      "aperture": "f/2.8",
+      "exposureTime": "1/15秒",
+      "iso": "ISO 12800",
+      "focalLength": "26mm",
+      "focalLength35mm": "40mm相当",
+      "displayDate": "2024/9/15に撮影",
+      "url": "./assets/photos/R0001452.JPG",
       "pinned": false
     },
     {
       "source": "photo",
-      "title": "Photo 5",
+      "title": "写真 1",
       "kind": "",
       "summary": "",
-      "imageUrl": "./assets/photos/R0001899.JPG",
+      "imageUrl": "./assets/photos/R0001443.JPG",
       "publishedAt": null,
-      "takenAt": "2026-01-18T16:16:53.000Z",
-      "displayDate": "2026/1/19に撮影",
-      "url": "./assets/photos/R0001899.JPG",
+      "takenAt": "2024-09-15T09:06:09.000Z",
+      "camera": "RICOH GR IIIx",
+      "lensModel": "",
+      "aperture": "f/2.8",
+      "exposureTime": "1/40秒",
+      "iso": "ISO 800",
+      "focalLength": "26mm",
+      "focalLength35mm": "40mm相当",
+      "displayDate": "2024/9/15に撮影",
+      "url": "./assets/photos/R0001443.JPG",
       "pinned": false
     }
   ]

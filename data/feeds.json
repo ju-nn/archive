@@ -7,46 +7,51 @@
   "photo": [
     {
       "source": "photo",
-      "title": "Photo 1",
+      "title": "写真 1",
       "summary": "",
       "imageUrl": "./assets/photos/R0001443.JPG",
       "takenAt": "2024-09-15T18:06:09.000Z",
+      "displayDate": "2024/9/15に撮影",
       "url": "./assets/photos/R0001443.JPG",
       "pinned": false
     },
     {
       "source": "photo",
-      "title": "Photo 2",
+      "title": "写真 2",
       "summary": "",
       "imageUrl": "./assets/photos/R0001452.JPG",
       "takenAt": "2024-09-15T22:18:12.000Z",
+      "displayDate": "2024/9/15に撮影",
       "url": "./assets/photos/R0001452.JPG",
       "pinned": false
     },
     {
       "source": "photo",
-      "title": "Photo 3",
+      "title": "写真 3",
       "summary": "",
       "imageUrl": "./assets/photos/R0001505.JPG",
       "takenAt": "2024-10-25T10:10:30.000Z",
+      "displayDate": "2024/10/25に撮影",
       "url": "./assets/photos/R0001505.JPG",
       "pinned": false
     },
     {
       "source": "photo",
-      "title": "Photo 4",
+      "title": "写真 4",
       "summary": "",
       "imageUrl": "./assets/photos/R0001623.JPG",
       "takenAt": "2024-10-27T21:11:50.000Z",
+      "displayDate": "2024/10/27に撮影",
       "url": "./assets/photos/R0001623.JPG",
       "pinned": false
     },
     {
       "source": "photo",
-      "title": "Photo 5",
+      "title": "写真 5",
       "summary": "",
       "imageUrl": "./assets/photos/R0001899.JPG",
       "takenAt": "2026-01-18T16:16:53.000Z",
+      "displayDate": "2026/1/18に撮影",
       "url": "./assets/photos/R0001899.JPG",
       "pinned": false
     }
@@ -67,18 +72,18 @@
     {
       "source": "works",
       "title": "ジユウノコンパス",
-      "summary": "今の自分の資産から、自分の位置を知り、今できる一歩を知るための診断サイトです。",
+      "summary": "収入や支出から、今の立ち位置と次の一歩がわかる診断ができます。",
       "imageUrl": "./assets/work-jiyu-compass.png",
-      "publishedAt": "2026-01-01T00:00:00.000Z",
+      "publishedAt": "2026-05-10T00:00:00.000Z",
       "url": "https://ju-nn.github.io/Jiyu-Compass/",
       "pinned": true
     },
     {
       "source": "works",
       "title": "逃げ道.xlsx",
-      "summary": "会社を辞めたい会社員のための、分岐ノベルゲームです。",
+      "summary": "会社を辞めたい会社員が主人公の分岐ノベルゲームです。",
       "imageUrl": "./assets/work-nigemiti.png",
-      "publishedAt": "2026-01-01T00:00:00.000Z",
+      "publishedAt": "2026-05-04T00:00:00.000Z",
       "url": "https://ju-nn.github.io/nigemiti-xlsx/",
       "pinned": true
     }
