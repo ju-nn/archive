@@ -208,6 +208,7 @@ const normalizeItem = (item) => ({
   kind: item.kind || "",
   summary: item.summary || "",
   imageUrl: item.imageUrl || fallbackImage,
+  fullImageUrl: item.fullImageUrl || item.imageUrl || fallbackImage,
   publishedAt: item.publishedAt || null,
   takenAt: item.takenAt || null,
   camera: item.camera || "",
@@ -440,8 +441,11 @@ const main = async () => {
   const photos = [];
   for (const item of config.photo || []) {
     const exif = await readPhotoExif(resolve(rootDir, item.url || item.imageUrl || ""));
+    const fullImageUrl = item.imageUrl || item.url || fallbackImage;
     photos.push(normalizeItem({
       ...item,
+      imageUrl: (item.imageUrl || item.url || fallbackImage).replace("./assets/photos/", "./assets/photos/thumbs/"),
+      fullImageUrl,
       ...normalizePhotoExif(item.url || item.imageUrl || "", exif)
     }));
   }

@@ -34,7 +34,12 @@ const tocMain = document.querySelector("#toc-main");
 const tabs = [...document.querySelectorAll(".tab")];
 const initialFilter = new URLSearchParams(window.location.search).get("filter");
 const initialView = new URLSearchParams(window.location.search).get("view");
-const PAGE_SIZE = 15;
+const PAGE_SIZE = 12;
+const tocState = {
+  monthSections: [],
+  sideLinks: new Map(),
+  sideYears: new Map(),
+};
 
 const sourceLabels = {
   note: "note",
@@ -204,7 +209,23 @@ const render = () => {
     tile.style.setProperty("--tile-delay", `${Math.min(index, 12) * 40}ms`);
     image.src = item.imageUrl;
     image.alt = item.title;
-    tile.querySelector(".tile-badge").textContent = sourceLabels[item.source] || item.source;
+    const badge = tile.querySelector(".tile-badge");
+    badge.textContent = sourceLabels[item.source] || item.source;
+    badge.setAttribute("role", "button");
+    badge.tabIndex = 0;
+    badge.setAttribute("aria-label", `${badge.textContent}に切り替え`);
+    badge.addEventListener("click", (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+      setFilterAndFocus(item.source);
+    });
+    badge.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        event.stopPropagation();
+        setFilterAndFocus(item.source);
+      }
+    });
     const pin = tile.querySelector(".tile-pin");
     pin.hidden = !item.pinned;
     tile.querySelector(".tile-title").textContent = item.title;
@@ -241,6 +262,9 @@ const renderToc = () => {
 
   tocSide.replaceChildren();
   tocMain.replaceChildren();
+  tocState.monthSections = [];
+  tocState.sideLinks.clear();
+  tocState.sideYears.clear();
 
   const yearGroups = new Map();
   [...grouped.keys()].sort((a, b) => b.localeCompare(a)).forEach((key) => {
@@ -250,17 +274,27 @@ const renderToc = () => {
   });
 
   yearGroups.forEach((monthKeys, year) => {
+    const yearWrap = document.createElement("div");
+    yearWrap.className = "toc-side-year";
+    yearWrap.dataset.year = year;
+
     const yearLink = document.createElement("a");
     yearLink.href = `#toc-year-${year}`;
     yearLink.textContent = `${year}年`;
-    tocSide.append(yearLink);
+    yearLink.className = "toc-side-year-link";
+    yearWrap.append(yearLink);
 
     monthKeys.forEach((key) => {
       const monthLink = document.createElement("a");
       monthLink.href = `#toc-month-${key}`;
       monthLink.textContent = monthLabel(key);
-      tocSide.append(monthLink);
+      monthLink.className = "toc-side-month-link";
+      monthLink.dataset.month = key;
+      tocState.sideLinks.set(key, monthLink);
+      yearWrap.append(monthLink);
     });
+    tocState.sideYears.set(year, yearWrap);
+    tocSide.append(yearWrap);
 
     const group = document.createElement("section");
     group.className = "toc-group";
@@ -275,7 +309,10 @@ const renderToc = () => {
 
     monthKeys.forEach((key) => {
       const monthSection = document.createElement("section");
+      monthSection.className = "toc-month";
       monthSection.id = `toc-month-${key}`;
+      monthSection.dataset.month = key;
+      tocState.monthSections.push(monthSection);
 
       grouped.get(key).forEach((item) => {
         const row = document.createElement("a");
@@ -302,6 +339,8 @@ const renderToc = () => {
     group.append(list);
     tocMain.append(group);
   });
+
+  updateTocActive();
 };
 
 const setView = (view) => {
@@ -309,9 +348,30 @@ const setView = (view) => {
   tocPanel.hidden = !showToc;
   tocToggle.setAttribute("aria-expanded", String(showToc));
   document.body.classList.toggle("is-toc-view", showToc);
-  if (showToc) {
-    tocPanel.scrollIntoView({ behavior: "smooth", block: "start" });
+  if (showToc) requestAnimationFrame(updateTocActive);
+};
+
+const updateTocActive = () => {
+  if (tocPanel.hidden || tocState.monthSections.length === 0) return;
+  const probeY = window.innerHeight * 0.35;
+  let currentMonth = tocState.monthSections[0]?.dataset.month || "";
+
+  for (const section of tocState.monthSections) {
+    const rect = section.getBoundingClientRect();
+    if (rect.top <= probeY) {
+      currentMonth = section.dataset.month || currentMonth;
+    }
   }
+
+  tocState.sideLinks.forEach((link, month) => {
+    link.classList.toggle("is-active", month === currentMonth);
+  });
+
+  tocState.sideYears.forEach((yearWrap) => {
+    const links = [...yearWrap.querySelectorAll(".toc-side-month-link")];
+    const isActiveYear = links.some((link) => link.classList.contains("is-active"));
+    yearWrap.classList.toggle("is-active", isActiveYear);
+  });
 };
 
 const setItems = (items) => {
@@ -332,6 +392,12 @@ const setFilter = (filter) => {
     tab.setAttribute("aria-selected", String(isActive));
   });
   render();
+};
+
+const setFilterAndFocus = (filter) => {
+  if (!filter) return;
+  setFilter(filter);
+  scrollToFeedTop();
 };
 
 const setSearchQuery = (query) => {
@@ -478,6 +544,9 @@ tocToggle.addEventListener("click", () => {
 });
 
 tocClose.addEventListener("click", () => setView("feed"));
+
+window.addEventListener("scroll", updateTocActive, { passive: true });
+window.addEventListener("resize", updateTocActive);
 
 setItems(parseInitialData());
 if (tabs.some((tab) => tab.dataset.filter === initialFilter)) {

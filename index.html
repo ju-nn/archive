@@ -4,19 +4,19 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="jun / じゅん の制作物と発信を、制作物・note・stand.fm・YouTubeのタイルでまとめた個人サイト。" />
+  <meta name="description" content="jun / じゅん の制作物と発信を、制作物 / note / stand.fm / YouTube のタイルでまとめた個人サイト。" />
   <link rel="canonical" href="https://ju-nn.github.io/archive/" />
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="ja_JP" />
   <meta property="og:site_name" content="jun | じゅん" />
   <meta property="og:url" content="https://ju-nn.github.io/archive/" />
   <meta property="og:title" content="jun | じゅん" />
-  <meta property="og:description" content="jun / じゅん の制作物と発信を、制作物・note・stand.fm・YouTubeのタイルでまとめた個人サイト。" />
+  <meta property="og:description" content="jun / じゅん の制作物と発信を、制作物 / note / stand.fm / YouTube のタイルでまとめた個人サイト。" />
   <meta property="og:image" content="https://ju-nn.github.io/archive/assets/icon.png" />
   <meta property="og:image:alt" content="junのアイコン" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="jun | じゅん" />
-  <meta name="twitter:description" content="jun / じゅん の制作物と発信を、制作物・note・stand.fm・YouTubeのタイルでまとめた個人サイト。" />
+  <meta name="twitter:description" content="jun / じゅん の制作物と発信を、制作物 / note / stand.fm / YouTube のタイルでまとめた個人サイト。" />
   <meta name="twitter:image" content="https://ju-nn.github.io/archive/assets/icon.png" />
   <link rel="icon" href="./assets/icon.png" type="image/png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -31,7 +31,13 @@
     <header class="site-header" aria-labelledby="page-title">
       <button class="brand" type="button" id="brand-home" aria-label="junのホーム">
         <img class="brand-icon" src="./assets/icon.png" alt="" />
-        <span id="page-title">jun</span>
+        <span class="brand-copy">
+          <span id="page-title">jun</span>
+          <span class="brand-bubble" aria-hidden="true">
+            <span class="brand-bubble-text">働きすぎない暮らしを目指しながら、生活に寄り添うものを作っています。</span>
+            <span class="brand-bubble-tail" aria-hidden="true"></span>
+          </span>
+        </span>
       </button>
 
       <div class="header-links" aria-label="外部リンク">
@@ -101,9 +107,12 @@
       <div class="toc-panel-header">
         <div>
           <p class="toc-kicker">目次</p>
-          <h2>投稿の一覧</h2>
         </div>
-        <button class="toc-close" type="button" id="toc-close" aria-label="目次を閉じる">閉じる</button>
+        <button class="toc-close" type="button" id="toc-close" aria-label="目次を閉じる">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M6.2 5.1 18.9 17.8l-1.1 1.1L5.1 6.2l1.1-1.1Zm12.7 1.1L6.2 18.9l-1.1-1.1L17.8 5l1.1 1.1Z" />
+          </svg>
+        </button>
       </div>
       <div class="toc-layout">
         <nav class="toc-side" id="toc-side" aria-label="年月の索引"></nav>
@@ -115,9 +124,12 @@
       <img class="profile-icon" src="./assets/icon.png" alt="" />
       <div class="profile-copy">
         <h2>jun</h2>
-        <p>会社員の生活、身軽に暮らすこと、逃げ道を持つこと。考えたこと、作ったもの、日々の記録をまとめています。</p>
+        <p>身軽に暮らすこと、働きすぎないこと、逃げ道を持つこと。写真や制作物、note / stand.fm / YouTube を通して、日々の記録を残しています。</p>
       </div>
-      <a class="profile-button" href="https://x.com/reil_st" target="_blank" rel="noopener noreferrer">Xを見る</a>
+      <div class="profile-actions">
+        <a class="profile-button" href="https://x.com/reil_st" target="_blank" rel="noopener noreferrer">フォローする</a>
+        <a class="profile-button profile-button--primary" href="https://note.com/reilst/n/ne4a5d7e3114b" target="_blank" rel="noopener noreferrer">支援する</a>
+      </div>
     </section>
   </main>
 
@@ -125,7 +137,7 @@
     <div class="footer-inner">
       <div>
         <p class="footer-brand">jun archive</p>
-        <p class="footer-copy">制作物・note・stand.fm・YouTubeをまとめた個人アーカイブ</p>
+        <p class="footer-copy">制作物 / note / stand.fm / YouTube をまとめた個人アーカイブ</p>
       </div>
       <nav class="footer-links" aria-label="フッターリンク">
         <a href="https://note.com/reilst" target="_blank" rel="noopener noreferrer">note</a>
@@ -179,7 +191,7 @@
 
   <script id="initial-feed-data" type="application/json">
 {
-  "generatedAt": "2026-05-10T01:48:22.843Z",
+  "generatedAt": "2026-05-10T03:10:44.901Z",
   "errors": [],
   "items": [
     {
@@ -188,6 +200,7 @@
       "kind": "",
       "summary": "収入や支出から、今の立ち位置と次の一歩がわかる診断ができます。",
       "imageUrl": "./assets/work-jiyu-compass.png",
+      "fullImageUrl": "./assets/work-jiyu-compass.png",
       "publishedAt": "2026-05-10T00:00:00.000Z",
       "takenAt": null,
       "camera": "",
@@ -207,6 +220,7 @@
       "kind": "",
       "summary": "会社を辞めたい会社員が主人公の分岐ノベルゲームです。",
       "imageUrl": "./assets/work-nigemiti.png",
+      "fullImageUrl": "./assets/work-nigemiti.png",
       "publishedAt": "2026-05-04T00:00:00.000Z",
       "takenAt": null,
       "camera": "",
@@ -226,6 +240,7 @@
       "kind": "",
       "summary": "どうも、じゅん（ https://x.com/reil_st ）です。 ノベルゲームを作りました。 続きをみる",
       "imageUrl": "https://assets.st-note.com/production/uploads/images/272780386/rectangle_large_type_2_e7a33b53f94e1896d49ad09494d1541a.png?width=800",
+      "fullImageUrl": "https://assets.st-note.com/production/uploads/images/272780386/rectangle_large_type_2_e7a33b53f94e1896d49ad09494d1541a.png?width=800",
       "publishedAt": "2026-05-03T15:48:32.000Z",
       "takenAt": null,
       "camera": "",
@@ -245,6 +260,7 @@
       "kind": "",
       "summary": "どうも、じゅん（ https://x.com/reil_st ）です。 今日は「弱さを前提にした設計」について話そうと思う。 続きをみる",
       "imageUrl": "https://assets.st-note.com/production/uploads/images/272701056/rectangle_large_type_2_3f11019f37338f0182aa2e8f6da84932.png?width=800",
+      "fullImageUrl": "https://assets.st-note.com/production/uploads/images/272701056/rectangle_large_type_2_3f11019f37338f0182aa2e8f6da84932.png?width=800",
       "publishedAt": "2026-05-03T11:00:41.000Z",
       "takenAt": null,
       "camera": "",
@@ -264,6 +280,7 @@
       "kind": "",
       "summary": "どうも、じゅん（ https://x.com/reil_st ）です。 今日は「自由と自己管理」について話そうと思う。 続きをみる",
       "imageUrl": "https://assets.st-note.com/production/uploads/images/272485214/rectangle_large_type_2_39295fc0fcdd3485397bf4eb004affbc.png?width=800",
+      "fullImageUrl": "https://assets.st-note.com/production/uploads/images/272485214/rectangle_large_type_2_39295fc0fcdd3485397bf4eb004affbc.png?width=800",
       "publishedAt": "2026-05-02T15:43:30.000Z",
       "takenAt": null,
       "camera": "",
@@ -283,6 +300,7 @@
       "kind": "",
       "summary": "どうも、じゅん（ https://x.com/reil_st ）です。 今日は「インデックス投資を始める前に怖かったこと」について話そうと思う。 続きをみる",
       "imageUrl": "https://assets.st-note.com/production/uploads/images/272483921/rectangle_large_type_2_93bec84112a5cc9d7eb3b26b3f6b67fd.png?width=800",
+      "fullImageUrl": "https://assets.st-note.com/production/uploads/images/272483921/rectangle_large_type_2_93bec84112a5cc9d7eb3b26b3f6b67fd.png?width=800",
       "publishedAt": "2026-05-02T15:37:26.000Z",
       "takenAt": null,
       "camera": "",
@@ -302,6 +320,7 @@
       "kind": "",
       "summary": "どうも、じゅん（ https://x.com/reil_st ）です。 今日は「早く自由になるか、後で自由になるか」について話そうと思う。 続きをみる",
       "imageUrl": "https://assets.st-note.com/production/uploads/images/272478973/rectangle_large_type_2_ac7bbc7b5a09d682d0e712decf7243d5.png?width=800",
+      "fullImageUrl": "https://assets.st-note.com/production/uploads/images/272478973/rectangle_large_type_2_ac7bbc7b5a09d682d0e712decf7243d5.png?width=800",
       "publishedAt": "2026-05-02T15:09:57.000Z",
       "takenAt": null,
       "camera": "",
@@ -321,6 +340,7 @@
       "kind": "",
       "summary": "どうも、じゅん（ https://x.com/reil_st ）です。 今日も築40年の賃貸で、定位置になった膝の上の猫🐈を撫でながら、ぼんやりと考えていた。 続きをみる",
       "imageUrl": "https://assets.st-note.com/production/uploads/images/271738826/rectangle_large_type_2_7e7f0e19b132a360ae7cac90b25f081e.png?width=800",
+      "fullImageUrl": "https://assets.st-note.com/production/uploads/images/271738826/rectangle_large_type_2_7e7f0e19b132a360ae7cac90b25f081e.png?width=800",
       "publishedAt": "2026-04-30T07:33:27.000Z",
       "takenAt": null,
       "camera": "",
@@ -340,6 +360,7 @@
       "kind": "",
       "summary": "どうも、じゅん（ https://x.com/reil_st ）です。 今日は、家を買うか、一生賃貸でいくかという話について話そうと思う。 続きをみる",
       "imageUrl": "https://assets.st-note.com/production/uploads/images/271736705/rectangle_large_type_2_ccc13a9d64e018bdfd3b8c579c70d92f.png?width=800",
+      "fullImageUrl": "https://assets.st-note.com/production/uploads/images/271736705/rectangle_large_type_2_ccc13a9d64e018bdfd3b8c579c70d92f.png?width=800",
       "publishedAt": "2026-04-30T07:27:30.000Z",
       "takenAt": null,
       "camera": "",
@@ -359,6 +380,7 @@
       "kind": "",
       "summary": "どうも、じゅん（ https://x.com/reil_st ）です。 最近、SNSで「資産格差」なんて言葉をよく目にする。 「20代で1000万貯めていないのは努力不足だ」とか、そういうマッ...",
       "imageUrl": "https://assets.st-note.com/production/uploads/images/271442556/rectangle_large_type_2_41ff76cd15bfd27a0a82f91b80b09572.png?width=800",
+      "fullImageUrl": "https://assets.st-note.com/production/uploads/images/271442556/rectangle_large_type_2_41ff76cd15bfd27a0a82f91b80b09572.png?width=800",
       "publishedAt": "2026-04-29T09:07:38.000Z",
       "takenAt": null,
       "camera": "",
@@ -378,6 +400,7 @@
       "kind": "",
       "summary": "自分を底辺だと感じる理由と、2900万という余白。 1993年生まれ。ストレートで大学卒業後、会社員になり、2年後、傷病手当をもらいながら2年ニート。 また会社員に戻り、現在33歳の2026年...",
       "imageUrl": "https://assets.st-note.com/production/uploads/images/270604599/rectangle_large_type_2_20d5827f8e9449c3e7f823f16ea8f033.png?width=800",
+      "fullImageUrl": "https://assets.st-note.com/production/uploads/images/270604599/rectangle_large_type_2_20d5827f8e9449c3e7f823f16ea8f033.png?width=800",
       "publishedAt": "2026-04-26T09:45:08.000Z",
       "takenAt": null,
       "camera": "",
@@ -397,6 +420,7 @@
       "kind": "",
       "summary": "在宅ワークをしていると、1日のほとんどを同じ部屋🛋️で過ごすことになる。 PCとモニターとキーボードに囲まれたデスク。 その横に、静かに葉を伸ばしている観葉植物たちがいる。 正直、世話はそこ...",
       "imageUrl": "https://assets.st-note.com/production/uploads/images/270574441/rectangle_large_type_2_89c1d62e4b635e0d9e8439b90c53b198.png?width=800",
+      "fullImageUrl": "https://assets.st-note.com/production/uploads/images/270574441/rectangle_large_type_2_89c1d62e4b635e0d9e8439b90c53b198.png?width=800",
       "publishedAt": "2026-04-26T08:13:29.000Z",
       "takenAt": null,
       "camera": "",
@@ -416,6 +440,7 @@
       "kind": "",
       "summary": "ある日ふと、思った。 自分ってコーヒー飲みすぎじゃないか。 朝1杯。 昼1杯。 15時くらいにもう1杯。 夜もなんとなくもう1杯。 数えてみたら、毎日4杯くらい飲んでいる。 さすがにちょっと気...",
       "imageUrl": "https://assets.st-note.com/production/uploads/images/269257968/rectangle_large_type_2_2fc4498bd0b42b69058f453dbff4e609.png?width=800",
+      "fullImageUrl": "https://assets.st-note.com/production/uploads/images/269257968/rectangle_large_type_2_2fc4498bd0b42b69058f453dbff4e609.png?width=800",
       "publishedAt": "2026-04-21T12:57:36.000Z",
       "takenAt": null,
       "camera": "",
@@ -435,6 +460,7 @@
       "kind": "",
       "summary": "stand.fmで話した記録です。",
       "imageUrl": "https://cdn.stand.fm/coverImages/01KPDXJE6TE8JKXMKXAPMTJ56V.jpg",
+      "fullImageUrl": "https://cdn.stand.fm/coverImages/01KPDXJE6TE8JKXMKXAPMTJ56V.jpg",
       "publishedAt": "2026-04-17T14:30:54.068Z",
       "takenAt": null,
       "camera": "",
@@ -454,6 +480,7 @@
       "kind": "",
       "summary": "stand.fmで話した記録です。",
       "imageUrl": "https://cdn.stand.fm/coverImages/01KP390SVQCV13R9PE75BMEFQZ.jpg",
+      "fullImageUrl": "https://cdn.stand.fm/coverImages/01KP390SVQCV13R9PE75BMEFQZ.jpg",
       "publishedAt": "2026-04-13T11:19:20.689Z",
       "takenAt": null,
       "camera": "",
@@ -473,6 +500,7 @@
       "kind": "",
       "summary": "stand.fmで話した記録です。",
       "imageUrl": "https://cdn.stand.fm/images/01K3453QCP5BDRHMT0XEGQAV7Y.jpg",
+      "fullImageUrl": "https://cdn.stand.fm/images/01K3453QCP5BDRHMT0XEGQAV7Y.jpg",
       "publishedAt": "2026-04-08T11:11:32.609Z",
       "takenAt": null,
       "camera": "",
@@ -492,6 +520,7 @@
       "kind": "",
       "summary": "どうも、じゅん（ https://x.com/reil_st ）です。 今日は、電話まわりの苦手意識について話そうと思う。 続きをみる",
       "imageUrl": "https://assets.st-note.com/production/uploads/images/262921483/rectangle_large_type_2_8dc9698f4006e61b40096c4712fe99d2.png?width=800",
+      "fullImageUrl": "https://assets.st-note.com/production/uploads/images/262921483/rectangle_large_type_2_8dc9698f4006e61b40096c4712fe99d2.png?width=800",
       "publishedAt": "2026-03-28T16:13:47.000Z",
       "takenAt": null,
       "camera": "",
@@ -511,6 +540,7 @@
       "kind": "",
       "summary": "stand.fmで話した記録です。",
       "imageUrl": "https://cdn.stand.fm/coverImages/01KGSF9F55EDK40CE7N7TYYQTE.jpg",
+      "fullImageUrl": "https://cdn.stand.fm/coverImages/01KGSF9F55EDK40CE7N7TYYQTE.jpg",
       "publishedAt": "2026-02-06T12:37:33.369Z",
       "takenAt": null,
       "camera": "",
@@ -530,6 +560,7 @@
       "kind": "",
       "summary": "#iphone #保護猫 #猫 #猫のいる暮らし",
       "imageUrl": "https://i3.ytimg.com/vi/JdPgHbzEeII/hqdefault.jpg",
+      "fullImageUrl": "https://i3.ytimg.com/vi/JdPgHbzEeII/hqdefault.jpg",
       "publishedAt": "2026-01-29T03:00:20.000Z",
       "takenAt": null,
       "camera": "",
@@ -549,6 +580,7 @@
       "kind": "",
       "summary": "",
       "imageUrl": "https://i2.ytimg.com/vi/eAh2v2Dwbcw/hqdefault.jpg",
+      "fullImageUrl": "https://i2.ytimg.com/vi/eAh2v2Dwbcw/hqdefault.jpg",
       "publishedAt": "2026-01-28T21:00:47.000Z",
       "takenAt": null,
       "camera": "",
@@ -568,6 +600,7 @@
       "kind": "",
       "summary": "",
       "imageUrl": "https://i1.ytimg.com/vi/l9l-YOvna0c/hqdefault.jpg",
+      "fullImageUrl": "https://i1.ytimg.com/vi/l9l-YOvna0c/hqdefault.jpg",
       "publishedAt": "2026-01-28T16:11:44.000Z",
       "takenAt": null,
       "camera": "",
@@ -587,6 +620,7 @@
       "kind": "",
       "summary": "夜を歩きながら、考えごと。 帰ると、姉妹猫がいる。 #vlog #猫 #猫のいる暮らし #保護猫 #姉妹猫 #在宅エンジニア #iPhone #OsmoPocket3",
       "imageUrl": "https://i4.ytimg.com/vi/_CxtsM8qS5U/hqdefault.jpg",
+      "fullImageUrl": "https://i4.ytimg.com/vi/_CxtsM8qS5U/hqdefault.jpg",
       "publishedAt": "2026-01-21T17:37:49.000Z",
       "takenAt": null,
       "camera": "",
@@ -606,6 +640,7 @@
       "kind": "",
       "summary": "",
       "imageUrl": "https://i1.ytimg.com/vi/lrDSvgnkfSs/hqdefault.jpg",
+      "fullImageUrl": "https://i1.ytimg.com/vi/lrDSvgnkfSs/hqdefault.jpg",
       "publishedAt": "2026-01-18T10:09:09.000Z",
       "takenAt": null,
       "camera": "",
@@ -624,7 +659,8 @@
       "title": "写真 5",
       "kind": "",
       "summary": "",
-      "imageUrl": "./assets/photos/R0001899.JPG",
+      "imageUrl": "./assets/photos/thumbs/R0001899.JPG",
+      "fullImageUrl": "./assets/photos/R0001899.JPG",
       "publishedAt": null,
       "takenAt": "2026-01-18T07:16:53.000Z",
       "camera": "RICOH GR IIIx",
@@ -644,6 +680,7 @@
       "kind": "",
       "summary": "stand.fmで話した記録です。",
       "imageUrl": "https://cdn.stand.fm/coverImages/01KDQV8JC295FFK1KH5TAT87G5.jpg",
+      "fullImageUrl": "https://cdn.stand.fm/coverImages/01KDQV8JC295FFK1KH5TAT87G5.jpg",
       "publishedAt": "2025-12-30T14:41:26.463Z",
       "takenAt": null,
       "camera": "",
@@ -663,6 +700,7 @@
       "kind": "",
       "summary": "stand.fmで話した記録です。",
       "imageUrl": "https://cdn.stand.fm/coverImages/01KD61TXH83KKBSDW5WW7Y21E5.jpg",
+      "fullImageUrl": "https://cdn.stand.fm/coverImages/01KD61TXH83KKBSDW5WW7Y21E5.jpg",
       "publishedAt": "2025-12-23T16:50:02.702Z",
       "takenAt": null,
       "camera": "",
@@ -682,6 +720,7 @@
       "kind": "",
       "summary": "stand.fmで話した記録です。",
       "imageUrl": "https://cdn.stand.fm/coverImages/01KB5EPCSYXK9Q69BM78YK2HE8.jpg",
+      "fullImageUrl": "https://cdn.stand.fm/coverImages/01KB5EPCSYXK9Q69BM78YK2HE8.jpg",
       "publishedAt": "2025-11-28T14:44:26.669Z",
       "takenAt": null,
       "camera": "",
@@ -701,6 +740,7 @@
       "kind": "",
       "summary": "stand.fmで話した記録です。",
       "imageUrl": "https://cdn.stand.fm/coverImages/01KARDT3DN5B7YJZBVA3HZY2Z8.jpg",
+      "fullImageUrl": "https://cdn.stand.fm/coverImages/01KARDT3DN5B7YJZBVA3HZY2Z8.jpg",
       "publishedAt": "2025-11-23T13:18:13.132Z",
       "takenAt": null,
       "camera": "",
@@ -720,6 +760,7 @@
       "kind": "",
       "summary": "stand.fmで話した記録です。",
       "imageUrl": "https://cdn.stand.fm/coverImages/01KA9BAWDMBF9HSMMQ5Q0BW4NX.jpg",
+      "fullImageUrl": "https://cdn.stand.fm/coverImages/01KA9BAWDMBF9HSMMQ5Q0BW4NX.jpg",
       "publishedAt": "2025-11-20T17:00:01.306Z",
       "takenAt": null,
       "camera": "",
@@ -739,6 +780,7 @@
       "kind": "",
       "summary": "",
       "imageUrl": "https://i3.ytimg.com/vi/jYpM93SiPYo/hqdefault.jpg",
+      "fullImageUrl": "https://i3.ytimg.com/vi/jYpM93SiPYo/hqdefault.jpg",
       "publishedAt": "2025-11-13T09:39:22.000Z",
       "takenAt": null,
       "camera": "",
@@ -758,6 +800,7 @@
       "kind": "",
       "summary": "",
       "imageUrl": "https://i3.ytimg.com/vi/BB8zMzYI2qs/hqdefault.jpg",
+      "fullImageUrl": "https://i3.ytimg.com/vi/BB8zMzYI2qs/hqdefault.jpg",
       "publishedAt": "2025-11-13T09:37:25.000Z",
       "takenAt": null,
       "camera": "",
@@ -777,6 +820,7 @@
       "kind": "",
       "summary": "",
       "imageUrl": "https://i3.ytimg.com/vi/60kAPmIbOXU/hqdefault.jpg",
+      "fullImageUrl": "https://i3.ytimg.com/vi/60kAPmIbOXU/hqdefault.jpg",
       "publishedAt": "2025-11-13T07:53:08.000Z",
       "takenAt": null,
       "camera": "",
@@ -796,6 +840,7 @@
       "kind": "",
       "summary": "stand.fmで話した記録です。",
       "imageUrl": "https://cdn.stand.fm/coverImages/01K9ADBTBGZAM05V38M2JKHCMM.jpg",
+      "fullImageUrl": "https://cdn.stand.fm/coverImages/01K9ADBTBGZAM05V38M2JKHCMM.jpg",
       "publishedAt": "2025-11-05T16:25:55.270Z",
       "takenAt": null,
       "camera": "",
@@ -815,6 +860,7 @@
       "kind": "",
       "summary": "stand.fmで話した記録です。",
       "imageUrl": "https://cdn.stand.fm/coverImages/01K8GMTBVDJ7SN4E3TB7K7NYVA.jpg",
+      "fullImageUrl": "https://cdn.stand.fm/coverImages/01K8GMTBVDJ7SN4E3TB7K7NYVA.jpg",
       "publishedAt": "2025-10-27T14:14:02.342Z",
       "takenAt": null,
       "camera": "",
@@ -834,6 +880,7 @@
       "kind": "",
       "summary": "stand.fmで話した記録です。",
       "imageUrl": "https://cdn.stand.fm/coverImages/01K8GKC8Z8Z59H14PFWS8DKT8E.jpg",
+      "fullImageUrl": "https://cdn.stand.fm/coverImages/01K8GKC8Z8Z59H14PFWS8DKT8E.jpg",
       "publishedAt": "2025-10-26T15:50:08.327Z",
       "takenAt": null,
       "camera": "",
@@ -853,6 +900,7 @@
       "kind": "",
       "summary": "",
       "imageUrl": "https://i2.ytimg.com/vi/9f4oxsEYEEM/hqdefault.jpg",
+      "fullImageUrl": "https://i2.ytimg.com/vi/9f4oxsEYEEM/hqdefault.jpg",
       "publishedAt": "2025-10-26T13:46:04.000Z",
       "takenAt": null,
       "camera": "",
@@ -872,6 +920,7 @@
       "kind": "",
       "summary": "stand.fmで話した記録です。",
       "imageUrl": "https://cdn.stand.fm/coverImages/01K83PJTWHS8MYJC8R7YGV5KNS.jpg",
+      "fullImageUrl": "https://cdn.stand.fm/coverImages/01K83PJTWHS8MYJC8R7YGV5KNS.jpg",
       "publishedAt": "2025-10-23T14:35:01.348Z",
       "takenAt": null,
       "camera": "",
@@ -891,6 +940,7 @@
       "kind": "",
       "summary": "stand.fmで話した記録です。",
       "imageUrl": "https://cdn.stand.fm/images/01K3453QCP5BDRHMT0XEGQAV7Y.jpg",
+      "fullImageUrl": "https://cdn.stand.fm/images/01K3453QCP5BDRHMT0XEGQAV7Y.jpg",
       "publishedAt": "2025-10-21T14:43:36.929Z",
       "takenAt": null,
       "camera": "",
@@ -910,6 +960,7 @@
       "kind": "",
       "summary": "stand.fmで話した記録です。",
       "imageUrl": "https://cdn.stand.fm/coverImages/01K74W85VZ8NG44MGN0DB05VMM.jpg",
+      "fullImageUrl": "https://cdn.stand.fm/coverImages/01K74W85VZ8NG44MGN0DB05VMM.jpg",
       "publishedAt": "2025-10-09T16:18:58.195Z",
       "takenAt": null,
       "camera": "",
@@ -929,6 +980,7 @@
       "kind": "",
       "summary": "stand.fmで話した記録です。",
       "imageUrl": "https://cdn.stand.fm/coverImages/01K72B0F6Z3MFEY2KCHZQS9BMS.jpg",
+      "fullImageUrl": "https://cdn.stand.fm/coverImages/01K72B0F6Z3MFEY2KCHZQS9BMS.jpg",
       "publishedAt": "2025-10-08T16:38:49.280Z",
       "takenAt": null,
       "camera": "",
@@ -948,6 +1000,7 @@
       "kind": "",
       "summary": "stand.fmで話した記録です。",
       "imageUrl": "https://cdn.stand.fm/images/01K3453QCP5BDRHMT0XEGQAV7Y.jpg",
+      "fullImageUrl": "https://cdn.stand.fm/images/01K3453QCP5BDRHMT0XEGQAV7Y.jpg",
       "publishedAt": "2025-10-07T09:26:49.336Z",
       "takenAt": null,
       "camera": "",
@@ -967,6 +1020,7 @@
       "kind": "",
       "summary": "stand.fmで話した記録です。",
       "imageUrl": "https://cdn.stand.fm/coverImages/01K6DSTE6E8SMP10KHW93BPD8R.jpg",
+      "fullImageUrl": "https://cdn.stand.fm/coverImages/01K6DSTE6E8SMP10KHW93BPD8R.jpg",
       "publishedAt": "2025-09-30T17:13:55.720Z",
       "takenAt": null,
       "camera": "",
@@ -986,6 +1040,7 @@
       "kind": "",
       "summary": "stand.fmで話した記録です。",
       "imageUrl": "https://cdn.stand.fm/coverImages/01K6B5C4SXRS8EAD0QZWENS4N0.jpg",
+      "fullImageUrl": "https://cdn.stand.fm/coverImages/01K6B5C4SXRS8EAD0QZWENS4N0.jpg",
       "publishedAt": "2025-09-30T11:09:01.630Z",
       "takenAt": null,
       "camera": "",
@@ -1005,6 +1060,7 @@
       "kind": "",
       "summary": "stand.fmで話した記録です。",
       "imageUrl": "https://cdn.stand.fm/coverImages/01K6AW3SNYDCW3EB67VAGV3NNF.jpg",
+      "fullImageUrl": "https://cdn.stand.fm/coverImages/01K6AW3SNYDCW3EB67VAGV3NNF.jpg",
       "publishedAt": "2025-09-29T13:56:08.883Z",
       "takenAt": null,
       "camera": "",
@@ -1024,6 +1080,7 @@
       "kind": "",
       "summary": "stand.fmで話した記録です。",
       "imageUrl": "https://cdn.stand.fm/coverImages/01K60H81PV5D703TM2DQE9H8AS.jpg",
+      "fullImageUrl": "https://cdn.stand.fm/coverImages/01K60H81PV5D703TM2DQE9H8AS.jpg",
       "publishedAt": "2025-09-26T14:00:06.417Z",
       "takenAt": null,
       "camera": "",
@@ -1043,6 +1100,7 @@
       "kind": "",
       "summary": "stand.fmで話した記録です。",
       "imageUrl": "https://cdn.stand.fm/images/01K3453QCP5BDRHMT0XEGQAV7Y.jpg",
+      "fullImageUrl": "https://cdn.stand.fm/images/01K3453QCP5BDRHMT0XEGQAV7Y.jpg",
       "publishedAt": "2025-09-25T12:52:29.072Z",
       "takenAt": null,
       "camera": "",
@@ -1062,6 +1120,7 @@
       "kind": "",
       "summary": "stand.fmで話した記録です。",
       "imageUrl": "https://cdn.stand.fm/coverImages/01K5VEV893KMS77JECH44W4TEV.jpg",
+      "fullImageUrl": "https://cdn.stand.fm/coverImages/01K5VEV893KMS77JECH44W4TEV.jpg",
       "publishedAt": "2025-09-23T14:15:25.458Z",
       "takenAt": null,
       "camera": "",
@@ -1081,6 +1140,7 @@
       "kind": "",
       "summary": "stand.fmで話した記録です。",
       "imageUrl": "https://cdn.stand.fm/coverImages/01K5VE79K1BC2X9N470BF1F5G6.jpg",
+      "fullImageUrl": "https://cdn.stand.fm/coverImages/01K5VE79K1BC2X9N470BF1F5G6.jpg",
       "publishedAt": "2025-09-23T14:04:55.779Z",
       "takenAt": null,
       "camera": "",
@@ -1100,6 +1160,7 @@
       "kind": "",
       "summary": "stand.fmで話した記録です。",
       "imageUrl": "https://cdn.stand.fm/coverImages/01K59FB3FH2K2S1TQX46TE9RCY.jpg",
+      "fullImageUrl": "https://cdn.stand.fm/coverImages/01K59FB3FH2K2S1TQX46TE9RCY.jpg",
       "publishedAt": "2025-09-16T14:38:01.800Z",
       "takenAt": null,
       "camera": "",
@@ -1119,6 +1180,7 @@
       "kind": "",
       "summary": "stand.fmで話した記録です。",
       "imageUrl": "https://cdn.stand.fm/coverImages/01K56TTKE3M430GXE5FJ9R25WQ.jpg",
+      "fullImageUrl": "https://cdn.stand.fm/coverImages/01K56TTKE3M430GXE5FJ9R25WQ.jpg",
       "publishedAt": "2025-09-15T14:00:55.457Z",
       "takenAt": null,
       "camera": "",
@@ -1138,6 +1200,7 @@
       "kind": "",
       "summary": "stand.fmで話した記録です。",
       "imageUrl": "https://cdn.stand.fm/coverImages/01K56SQFG42RNP8E5QH9D11T3F.jpg",
+      "fullImageUrl": "https://cdn.stand.fm/coverImages/01K56SQFG42RNP8E5QH9D11T3F.jpg",
       "publishedAt": "2025-09-15T13:41:44.677Z",
       "takenAt": null,
       "camera": "",
@@ -1157,6 +1220,7 @@
       "kind": "",
       "summary": "stand.fmで話した記録です。",
       "imageUrl": "https://cdn.stand.fm/images/01K3453QCP5BDRHMT0XEGQAV7Y.jpg",
+      "fullImageUrl": "https://cdn.stand.fm/images/01K3453QCP5BDRHMT0XEGQAV7Y.jpg",
       "publishedAt": "2025-09-10T11:30:03.262Z",
       "takenAt": null,
       "camera": "",
@@ -1176,6 +1240,7 @@
       "kind": "",
       "summary": "stand.fmで話した記録です。",
       "imageUrl": "https://cdn.stand.fm/images/01K3453QCP5BDRHMT0XEGQAV7Y.jpg",
+      "fullImageUrl": "https://cdn.stand.fm/images/01K3453QCP5BDRHMT0XEGQAV7Y.jpg",
       "publishedAt": "2025-09-09T22:14:01.440Z",
       "takenAt": null,
       "camera": "",
@@ -1195,6 +1260,7 @@
       "kind": "",
       "summary": "stand.fmで話した記録です。",
       "imageUrl": "https://cdn.stand.fm/images/01K3453QCP5BDRHMT0XEGQAV7Y.jpg",
+      "fullImageUrl": "https://cdn.stand.fm/images/01K3453QCP5BDRHMT0XEGQAV7Y.jpg",
       "publishedAt": "2025-09-08T22:15:03.025Z",
       "takenAt": null,
       "camera": "",
@@ -1214,6 +1280,7 @@
       "kind": "",
       "summary": "stand.fmで話した記録です。",
       "imageUrl": "https://cdn.stand.fm/images/01K3453QCP5BDRHMT0XEGQAV7Y.jpg",
+      "fullImageUrl": "https://cdn.stand.fm/images/01K3453QCP5BDRHMT0XEGQAV7Y.jpg",
       "publishedAt": "2025-09-02T03:00:05.853Z",
       "takenAt": null,
       "camera": "",
@@ -1233,6 +1300,7 @@
       "kind": "",
       "summary": "stand.fmで話した記録です。",
       "imageUrl": "https://cdn.stand.fm/images/01K3453QCP5BDRHMT0XEGQAV7Y.jpg",
+      "fullImageUrl": "https://cdn.stand.fm/images/01K3453QCP5BDRHMT0XEGQAV7Y.jpg",
       "publishedAt": "2025-09-01T15:45:09.808Z",
       "takenAt": null,
       "camera": "",
@@ -1252,6 +1320,7 @@
       "kind": "",
       "summary": "stand.fmで話した記録です。",
       "imageUrl": "https://cdn.stand.fm/images/01K3453QCP5BDRHMT0XEGQAV7Y.jpg",
+      "fullImageUrl": "https://cdn.stand.fm/images/01K3453QCP5BDRHMT0XEGQAV7Y.jpg",
       "publishedAt": "2025-09-01T15:22:05.090Z",
       "takenAt": null,
       "camera": "",
@@ -1271,6 +1340,7 @@
       "kind": "",
       "summary": "stand.fmで話した記録です。",
       "imageUrl": "https://cdn.stand.fm/images/01K3453QCP5BDRHMT0XEGQAV7Y.jpg",
+      "fullImageUrl": "https://cdn.stand.fm/images/01K3453QCP5BDRHMT0XEGQAV7Y.jpg",
       "publishedAt": "2025-08-26T09:33:27.796Z",
       "takenAt": null,
       "camera": "",
@@ -1290,6 +1360,7 @@
       "kind": "",
       "summary": "stand.fmで話した記録です。",
       "imageUrl": "https://cdn.stand.fm/coverImages/01K3EC5W338S51P1W2S149QFB0.jpg",
+      "fullImageUrl": "https://cdn.stand.fm/coverImages/01K3EC5W338S51P1W2S149QFB0.jpg",
       "publishedAt": "2025-08-24T15:47:39.347Z",
       "takenAt": null,
       "camera": "",
@@ -1309,6 +1380,7 @@
       "kind": "",
       "summary": "ハードルをさげてなんとか継続したい 【プロフィール】 ・ゆるミニマリスト ・節約投資でセミリタイアを目指してる ・保護猫2匹と暮らしてる ・趣味はゲームと植物とカメラ 【機材】 ・Osmo P...",
       "imageUrl": "https://i2.ytimg.com/vi/iCFHN7PldVE/hqdefault.jpg",
+      "fullImageUrl": "https://i2.ytimg.com/vi/iCFHN7PldVE/hqdefault.jpg",
       "publishedAt": "2025-08-21T11:39:15.000Z",
       "takenAt": null,
       "camera": "",
@@ -1328,6 +1400,7 @@
       "kind": "",
       "summary": "stand.fmで話した記録です。",
       "imageUrl": "https://cdn.stand.fm/coverImages/01K344Y7NVCRS3YNDG38R2NVSS.jpg",
+      "fullImageUrl": "https://cdn.stand.fm/coverImages/01K344Y7NVCRS3YNDG38R2NVSS.jpg",
       "publishedAt": "2025-08-20T16:28:24.420Z",
       "takenAt": null,
       "camera": "",
@@ -1346,7 +1419,8 @@
       "title": "写真 4",
       "kind": "",
       "summary": "",
-      "imageUrl": "./assets/photos/R0001623.JPG",
+      "imageUrl": "./assets/photos/thumbs/R0001623.JPG",
+      "fullImageUrl": "./assets/photos/R0001623.JPG",
       "publishedAt": null,
       "takenAt": "2024-10-27T12:11:50.000Z",
       "camera": "RICOH GR IIIx",
@@ -1365,7 +1439,8 @@
       "title": "写真 3",
       "kind": "",
       "summary": "",
-      "imageUrl": "./assets/photos/R0001505.JPG",
+      "imageUrl": "./assets/photos/thumbs/R0001505.JPG",
+      "fullImageUrl": "./assets/photos/R0001505.JPG",
       "publishedAt": null,
       "takenAt": "2024-10-25T01:10:30.000Z",
       "camera": "RICOH GR IIIx",
@@ -1384,7 +1459,8 @@
       "title": "写真 2",
       "kind": "",
       "summary": "",
-      "imageUrl": "./assets/photos/R0001452.JPG",
+      "imageUrl": "./assets/photos/thumbs/R0001452.JPG",
+      "fullImageUrl": "./assets/photos/R0001452.JPG",
       "publishedAt": null,
       "takenAt": "2024-09-15T13:18:12.000Z",
       "camera": "RICOH GR IIIx",
@@ -1403,7 +1479,8 @@
       "title": "写真 1",
       "kind": "",
       "summary": "",
-      "imageUrl": "./assets/photos/R0001443.JPG",
+      "imageUrl": "./assets/photos/thumbs/R0001443.JPG",
+      "fullImageUrl": "./assets/photos/R0001443.JPG",
       "publishedAt": null,
       "takenAt": "2024-09-15T09:06:09.000Z",
       "camera": "RICOH GR IIIx",
