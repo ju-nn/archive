@@ -31,6 +31,8 @@ const tocClose = document.querySelector("#toc-close");
 const tocPanel = document.querySelector("#toc-panel");
 const tocSide = document.querySelector("#toc-side");
 const tocMain = document.querySelector("#toc-main");
+const gearList = document.querySelector("#gear-list");
+const gearItemTemplate = document.querySelector("#gear-item-template");
 const tabs = [...document.querySelectorAll(".tab")];
 const initialFilter = new URLSearchParams(window.location.search).get("filter");
 const initialView = new URLSearchParams(window.location.search).get("view");
@@ -47,6 +49,17 @@ const sourceLabels = {
   works: "制作物",
   youtube: "YouTube",
   photo: "写真",
+};
+
+const fallbackGearCatalog = {
+  associateTag: "rlst-22",
+  featuredIds: ["ricoh-gr-iiix", "codex-app", "stan-rice-cooker", "sp500"],
+  items: [
+    { id: "ricoh-gr-iiix", name: "RICOH GR IIIx", note: "小さくて、日常を持ち歩けるカメラ。", amazonSearch: "RICOH GR IIIx", featured: true },
+    { id: "codex-app", name: "Codex App", note: "作りたいものを、形にするための相棒。", featured: true },
+    { id: "stan-rice-cooker", name: "STAN. 炊飯器", note: "自炊のハードルを下げてくれる生活インフラ。", amazonSearch: "STAN 炊飯器", featured: true },
+    { id: "sp500", name: "S&P500", note: "働きすぎない未来のための、静かな逃げ道。", featured: true },
+  ],
 };
 
 const displayDate = (value) => {
@@ -149,6 +162,7 @@ const syncSearch = () => {
   searchPanel.hidden = !state.searchOpen;
   searchPanel.setAttribute("aria-hidden", String(!state.searchOpen));
   searchToggle.setAttribute("aria-expanded", String(state.searchOpen));
+  searchToggle.classList.toggle("is-open", state.searchOpen);
   searchHint.textContent = state.searchQuery ? `「${state.searchQuery}」で検索中` : "";
 };
 
@@ -343,10 +357,89 @@ const renderToc = () => {
   updateTocActive();
 };
 
+const amazonUrlForGearItem = (item, associateTag) => {
+  if (item.amazonUrl) {
+    const url = new URL(item.amazonUrl, window.location.href);
+    if (url.hostname.includes("amazon.")) {
+      url.searchParams.set("tag", associateTag);
+    }
+    return url.href;
+  }
+  if (!item.amazonSearch) return "";
+  return `https://www.amazon.co.jp/s?k=${encodeURIComponent(item.amazonSearch)}&tag=${associateTag}`;
+};
+
+const renderGear = (catalog) => {
+  if (!gearList) return;
+
+  const itemsByCategory = new Map();
+  (catalog.items || []).forEach((item) => {
+    if (!itemsByCategory.has(item.category)) itemsByCategory.set(item.category, []);
+    itemsByCategory.get(item.category).push(item);
+  });
+
+  const categories = catalog.categories || [];
+  const nodes = categories.map((category, index) => {
+    const items = itemsByCategory.get(category.id) || [];
+    const featured = items.find((item) => item.featured) || items[0];
+    const card = document.createElement("article");
+    card.className = "gear-category-card gear-category-card--compact";
+    card.style.setProperty("--gear-delay", `${index * 40}ms`);
+    card.dataset.tone = category.tone || "neutral";
+
+    const link = document.createElement("a");
+    link.className = "gear-category-link";
+    link.href = "./gear.html";
+
+    const symbol = document.createElement("span");
+    symbol.className = "gear-category-symbol";
+    symbol.textContent = category.symbol || "・";
+
+    const copy = document.createElement("span");
+    copy.className = "gear-category-copy";
+
+    const title = document.createElement("span");
+    title.className = "gear-category-title";
+    title.textContent = category.title;
+
+    const summary = document.createElement("span");
+    summary.className = "gear-category-summary";
+    summary.textContent = category.summary || "";
+
+    copy.append(title, summary);
+
+    const preview = document.createElement("span");
+    preview.className = "gear-category-preview";
+    preview.textContent = featured ? featured.name : "一覧を見る";
+
+    const count = document.createElement("span");
+    count.className = "gear-category-count";
+    count.textContent = `${items.length}件`;
+
+    link.append(symbol, copy, preview, count);
+    card.append(link);
+    return card;
+  });
+
+  gearList.replaceChildren(...nodes);
+};
+
+const loadGear = async () => {
+  try {
+    const response = await fetch(new URL("./data/gear.json", window.location.href), { cache: "no-store" });
+    if (!response.ok) throw new Error(`Failed to load gear.json: ${response.status}`);
+    renderGear(await response.json());
+  } catch (error) {
+    console.error(error);
+    renderGear(fallbackGearCatalog);
+  }
+};
+
 const setView = (view) => {
   const showToc = view === "toc";
   tocPanel.hidden = !showToc;
   tocToggle.setAttribute("aria-expanded", String(showToc));
+  tocToggle.classList.toggle("is-open", showToc);
   document.body.classList.toggle("is-toc-view", showToc);
   if (showToc) requestAnimationFrame(updateTocActive);
 };
@@ -555,6 +648,7 @@ if (tabs.some((tab) => tab.dataset.filter === initialFilter)) {
 loadItems();
 syncSearch();
 renderToc();
+loadGear();
 if (initialView === "toc") {
   setView("toc");
 }

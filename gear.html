@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="jun / じゅん が使っている、暮らしと制作を支えるものやサービスをカテゴリごとにまとめたページ。" />
+  <link rel="canonical" href="https://ju-nn.github.io/archive/gear.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="ja_JP" />
+  <meta property="og:site_name" content="jun | じゅん" />
+  <meta property="og:url" content="https://ju-nn.github.io/archive/gear.html" />
+  <meta property="og:title" content="使っているもの | jun" />
+  <meta property="og:description" content="働きすぎない暮らしのために、使っているものとサービスをカテゴリごとにまとめたページ。" />
+  <meta property="og:image" content="https://ju-nn.github.io/archive/assets/icon.png" />
+  <meta property="og:image:alt" content="junのアイコン" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="使っているもの | jun" />
+  <meta name="twitter:description" content="働きすぎない暮らしのために、使っているものとサービスをカテゴリごとにまとめたページ。" />
+  <meta name="twitter:image" content="https://ju-nn.github.io/archive/assets/icon.png" />
+  <link rel="icon" href="./assets/icon.png" type="image/png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet" />
+  <title>使っているもの | jun</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+
+<body>
+  <a class="gear-back-link" href="https://ju-nn.github.io/archive/" aria-label="アーカイブへ戻る" data-tooltip="アーカイブへ戻る">
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path d="M14.25 6.75a1 1 0 0 1 0 1.41L10.41 12l3.84 3.84a1 1 0 1 1-1.41 1.42l-4.54-4.54a1 1 0 0 1 0-1.42l4.54-4.54a1 1 0 0 1 1.41 0Z" />
+    </svg>
+  </a>
+
+  <main class="page gear-page">
+    <header class="site-header" aria-labelledby="page-title">
+      <a class="brand" href="https://ju-nn.github.io/archive/" aria-label="junのホーム">
+        <img class="brand-icon" src="./assets/icon.png" alt="" />
+        <span class="brand-copy">
+          <span id="page-title">jun</span>
+          <span class="brand-bubble" aria-hidden="true">
+            <span class="brand-bubble-text">働きすぎない暮らしを目指しながら、生活に寄り添うものを作っています。</span>
+            <span class="brand-bubble-tail" aria-hidden="true"></span>
+          </span>
+        </span>
+      </a>
+
+    </header>
+
+    <section class="gear-hero" aria-labelledby="gear-page-title">
+      <h1 id="gear-page-title">持ちもの</h1>
+      <p id="gear-hero-text">働きすぎない暮らしのために、使っているもの。</p>
+    </section>
+
+    <nav class="gear-category-nav" id="gear-category-nav" aria-label="カテゴリ"></nav>
+
+    <div class="gear-detail" id="gear-detail" aria-live="polite"></div>
+    <p class="gear-disclosure gear-page-disclosure">このページには、Amazonアソシエイトなどのアフィリエイトリンクを含む場合があります。</p>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div>
+        <p class="footer-brand">jun archive</p>
+        <p class="footer-copy">制作物 / note / stand.fm / YouTube をまとめた個人アーカイブ</p>
+      </div>
+      <nav class="footer-links" aria-label="フッターリンク">
+        <a href="https://note.com/reilst" target="_blank" rel="noopener noreferrer">note</a>
+        <a href="https://stand.fm/channels/64a22cefb352effb9d4d0999" target="_blank" rel="noopener noreferrer">stand.fm</a>
+        <a href="https://www.youtube.com/@junnn-vlog" target="_blank" rel="noopener noreferrer">YouTube</a>
+        <a href="https://x.com/reil_st" target="_blank" rel="noopener noreferrer">X</a>
+      </nav>
+    </div>
+  </footer>
+
+  <template id="gear-detail-section-template">
+    <section class="gear-detail-section">
+      <div class="gear-detail-anchor" aria-hidden="true"></div>
+      <div class="gear-detail-heading">
+        <div>
+          <h2></h2>
+          <p class="gear-detail-summary"></p>
+        </div>
+        <span class="gear-detail-count"></span>
+      </div>
+      <div class="gear-detail-grid"></div>
+    </section>
+  </template>
+
+  <template id="gear-category-template">
+    <article class="gear-category-card">
+      <a class="gear-category-link" href="#">
+        <span class="gear-category-symbol"></span>
+        <span class="gear-category-copy">
+          <span class="gear-category-title"></span>
+          <span class="gear-category-summary"></span>
+        </span>
+        <span class="gear-category-preview"></span>
+        <span class="gear-category-count"></span>
+      </a>
+    </article>
+  </template>
+
+  <template id="gear-detail-card-template">
+    <article class="gear-detail-card">
+      <div class="gear-detail-card-copy">
+        <span class="gear-kind"></span>
+        <h3></h3>
+        <p></p>
+      </div>
+      <a class="gear-link" target="_blank" rel="noopener noreferrer sponsored" aria-label="Amazonで見る" data-tooltip="Amazonで見る">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path d="M12.2 6.1c2.5 0 4.2 1.4 4.2 3.7v5.3c0 .8.1 1.5.3 2.1h-2.2c-.1-.4-.2-.8-.2-1.2-.8.9-2 1.4-3.4 1.4-2.1 0-3.5-1.2-3.5-3 0-2 1.5-3.1 4.2-3.4l2.5-.3v-.7c0-1.2-.8-1.9-2.1-1.9-1.2 0-2.1.5-2.7 1.5L7.7 8.5c1-1.6 2.6-2.4 4.5-2.4Zm1.9 6.3-2.1.3c-1.5.2-2.2.7-2.2 1.6 0 .8.7 1.3 1.7 1.3 1.5 0 2.6-1 2.6-2.3v-.9Z" />
+          <path d="M6.4 18.9c1.7 1 3.6 1.5 5.7 1.5 2.2 0 4.1-.5 5.7-1.5" fill="none" stroke="currentColor" stroke-width="1.45" stroke-linecap="round" />
+        </svg>
+      </a>
+    </article>
+  </template>
+
+  <script src="./gear.js"></script>
+</body>
+
+</html>

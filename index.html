@@ -41,34 +41,34 @@
       </button>
 
       <div class="header-links" aria-label="外部リンク">
-        <button class="toc-launcher" type="button" id="toc-toggle" aria-label="目次を開く" aria-expanded="false" aria-controls="toc-panel">
+        <button class="toc-launcher" type="button" id="toc-toggle" aria-label="目次を開く" aria-expanded="false" aria-controls="toc-panel" data-tooltip="目次を開く">
           <span class="toc-launcher-icon" aria-hidden="true">
             <svg viewBox="0 0 24 24">
               <path d="M7 4h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Zm0 2v12h10V6H7Zm2 2h6v1.5H9V8Zm0 3h6v1.5H9V11Zm0 3h4v1.5H9V14Z" />
             </svg>
           </span>
         </button>
-        <a class="icon-link" href="https://note.com/reilst" target="_blank" rel="noopener noreferrer" aria-label="note">
+        <a class="icon-link" href="https://note.com/reilst" target="_blank" rel="noopener noreferrer" aria-label="note" data-tooltip="noteへ移動">
           <svg viewBox="0 0 24 24" aria-hidden="true">
             <path d="M6.2 4.6h8.3l3.3 3.5v11.3H6.2V4.6Zm7.6 1.7v2.6h2.5l-2.5-2.6ZM8 6.2v11.6h8.1V10.5h-4V6.2H8Zm1.6 7h4.9v1.4H9.6v-1.4Zm0-3h3.6v1.4H9.6v-1.4Z" />
           </svg>
         </a>
-        <a class="icon-link" href="https://stand.fm/channels/64a22cefb352effb9d4d0999" target="_blank" rel="noopener noreferrer" aria-label="stand.fm">
+        <a class="icon-link" href="https://stand.fm/channels/64a22cefb352effb9d4d0999" target="_blank" rel="noopener noreferrer" aria-label="stand.fm" data-tooltip="stand.fmへ移動">
           <svg viewBox="0 0 24 24" aria-hidden="true">
             <path d="M11.2 3h1.6v18h-1.6V3Zm-4 4h1.6v10H7.2V7Zm8 0h1.6v10h-1.6V7Zm-12 4h1.6v4H3.2v-4Zm16 0h1.6v4h-1.6v-4Z" />
           </svg>
         </a>
-        <a class="icon-link" href="https://www.youtube.com/@junnn-vlog" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+        <a class="icon-link" href="https://www.youtube.com/@junnn-vlog" target="_blank" rel="noopener noreferrer" aria-label="YouTube" data-tooltip="YouTubeへ移動">
           <svg viewBox="0 0 24 24" aria-hidden="true">
             <path d="M21.8 8.2c-.2-1-1-1.8-2-2-1.8-.4-7.8-.4-7.8-.4s-6 0-7.8.4c-1 .2-1.8 1-2 2-.4 1.8-.4 3.8-.4 3.8s0 2 .4 3.8c.2 1 1 1.8 2 2 1.8.4 7.8.4 7.8.4s6 0 7.8-.4c1-.2 1.8-1 2-2 .4-1.8.4-3.8.4-3.8s0-2-.4-3.8ZM10 15.1V8.9l5.4 3.1L10 15.1Z" />
           </svg>
         </a>
-        <a class="icon-link" href="https://x.com/reil_st" target="_blank" rel="noopener noreferrer" aria-label="X">
+        <a class="icon-link" href="https://x.com/reil_st" target="_blank" rel="noopener noreferrer" aria-label="X" data-tooltip="Xへ移動">
           <svg viewBox="0 0 24 24" aria-hidden="true">
             <path d="M14.2 10.6 21.2 3h-1.7l-6.1 6.6L8.6 3H3l7.4 10.1L3 21h1.7l6.5-7 5.2 7H22l-7.8-10.4Zm-2.3 2.5-.8-1.1L5.2 4.3h2.6l4.8 6.4.8 1.1 6.2 8h-2.6l-5.1-6.7Z" />
           </svg>
         </a>
-        <button class="icon-link icon-button" type="button" id="search-toggle" aria-label="検索" aria-expanded="false" aria-controls="search-panel">
+        <button class="icon-link icon-button" type="button" id="search-toggle" aria-label="検索" aria-expanded="false" aria-controls="search-panel" data-tooltip="サイト内検索">
           <svg viewBox="0 0 24 24" aria-hidden="true">
             <path d="M10.5 4.5a6 6 0 1 1 0 12 6 6 0 0 1 0-12Zm0 2a4 4 0 1 0 0 8 4 4 0 0 0 0-8Zm4.9 8.3 3.5 3.5-1.4 1.4-3.5-3.5 1.4-1.4Z" />
           </svg>
@@ -120,6 +120,33 @@
       </div>
     </section>
 
+    <section class="gear-section" aria-labelledby="gear-title">
+      <div class="gear-header">
+        <div class="gear-header-copy">
+          <h2 id="gear-title">使っているもの</h2>
+          <p>働きすぎない暮らしのために、使っているものとサービスをまとめています。</p>
+        </div>
+        <a class="gear-eye-link" href="https://ju-nn.github.io/archive/gear.html" aria-label="使っているもの一覧を見る" data-tooltip="使っているもの一覧を見る">
+          <svg viewBox="0 0 64 32" aria-hidden="true" focusable="false">
+            <path class="gear-eye-bridge" d="M27.5 16h9" />
+            <circle class="gear-eye-lens" cx="18" cy="16" r="12" />
+            <circle class="gear-eye-lens" cx="46" cy="16" r="12" />
+            <g class="gear-eye-pupils">
+              <circle class="gear-eye-pupil" cx="18" cy="16" r="5.4" />
+              <circle class="gear-eye-pupil" cx="46" cy="16" r="5.4" />
+              <circle class="gear-eye-highlight" cx="15.5" cy="13.4" r="2" />
+              <circle class="gear-eye-highlight" cx="43.5" cy="13.4" r="2" />
+            </g>
+          </svg>
+          <span class="gear-eye-text">一覧を見る</span>
+        </a>
+      </div>
+      <div class="gear-category-nav" id="gear-list"></div>
+      <div class="gear-footer">
+        <p class="gear-disclosure">今後、Amazonアソシエイトなどのアフィリエイトリンクを含む場合があります。</p>
+      </div>
+    </section>
+
     <section class="profile-card" aria-label="プロフィール">
       <img class="profile-icon" src="./assets/icon.png" alt="" />
       <div class="profile-copy">
@@ -127,8 +154,18 @@
         <p>身軽に暮らすこと、働きすぎないこと、逃げ道を持つこと。写真や制作物、note / stand.fm / YouTube を通して、日々の記録を残しています。</p>
       </div>
       <div class="profile-actions">
-        <a class="profile-button" href="https://x.com/reil_st" target="_blank" rel="noopener noreferrer">フォローする</a>
-        <a class="profile-button profile-button--primary" href="https://note.com/reilst/n/ne4a5d7e3114b" target="_blank" rel="noopener noreferrer">支援する</a>
+        <a class="profile-button profile-button--follow" href="https://x.com/reil_st" target="_blank" rel="noopener noreferrer">
+          <svg class="profile-button-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M14.2 10.6 21.2 3h-1.7l-6.1 6.6L8.6 3H3l7.4 10.1L3 21h1.7l6.5-7 5.2 7H22l-7.8-10.4Zm-2.3 2.5-.8-1.1L5.2 4.3h2.6l4.8 6.4.8 1.1 6.2 8h-2.6l-5.1-6.7Z" />
+          </svg>
+          <span>フォローする</span>
+        </a>
+        <a class="profile-button profile-button--primary profile-button--support" href="https://note.com/reilst/n/ne4a5d7e3114b" target="_blank" rel="noopener noreferrer">
+          <svg class="profile-button-icon profile-button-heart" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M12 20.2 10.9 19C6.9 15.4 4.3 13 4.3 9.9c0-2.5 1.9-4.4 4.4-4.4 1.4 0 2.8.7 3.6 1.8.8-1.1 2.2-1.8 3.6-1.8 2.5 0 4.4 1.9 4.4 4.4 0 3.1-2.6 5.5-6.6 9.1L12 20.2Z" />
+          </svg>
+          <span>支援する</span>
+        </a>
       </div>
     </section>
   </main>
@@ -169,6 +206,19 @@
       </span>
       <span class="tile-date"></span>
     </figure>
+  </template>
+
+  <template id="gear-item-template">
+    <article class="gear-item">
+      <h3></h3>
+      <p></p>
+      <a class="gear-link" target="_blank" rel="noopener noreferrer sponsored" aria-label="Amazonで見る" data-tooltip="Amazonで見る">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path d="M12.2 6.1c2.5 0 4.2 1.4 4.2 3.7v5.3c0 .8.1 1.5.3 2.1h-2.2c-.1-.4-.2-.8-.2-1.2-.8.9-2 1.4-3.4 1.4-2.1 0-3.5-1.2-3.5-3 0-2 1.5-3.1 4.2-3.4l2.5-.3v-.7c0-1.2-.8-1.9-2.1-1.9-1.2 0-2.1.5-2.7 1.5L7.7 8.5c1-1.6 2.6-2.4 4.5-2.4Zm1.9 6.3-2.1.3c-1.5.2-2.2.7-2.2 1.6 0 .8.7 1.3 1.7 1.3 1.5 0 2.6-1 2.6-2.3v-.9Z" />
+          <path d="M6.4 18.9c1.7 1 3.6 1.5 5.7 1.5 2.2 0 4.1-.5 5.7-1.5" fill="none" stroke="currentColor" stroke-width="1.45" stroke-linecap="round" />
+        </svg>
+      </a>
+    </article>
   </template>
 
   <dialog class="photo-modal" id="photo-modal" aria-label="写真ビューア" hidden>

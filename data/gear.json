@@ -1,0 +1,275 @@
+{
+  "associateTag": "rlst-22",
+  "featuredIds": [
+    "ricoh-gr-iiix",
+    "codex-app",
+    "stan-rice-cooker",
+    "sp500"
+  ],
+  "categories": [
+    {
+      "id": "life",
+      "title": "暮らしの道具",
+      "summary": "日々の負担を減らして、生活の土台を整えるもの。",
+      "symbol": "暮",
+      "tone": "sun"
+    },
+    {
+      "id": "making",
+      "title": "制作の道具",
+      "summary": "思いつきをその日のうちに形にするための相棒。",
+      "symbol": "作",
+      "tone": "sky"
+    },
+    {
+      "id": "photo-vlog",
+      "title": "写真・Vlogの道具",
+      "summary": "歩きながらの記録を少しだけ映像っぽくするもの。",
+      "symbol": "撮",
+      "tone": "mint"
+    },
+    {
+      "id": "plants-living",
+      "title": "植物・生きものの道具",
+      "summary": "部屋に小さな外気と、世話のリズムを置くためのもの。",
+      "symbol": "植",
+      "tone": "leaf"
+    },
+    {
+      "id": "wear",
+      "title": "服・身につけるもの",
+      "summary": "迷う時間を減らして、気分を整えるもの。",
+      "symbol": "着",
+      "tone": "sand"
+    },
+    {
+      "id": "money-exit",
+      "title": "お金・逃げ道の道具",
+      "summary": "働きすぎない未来のために、静かに備えるもの。",
+      "symbol": "逃",
+      "tone": "rose"
+    }
+  ],
+  "items": [
+    {
+      "id": "muji-bed",
+      "category": "life",
+      "kind": "product",
+      "name": "無印のベッド",
+      "note": "よく眠るための、暮らしの土台。",
+      "amazonSearch": "無印 ベッド"
+    },
+    {
+      "id": "stan-rice-cooker",
+      "category": "life",
+      "kind": "product",
+      "name": "STAN. 炊飯器",
+      "note": "自炊のハードルを下げてくれる生活インフラ。",
+      "amazonSearch": "STAN 炊飯器",
+      "featured": true
+    },
+    {
+      "id": "dishwasher",
+      "category": "life",
+      "kind": "product",
+      "name": "食洗機",
+      "note": "毎日の小さな消耗を、そっと肩代わりしてくれる道具。",
+      "amazonSearch": "食洗機"
+    },
+    {
+      "id": "kitchen-tools",
+      "category": "life",
+      "kind": "product",
+      "name": "キッチン道具",
+      "note": "外食に逃げなくてもいい日を増やす、地味に強い装備。",
+      "amazonSearch": "キッチン道具"
+    },
+    {
+      "id": "windows-pc",
+      "category": "making",
+      "kind": "product",
+      "name": "Windows PC",
+      "note": "考えたことを、その日のうちに形にするための作業場。",
+      "amazonSearch": "Windows PC"
+    },
+    {
+      "id": "codex-app",
+      "category": "making",
+      "kind": "service",
+      "name": "Codex App",
+      "note": "作りたいものを、形にするための相棒。",
+      "featured": true
+    },
+    {
+      "id": "github-pages",
+      "category": "making",
+      "kind": "service",
+      "name": "GitHub Pages",
+      "note": "小さな制作物を、自分の場所に置いておくための棚。"
+    },
+    {
+      "id": "google-ai-studio",
+      "category": "making",
+      "kind": "service",
+      "name": "Google AI Studio",
+      "note": "思いつきを試作に変えるための、実験室みたいな場所。"
+    },
+    {
+      "id": "manus",
+      "category": "making",
+      "kind": "service",
+      "name": "Manus",
+      "note": "調べものや制作の速度を上げる、もうひとつの手。"
+    },
+    {
+      "id": "iphone",
+      "category": "photo-vlog",
+      "kind": "product",
+      "name": "iPhone",
+      "note": "いちばん身近なカメラで、日々の断片を拾う。",
+      "amazonSearch": "iPhone"
+    },
+    {
+      "id": "osmo-pocket-3",
+      "category": "photo-vlog",
+      "kind": "product",
+      "name": "Osmo Pocket 3",
+      "note": "歩きながらの記録を、少し映画っぽくしてくれる小さなカメラ。",
+      "amazonSearch": "Osmo Pocket 3"
+    },
+    {
+      "id": "ricoh-gr-iiix",
+      "category": "photo-vlog",
+      "kind": "product",
+      "name": "RICOH GR IIIx",
+      "note": "小さくて、日常を持ち歩けるカメラ。",
+      "amazonSearch": "RICOH GR IIIx",
+      "featured": true
+    },
+    {
+      "id": "fujifilm-x-e4",
+      "category": "photo-vlog",
+      "kind": "product",
+      "name": "FUJIFILM X-E4",
+      "note": "撮る時間そのものを楽しみたくなるカメラ。",
+      "amazonSearch": "FUJIFILM X-E4"
+    },
+    {
+      "id": "dazz-cam",
+      "category": "photo-vlog",
+      "kind": "service",
+      "name": "Dazz Cam",
+      "note": "スマホ写真に、少しだけ記憶っぽい質感を足すアプリ。"
+    },
+    {
+      "id": "plant-pot",
+      "category": "plants-living",
+      "kind": "product",
+      "name": "植木鉢",
+      "note": "部屋に少しだけ外の気配を置くための器。",
+      "amazonSearch": "植木鉢"
+    },
+    {
+      "id": "spray-bottle",
+      "category": "plants-living",
+      "kind": "product",
+      "name": "霧吹き",
+      "note": "植物の世話を、朝の小さな儀式にしてくれる。",
+      "amazonSearch": "霧吹き"
+    },
+    {
+      "id": "pruning-shears",
+      "category": "plants-living",
+      "kind": "product",
+      "name": "剪定ばさみ",
+      "note": "育ちすぎたものを整えて、また伸びる余白をつくる。",
+      "amazonSearch": "剪定ばさみ"
+    },
+    {
+      "id": "cat-goods",
+      "category": "plants-living",
+      "kind": "product",
+      "name": "猫用品",
+      "note": "人間だけの家じゃないことを思い出させてくれる生活道具。",
+      "amazonSearch": "猫用品"
+    },
+    {
+      "id": "tortoise-goods",
+      "category": "plants-living",
+      "kind": "product",
+      "name": "リクガメ用品",
+      "note": "ゆっくりした時間のための、温度と居場所の装備。",
+      "amazonSearch": "リクガメ用品"
+    },
+    {
+      "id": "batoner-knit",
+      "category": "wear",
+      "kind": "product",
+      "name": "BATONER のニット",
+      "note": "長く着たい、静かな頼もしさのある服。",
+      "amazonSearch": "BATONER ニット"
+    },
+    {
+      "id": "marni-shirt-coat",
+      "category": "wear",
+      "kind": "product",
+      "name": "MARNI のシャツコート",
+      "note": "少ない服でも気分を変えてくれる一枚。",
+      "amazonSearch": "MARNI シャツコート"
+    },
+    {
+      "id": "graphpaper-pants",
+      "category": "wear",
+      "kind": "product",
+      "name": "Graphpaper のパンツ",
+      "note": "考えすぎずに手に取れる、暮らしの制服。",
+      "amazonSearch": "Graphpaper パンツ"
+    },
+    {
+      "id": "black-clothes",
+      "category": "wear",
+      "kind": "product",
+      "name": "黒い服",
+      "note": "迷う時間を減らしてくれる、いちばん簡単な選択肢。",
+      "amazonSearch": "黒い服"
+    },
+    {
+      "id": "airpods",
+      "category": "wear",
+      "kind": "product",
+      "name": "AirPods",
+      "note": "移動時間や散歩を、自分の部屋みたいにする道具。",
+      "amazonSearch": "AirPods"
+    },
+    {
+      "id": "sp500",
+      "category": "money-exit",
+      "kind": "service",
+      "name": "S&P500",
+      "note": "働きすぎない未来のための、静かな逃げ道。",
+      "featured": true
+    },
+    {
+      "id": "household-tool",
+      "category": "money-exit",
+      "kind": "service",
+      "name": "家計管理ツール",
+      "note": "不安を数字に変えて、扱える大きさにする道具。"
+    },
+    {
+      "id": "household-book",
+      "category": "money-exit",
+      "kind": "product",
+      "name": "家計簿",
+      "note": "どこに自由が残っているかを見るための地図。",
+      "amazonSearch": "家計簿"
+    },
+    {
+      "id": "semi-retire-simulator",
+      "category": "money-exit",
+      "kind": "service",
+      "name": "セミリタイア資金シミュレーター",
+      "note": "逃げ道までの距離を、ぼんやりではなく測るためのもの。"
+    }
+  ]
+}
