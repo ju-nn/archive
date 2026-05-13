@@ -57,7 +57,23 @@
       "kind": "product",
       "name": "無印のベッド",
       "note": "よく眠るための、暮らしの土台。",
-      "amazonSearch": "無印 ベッド"
+      "amazonSearch": "無印良品 もたれかかれる木製ベッド オーク材突板 シングル"
+    },
+    {
+      "id": "panasonic-microwave",
+      "category": "life",
+      "kind": "product",
+      "name": "パナソニック 電子レンジ",
+      "note": "フラットテーブルで、日々のあたためをさっと片づける。",
+      "amazonSearch": "パナソニック 電子レンジ 22L 大容量 スタンダードモデル スピードあたため フラットテーブル 22L 新生活 ヘルツフリー ホワイト NE-FL1C-W"
+    },
+    {
+      "id": "nitori-washer-dryer",
+      "category": "life",
+      "kind": "product",
+      "name": "ニトリのドラム式洗濯乾燥機",
+      "note": "洗濯と乾燥をまとめて、暮らしの手間を軽くする。",
+      "amazonSearch": "ニトリ ドラム式洗濯乾燥機"
     },
     {
       "id": "stan-rice-cooker",
@@ -75,6 +91,14 @@
       "name": "食洗機",
       "note": "毎日の小さな消耗を、そっと肩代わりしてくれる道具。",
       "amazonSearch": "食洗機"
+    },
+    {
+      "id": "drip-oneger",
+      "category": "life",
+      "kind": "product",
+      "name": "drip oneger",
+      "note": "服を整えて、着る時間の気分をそろえるハンガー。",
+      "amazonSearch": "drip oneger"
     },
     {
       "id": "kitchen-tools",
@@ -108,6 +132,15 @@
       "note": "小さな制作物を、自分の場所に置いておくための棚。"
     },
     {
+      "id": "github-account",
+      "category": "making",
+      "kind": "service",
+      "name": "GitHub",
+      "note": "自分のコードや制作物を置いている場所。",
+      "url": "https://github.com/ju-nn",
+      "linkLabel": "GitHubを見る"
+    },
+    {
       "id": "google-ai-studio",
       "category": "making",
       "kind": "service",
@@ -125,9 +158,9 @@
       "id": "iphone",
       "category": "photo-vlog",
       "kind": "product",
-      "name": "iPhone",
+      "name": "iPhone 15 Pro",
       "note": "いちばん身近なカメラで、日々の断片を拾う。",
-      "amazonSearch": "iPhone"
+      "amazonSearch": "iPhone 15 Pro"
     },
     {
       "id": "osmo-pocket-3",
@@ -160,6 +193,15 @@
       "kind": "service",
       "name": "Dazz Cam",
       "note": "スマホ写真に、少しだけ記憶っぽい質感を足すアプリ。"
+    },
+    {
+      "id": "blackmagic-camera",
+      "category": "photo-vlog",
+      "kind": "service",
+      "name": "Blackmagic Camera",
+      "note": "動画はこれで撮る、見た目も使い心地も好きな撮影アプリ。",
+      "url": "https://www.blackmagicdesign.com/jp/products/blackmagiccamera",
+      "linkLabel": "公式を見る"
     },
     {
       "id": "plant-pot",
@@ -242,27 +284,28 @@
       "amazonSearch": "AirPods"
     },
     {
+      "id": "on-cloudmonster",
+      "category": "wear",
+      "kind": "product",
+      "name": "On Cloudmonster",
+      "note": "歩く時間を、そのまま気分よく連れていくスニーカー。",
+      "amazonSearch": "On Cloudmonster"
+    },
+    {
+      "id": "apple-watch",
+      "category": "wear",
+      "kind": "product",
+      "name": "Apple Watch",
+      "note": "ほぼアラーム用になっているけれど、生活のリズムを整えてくれる。",
+      "amazonSearch": "Apple Watch"
+    },
+    {
       "id": "sp500",
       "category": "money-exit",
       "kind": "service",
       "name": "S&P500",
       "note": "働きすぎない未来のための、静かな逃げ道。",
       "featured": true
-    },
-    {
-      "id": "household-tool",
-      "category": "money-exit",
-      "kind": "service",
-      "name": "家計管理ツール",
-      "note": "不安を数字に変えて、扱える大きさにする道具。"
-    },
-    {
-      "id": "household-book",
-      "category": "money-exit",
-      "kind": "product",
-      "name": "家計簿",
-      "note": "どこに自由が残っているかを見るための地図。",
-      "amazonSearch": "家計簿"
     },
     {
       "id": "semi-retire-simulator",

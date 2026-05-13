@@ -33,6 +33,8 @@ const tocSide = document.querySelector("#toc-side");
 const tocMain = document.querySelector("#toc-main");
 const gearList = document.querySelector("#gear-list");
 const gearItemTemplate = document.querySelector("#gear-item-template");
+const initialGearData = document.querySelector("#initial-gear-data");
+const sharedGearData = window.__GEAR_DATA__;
 const tabs = [...document.querySelectorAll(".tab")];
 const initialFilter = new URLSearchParams(window.location.search).get("filter");
 const initialView = new URLSearchParams(window.location.search).get("view");
@@ -164,6 +166,22 @@ const syncSearch = () => {
   searchToggle.setAttribute("aria-expanded", String(state.searchOpen));
   searchToggle.classList.toggle("is-open", state.searchOpen);
   searchHint.textContent = state.searchQuery ? `「${state.searchQuery}」で検索中` : "";
+};
+
+const closeSearch = ({ clearQuery = false } = {}) => {
+  state.searchOpen = false;
+  if (clearQuery) {
+    searchInput.value = "";
+    setSearchQuery("");
+    return;
+  }
+  syncSearch();
+};
+
+const openSearch = () => {
+  state.searchOpen = true;
+  syncSearch();
+  searchInput.focus();
 };
 
 const syncPager = (items) => {
@@ -389,7 +407,7 @@ const renderGear = (catalog) => {
 
     const link = document.createElement("a");
     link.className = "gear-category-link";
-    link.href = "./gear.html";
+    link.href = `./gear.html#gear-section-${category.id}`;
 
     const symbol = document.createElement("span");
     symbol.className = "gear-category-symbol";
@@ -425,6 +443,20 @@ const renderGear = (catalog) => {
 };
 
 const loadGear = async () => {
+  if (sharedGearData) {
+    renderGear(sharedGearData);
+    return;
+  }
+
+  if (initialGearData?.textContent) {
+    try {
+      renderGear(JSON.parse(initialGearData.textContent));
+      return;
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
   try {
     const response = await fetch(new URL("./data/gear.json", window.location.href), { cache: "no-store" });
     if (!response.ok) throw new Error(`Failed to load gear.json: ${response.status}`);
@@ -437,6 +469,9 @@ const loadGear = async () => {
 
 const setView = (view) => {
   const showToc = view === "toc";
+  if (showToc && state.searchOpen) {
+    closeSearch();
+  }
   tocPanel.hidden = !showToc;
   tocToggle.setAttribute("aria-expanded", String(showToc));
   tocToggle.classList.toggle("is-open", showToc);
@@ -564,14 +599,12 @@ tabs.forEach((tab) => {
 });
 
 searchToggle.addEventListener("click", () => {
-  state.searchOpen = !state.searchOpen;
-  syncSearch();
   if (state.searchOpen) {
-    searchInput.focus();
-  } else {
-    searchInput.value = "";
-    setSearchQuery("");
+    closeSearch({ clearQuery: true });
+    return;
   }
+  setView("feed");
+  openSearch();
 });
 
 searchInput.addEventListener("input", () => {
@@ -580,10 +613,7 @@ searchInput.addEventListener("input", () => {
 
 searchInput.addEventListener("keydown", (event) => {
   if (event.key === "Escape") {
-    searchInput.value = "";
-    setSearchQuery("");
-    state.searchOpen = false;
-    syncSearch();
+    closeSearch({ clearQuery: true });
     searchToggle.focus();
   }
 });
