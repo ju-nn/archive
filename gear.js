@@ -5,7 +5,6 @@ const categoryTemplate = document.querySelector("#gear-category-template");
 const categoryNav = document.querySelector("#gear-category-nav");
 const gearHeroTitle = document.querySelector("#gear-page-title");
 const gearHeroText = document.querySelector("#gear-hero-text");
-const initialGearData = document.querySelector("#initial-gear-data");
 const sharedGearData = window.__GEAR_DATA__;
 let gearTargetTimer = null;
 
@@ -262,23 +261,7 @@ const loadGear = async () => {
     return;
   }
 
-  if (initialGearData?.textContent) {
-    try {
-      renderGearPage(JSON.parse(initialGearData.textContent));
-      return;
-    } catch (error) {
-      console.error(error);
-    }
-  }
-
-  try {
-    const response = await fetch(new URL("./data/gear.json", window.location.href), { cache: "no-store" });
-    if (!response.ok) throw new Error(`Failed to load gear.json: ${response.status}`);
-    renderGearPage(await response.json());
-  } catch (error) {
-    console.error(error);
-    renderGearPage(fallbackGearCatalog);
-  }
+  renderGearPage(fallbackGearCatalog);
 };
 
 window.addEventListener("hashchange", focusGearTargetFromHash);

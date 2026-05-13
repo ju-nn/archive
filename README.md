@@ -19,3 +19,7 @@ node scripts/build-feed-data.mjs
 ```
 
 GitHub Actions の `Update content` は日次または手動実行で同じ処理を行います。
+
+## つかっているものの更新
+
+`data/gear-data.js` を正データとして、トップページと `gear.html` の両方で読み込みます。

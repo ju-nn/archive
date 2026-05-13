@@ -32,8 +32,6 @@ const tocPanel = document.querySelector("#toc-panel");
 const tocSide = document.querySelector("#toc-side");
 const tocMain = document.querySelector("#toc-main");
 const gearList = document.querySelector("#gear-list");
-const gearItemTemplate = document.querySelector("#gear-item-template");
-const initialGearData = document.querySelector("#initial-gear-data");
 const sharedGearData = window.__GEAR_DATA__;
 const tabs = [...document.querySelectorAll(".tab")];
 const initialFilter = new URLSearchParams(window.location.search).get("filter");
@@ -448,23 +446,7 @@ const loadGear = async () => {
     return;
   }
 
-  if (initialGearData?.textContent) {
-    try {
-      renderGear(JSON.parse(initialGearData.textContent));
-      return;
-    } catch (error) {
-      console.error(error);
-    }
-  }
-
-  try {
-    const response = await fetch(new URL("./data/gear.json", window.location.href), { cache: "no-store" });
-    if (!response.ok) throw new Error(`Failed to load gear.json: ${response.status}`);
-    renderGear(await response.json());
-  } catch (error) {
-    console.error(error);
-    renderGear(fallbackGearCatalog);
-  }
+  renderGear(fallbackGearCatalog);
 };
 
 const setView = (view) => {
