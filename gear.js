@@ -248,7 +248,7 @@ const focusGearTargetFromHash = () => {
 const renderGearPage = (catalog) => {
   if (gearHeroTitle) gearHeroTitle.textContent = "つかっているもの";
   if (gearHeroText) {
-    gearHeroText.textContent = "働きすぎない暮らしのために、つかっているものとサービスを、カテゴリごとにまとめています。";
+    gearHeroText.textContent = "無理におすすめするというより、自分の暮らしに残った道具の記録です。";
   }
   renderGearCategories(catalog);
   renderGearDetail(catalog);
