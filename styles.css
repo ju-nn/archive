@@ -447,6 +447,89 @@ button {
   line-height: 1.9;
 }
 
+.starter-section {
+  display: grid;
+  gap: 22px;
+  margin: 0 0 58px;
+}
+
+.starter-heading {
+  display: grid;
+  gap: 10px;
+  max-width: 690px;
+}
+
+.starter-heading h2,
+.starter-heading p {
+  margin: 0;
+}
+
+.starter-heading h2 {
+  color: var(--ink);
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1.55;
+  letter-spacing: 0;
+}
+
+.starter-heading p {
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.9;
+}
+
+.starter-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.starter-card {
+  display: grid;
+  gap: 8px;
+  min-height: 148px;
+  padding: 20px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.54);
+  color: var(--ink);
+  text-decoration: none;
+  transition:
+    transform 160ms ease,
+    border-color 160ms ease,
+    background 160ms ease,
+    box-shadow 160ms ease;
+}
+
+.starter-card:hover,
+.starter-card:focus-visible {
+  transform: translateY(-1px);
+  border-color: rgba(31, 41, 51, 0.28);
+  background: #fffdf8;
+  box-shadow: 0 10px 24px rgba(31, 41, 51, 0.04);
+  outline: none;
+}
+
+.starter-label {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.starter-title {
+  color: var(--ink);
+  font-size: 17px;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.starter-copy {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.8;
+}
+
 .collection-heading {
   margin: 4px 0 14px;
   scroll-margin-top: 24px;
@@ -516,6 +599,7 @@ button {
 .is-toc-view .search-panel,
 .is-toc-view .home-hero,
 .is-toc-view .first-guide,
+.is-toc-view .starter-section,
 .is-toc-view .collection-heading,
 .is-toc-view .tabs,
 .is-toc-view .feed-section,
@@ -2175,7 +2259,19 @@ button {
     margin-bottom: 42px;
   }
 
+  .starter-section {
+    margin-bottom: 44px;
+  }
+
+  .starter-grid {
+    grid-template-columns: 1fr;
+  }
+
   .first-guide h2 {
+    font-size: 21px;
+  }
+
+  .starter-heading h2 {
     font-size: 21px;
   }
 

@@ -72,7 +72,7 @@
     {
       "source": "works",
       "title": "ジユウノコンパス",
-      "summary": "収入や支出から、今の立ち位置と次の一歩がわかる診断ができます。",
+      "summary": "収入と支出から、働きすぎない暮らしまでの距離を静かに測るための診断ツールです。",
       "imageUrl": "./assets/work-jiyu-compass.png",
       "publishedAt": "2026-05-10T00:00:00.000Z",
       "url": "https://ju-nn.github.io/Jiyu-Compass/",
@@ -81,7 +81,7 @@
     {
       "source": "works",
       "title": "逃げ道.xlsx",
-      "summary": "会社を辞めたい会社員が主人公の分岐ノベルゲームです。",
+      "summary": "会社を辞めたい気持ちと生活の分岐を、Excel風の画面でたどるノベルゲームです。",
       "imageUrl": "./assets/work-nigemiti.png",
       "publishedAt": "2026-05-04T00:00:00.000Z",
       "url": "https://ju-nn.github.io/nigemiti-xlsx/",
