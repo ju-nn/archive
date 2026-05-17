@@ -241,21 +241,6 @@ const render = () => {
     image.alt = item.title;
     const badge = tile.querySelector(".tile-badge");
     badge.textContent = sourceLabels[item.source] || item.source;
-    badge.setAttribute("role", "button");
-    badge.tabIndex = 0;
-    badge.setAttribute("aria-label", `${badge.textContent}に切り替え`);
-    badge.addEventListener("click", (event) => {
-      event.preventDefault();
-      event.stopPropagation();
-      setFilterAndFocus(item.source);
-    });
-    badge.addEventListener("keydown", (event) => {
-      if (event.key === "Enter" || event.key === " ") {
-        event.preventDefault();
-        event.stopPropagation();
-        setFilterAndFocus(item.source);
-      }
-    });
     const pin = tile.querySelector(".tile-pin");
     pin.hidden = !item.pinned;
     tile.querySelector(".tile-title").textContent = item.title;
@@ -502,12 +487,6 @@ const setFilter = (filter) => {
     tab.setAttribute("aria-selected", String(isActive));
   });
   render();
-};
-
-const setFilterAndFocus = (filter) => {
-  if (!filter) return;
-  setFilter(filter);
-  scrollToFeedTop();
 };
 
 const setSearchQuery = (query) => {
