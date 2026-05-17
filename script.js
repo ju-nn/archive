@@ -163,7 +163,6 @@ const syncSearch = () => {
   searchPanel.setAttribute("aria-hidden", String(!state.searchOpen));
   searchToggle.setAttribute("aria-expanded", String(state.searchOpen));
   searchToggle.classList.toggle("is-open", state.searchOpen);
-  searchHint.textContent = state.searchQuery ? `「${state.searchQuery}」で検索中` : "";
 };
 
 const closeSearch = ({ clearQuery = false } = {}) => {
@@ -203,8 +202,15 @@ const render = () => {
   }
   const pages = totalPages(items.length);
   const pageItems = items.slice((state.page - 1) * PAGE_SIZE, state.page * PAGE_SIZE);
+  const query = state.searchQuery.trim();
   grid.replaceChildren();
   emptyState.hidden = items.length > 0;
+  emptyState.textContent = query
+    ? `「${query}」に一致する投稿はありません。`
+    : state.filter === "all"
+      ? "このカテゴリの投稿はまだありません。"
+      : `${sourceLabels[state.filter] || "このカテゴリ"}の投稿はまだありません。`;
+  searchHint.textContent = query ? `「${query}」で検索中：${items.length}件` : "";
 
   pageItems.forEach((item, index) => {
     if (item.source === "photo") {
