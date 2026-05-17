@@ -474,7 +474,7 @@ const setItems = (items) => {
   syncTabs();
   syncSearch();
   state.page = 1;
-  render();
+  setFilter(state.filter);
   renderToc();
 };
 
@@ -485,6 +485,7 @@ const setFilter = (filter) => {
     const isActive = tab.dataset.filter === filter;
     tab.classList.toggle("is-active", isActive);
     tab.setAttribute("aria-selected", String(isActive));
+    tab.tabIndex = isActive ? 0 : -1;
   });
   render();
 };
@@ -555,8 +556,27 @@ const closePhotoModal = () => {
 };
 
 tabs.forEach((tab) => {
-  tab.setAttribute("role", "tab");
   tab.addEventListener("click", () => setFilter(tab.dataset.filter));
+  tab.addEventListener("keydown", (event) => {
+    if (!["ArrowLeft", "ArrowRight", "Home", "End"].includes(event.key)) return;
+
+    const visibleTabs = tabs.filter((item) => !item.hidden);
+    const currentIndex = visibleTabs.indexOf(tab);
+    if (currentIndex === -1) return;
+
+    event.preventDefault();
+    const lastIndex = visibleTabs.length - 1;
+    let nextIndex = currentIndex;
+
+    if (event.key === "ArrowLeft") nextIndex = currentIndex === 0 ? lastIndex : currentIndex - 1;
+    if (event.key === "ArrowRight") nextIndex = currentIndex === lastIndex ? 0 : currentIndex + 1;
+    if (event.key === "Home") nextIndex = 0;
+    if (event.key === "End") nextIndex = lastIndex;
+
+    const nextTab = visibleTabs[nextIndex];
+    nextTab.focus();
+    setFilter(nextTab.dataset.filter);
+  });
 });
 
 searchToggle.addEventListener("click", () => {
