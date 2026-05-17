@@ -52,7 +52,7 @@ const sourceLabels = {
 };
 
 const fallbackGearCatalog = {
-  associateTag: "rlst-22",
+  associateTag: "jun076-22",
   featuredIds: ["ricoh-gr-iiix", "codex-app", "stan-rice-cooker", "sp500"],
   items: [
     { id: "ricoh-gr-iiix", name: "RICOH GR IIIx", note: "小さくて、日常を持ち歩けるカメラ。", amazonSearch: "RICOH GR IIIx", featured: true },

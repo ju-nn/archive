@@ -1,6 +1,6 @@
 (function (root) {
   const data = {
-    associateTag: "rlst-22",
+    associateTag: "jun076-22",
     featuredIds: ["ricoh-gr-iiix", "codex-app", "stan-rice-cooker", "sp500"],
     categories: [
       { id: "life", title: "暮らしの道具", summary: "日々の負担を減らして、生活の土台を整えるもの。", symbol: "暮", tone: "sun" },

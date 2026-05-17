@@ -9,7 +9,7 @@ const sharedGearData = window.__GEAR_DATA__;
 let gearTargetTimer = null;
 
 const fallbackGearCatalog = {
-  associateTag: "rlst-22",
+  associateTag: "jun076-22",
   categories: [
     {
       id: "photo-vlog",
