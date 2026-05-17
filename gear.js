@@ -128,6 +128,7 @@ const renderGearCategories = (catalog) => {
       link.href = `#gear-section-${category.id}`;
       preview.textContent = "このカテゴリを見る";
     }
+    link.setAttribute("aria-label", `${category.title}を見る`);
 
     symbol.textContent = category.symbol || "・";
     title.textContent = category.title;
