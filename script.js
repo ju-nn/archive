@@ -6,6 +6,7 @@ const state = {
   page: 1,
   photoIndex: 0,
   photoItems: [],
+  photoReturnTarget: null,
 };
 
 const grid = document.querySelector("#tile-grid");
@@ -226,11 +227,13 @@ const render = () => {
       card.dataset.source = "photo";
       date.textContent = item.displayDate;
       card.tabIndex = 0;
-      card.addEventListener("click", () => openPhotoModal(item));
+      card.setAttribute("role", "button");
+      card.setAttribute("aria-label", `写真「${item.title}」を開く`);
+      card.addEventListener("click", () => openPhotoModal(item, card));
       card.addEventListener("keydown", (event) => {
         if (event.key === "Enter" || event.key === " ") {
           event.preventDefault();
-          openPhotoModal(item);
+          openPhotoModal(item, card);
         }
       });
       grid.append(card);
@@ -546,12 +549,14 @@ const showPhoto = (index) => {
   photoModalNext.hidden = !hasMany;
 };
 
-const openPhotoModal = (item) => {
+const openPhotoModal = (item, returnTarget = null) => {
   const index = state.photoItems.findIndex((photo) => photo.url === item.url);
   if (index === -1) return;
+  state.photoReturnTarget = returnTarget;
   showPhoto(index);
   photoModal.hidden = false;
   photoModal.showModal();
+  photoModalClose.focus();
 };
 
 const closePhotoModal = () => {
@@ -559,6 +564,10 @@ const closePhotoModal = () => {
     photoModal.close();
   }
   photoModal.hidden = true;
+  if (state.photoReturnTarget?.isConnected) {
+    state.photoReturnTarget.focus();
+  }
+  state.photoReturnTarget = null;
 };
 
 tabs.forEach((tab) => {
