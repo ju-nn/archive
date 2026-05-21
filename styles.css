@@ -1962,6 +1962,27 @@ button {
   line-height: 1.8;
 }
 
+.quiet-notice {
+  margin: -22px 0 34px;
+  padding: 14px 16px;
+  border: 1px solid rgba(223, 229, 235, 0.86);
+  border-radius: 8px;
+  background: rgba(255, 253, 248, 0.58);
+}
+
+.quiet-notice p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+.quiet-notice a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
 .gear-detail {
   display: grid;
   gap: 44px;
