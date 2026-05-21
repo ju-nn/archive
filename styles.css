@@ -401,6 +401,10 @@ button {
   line-height: 2;
 }
 
+.home-hero-actions {
+  margin-top: 4px;
+}
+
 .quiet-links {
   display: flex;
   flex-wrap: wrap;
@@ -1618,10 +1622,6 @@ button {
   color: var(--ink);
 }
 
-.gear-link:visited {
-  color: var(--ink);
-}
-
 .gear-link:hover {
   border-color: var(--ink);
   transform: translateY(-1px);
@@ -2041,6 +2041,13 @@ button {
   line-height: 2;
 }
 
+.about-support {
+  padding: 20px;
+  border: 1px solid rgba(223, 229, 235, 0.86);
+  border-radius: 8px;
+  background: rgba(255, 253, 248, 0.58);
+}
+
 .profile-icon {
   width: 54px;
   height: 54px;
@@ -2262,6 +2269,16 @@ button {
     gap: 15px;
     margin-bottom: 40px;
     padding-bottom: 34px;
+  }
+
+  .home-hero-actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .home-hero-actions a {
+    justify-content: center;
+    width: 100%;
   }
 
   .home-hero-lead,

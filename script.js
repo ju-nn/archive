@@ -399,7 +399,7 @@ const renderGear = (catalog) => {
 
     const link = document.createElement("a");
     link.className = "gear-category-link";
-    link.href = `./gear.html#gear-section-${category.id}`;
+    link.href = `./uses/#gear-section-${category.id}`;
 
     const symbol = document.createElement("span");
     symbol.className = "gear-category-symbol";
