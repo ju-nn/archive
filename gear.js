@@ -177,14 +177,16 @@ const renderGearDetail = (catalog) => {
       const amazonUrl = amazonUrlForGearItem(item, associateTag);
       const externalUrl = item.url || "";
       const linkText = item.linkLabel || (externalUrl ? "開く" : "Amazonで見る");
+      const accessibleLinkLabel = linkText.includes(item.name) ? linkText : `${item.name}：${linkText}`;
       const isService = item.kind === "service" || !amazonUrl;
+      const isAmazonLink = !externalUrl && Boolean(amazonUrl);
       const iconMarkup = externalUrl ? linkIcon : amazonLinkIcon;
 
       title.textContent = item.name;
       note.textContent = item.note;
       badge.textContent = kindLabel(item.kind, Boolean(amazonUrl));
       card.dataset.kind = isService ? "service" : "product";
-      link.setAttribute("aria-label", linkText);
+      link.setAttribute("aria-label", accessibleLinkLabel);
       link.setAttribute("data-tooltip", linkText);
 
       if (externalUrl) {
@@ -198,8 +200,9 @@ const renderGearDetail = (catalog) => {
       }
 
       link.innerHTML = iconMarkup;
-      link.setAttribute("title", linkText);
-      link.setAttribute("data-kind", externalUrl ? "external" : "amazon");
+      link.setAttribute("title", accessibleLinkLabel);
+      link.setAttribute("rel", isAmazonLink ? "noopener noreferrer sponsored" : "noopener noreferrer");
+      link.setAttribute("data-kind", isAmazonLink ? "amazon" : "external");
 
       grid.append(card);
     });
