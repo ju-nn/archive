@@ -20,7 +20,6 @@ const searchToggle = document.querySelector("#search-toggle");
 const searchInput = document.querySelector("#search-input");
 const searchHint = document.querySelector("#search-hint");
 const searchThemeButtons = [...document.querySelectorAll("[data-search-theme]")];
-const recentList = document.querySelector("#recent-list");
 const template = document.querySelector("#tile-template");
 const photoTemplate = document.querySelector("#photo-template");
 const photoModal = document.querySelector("#photo-modal");
@@ -47,14 +46,6 @@ const tocState = {
 };
 
 const sourceLabels = {
-  note: "文章",
-  standfm: "音声",
-  works: "制作物",
-  youtube: "動画",
-  photo: "写真",
-};
-
-const recentSourceLabels = {
   note: "文章",
   standfm: "音声",
   works: "制作物",
@@ -285,45 +276,6 @@ const render = () => {
   }
 };
 
-const renderRecentItems = () => {
-  if (!recentList) return;
-
-  const recentItems = state.items
-    .filter((item) => item.url && (item.publishedAt || item.takenAt))
-    .slice(0, 5);
-
-  const nodes = recentItems.map((item) => {
-    const link = document.createElement("a");
-    const href = item.source === "photo" ? "#works" : item.url;
-    link.className = "recent-item";
-    link.href = href;
-    if (isExternalUrl(href)) {
-      link.target = "_blank";
-      link.rel = "noopener noreferrer";
-    }
-    if (item.source === "photo") {
-      link.addEventListener("click", () => setFilter("photo"));
-    }
-
-    const badge = document.createElement("span");
-    badge.className = "recent-badge";
-    badge.textContent = recentSourceLabels[item.source] || sourceLabels[item.source] || item.source;
-
-    const title = document.createElement("span");
-    title.className = "recent-title";
-    title.textContent = item.title;
-
-    const date = document.createElement("span");
-    date.className = "recent-date";
-    date.textContent = item.displayDate;
-
-    link.append(badge, title, date);
-    return link;
-  });
-
-  recentList.replaceChildren(...nodes);
-};
-
 const renderToc = () => {
   const items = sortItems(normalizeItems(state.items)).filter((item) => Boolean(item.publishedAt));
   const grouped = new Map();
@@ -535,7 +487,6 @@ const setItems = (items) => {
   syncSearch();
   state.page = 1;
   setFilter(state.filter);
-  renderRecentItems();
   renderToc();
 };
 
