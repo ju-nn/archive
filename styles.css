@@ -392,6 +392,36 @@ button {
   box-shadow: 0 0 0 3px rgba(31, 41, 51, 0.08);
 }
 
+.search-themes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.search-theme-button {
+  min-height: 32px;
+  padding: 0 12px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.72);
+  color: var(--muted);
+  font: inherit;
+  font-size: 13px;
+  cursor: pointer;
+  transition:
+    border-color 160ms ease,
+    color 160ms ease,
+    background 160ms ease;
+}
+
+.search-theme-button:hover,
+.search-theme-button:focus-visible {
+  border-color: rgba(31, 41, 51, 0.28);
+  background: #fffdf8;
+  color: var(--ink);
+  outline: none;
+}
+
 .search-hint {
   min-height: 1em;
   margin: 0;
@@ -2073,15 +2103,13 @@ button {
   line-height: 1.5;
 }
 
-.gear-filter-nav,
-.tag-filter-nav {
+.gear-filter-nav {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
 }
 
-.gear-filter-button,
-.tag-filter-button {
+.gear-filter-button {
   min-height: 34px;
   padding: 0 13px;
   border: 1px solid var(--line);
@@ -2100,18 +2128,14 @@ button {
 
 .gear-filter-button:hover,
 .gear-filter-button:focus-visible,
-.gear-filter-button.is-active,
-.tag-filter-button:hover,
-.tag-filter-button:focus-visible,
-.tag-filter-button.is-active {
+.gear-filter-button.is-active {
   border-color: rgba(31, 41, 51, 0.22);
   background: #fffdf8;
   color: var(--ink);
   outline: none;
 }
 
-.gear-filter-button:hover,
-.tag-filter-button:hover {
+.gear-filter-button:hover {
   transform: translateY(-1px);
 }
 
@@ -2261,139 +2285,6 @@ button {
 
 .gear-page-disclosure {
   margin-top: 30px;
-}
-
-.tags-page {
-  padding-bottom: 92px;
-}
-
-.tags-hero {
-  display: grid;
-  gap: 12px;
-  max-width: 760px;
-  margin: 26px 0 40px;
-  padding-bottom: 30px;
-  border-bottom: 1px solid var(--line);
-}
-
-.tags-hero h1,
-.tags-hero p {
-  margin: 0;
-}
-
-.tags-hero h1 {
-  color: var(--ink);
-  font-size: 42px;
-  font-weight: 500;
-  line-height: 1.2;
-  letter-spacing: 0;
-}
-
-.tags-hero p {
-  color: var(--muted);
-  font-size: 15px;
-  line-height: 1.85;
-}
-
-.tag-browser {
-  display: grid;
-  gap: 20px;
-}
-
-.tag-browser-heading {
-  display: grid;
-  gap: 8px;
-  max-width: 720px;
-}
-
-.tag-browser-heading h2,
-.tag-browser-heading p {
-  margin: 0;
-}
-
-.tag-browser-heading h2 {
-  color: var(--ink);
-  font-size: 22px;
-  font-weight: 500;
-  line-height: 1.55;
-}
-
-.tag-browser-heading p {
-  color: var(--muted);
-  font-size: 14px;
-  line-height: 1.8;
-}
-
-.tag-result-list {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 14px;
-  margin-top: 6px;
-}
-
-.tag-result-card {
-  display: grid;
-  align-content: start;
-  gap: 9px;
-  min-height: 178px;
-  padding: 18px;
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.64);
-  color: var(--ink);
-  text-decoration: none;
-  transition:
-    transform 160ms ease,
-    border-color 160ms ease,
-    background 160ms ease,
-    box-shadow 160ms ease;
-}
-
-.tag-result-card:hover,
-.tag-result-card:focus-visible {
-  transform: translateY(-1px);
-  border-color: rgba(31, 41, 51, 0.28);
-  background: #fffdf8;
-  box-shadow: 0 10px 24px rgba(31, 41, 51, 0.04);
-  outline: none;
-}
-
-.tag-result-badge {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  justify-self: start;
-  min-height: 24px;
-  padding: 0 9px;
-  border: 1px solid rgba(223, 229, 235, 0.9);
-  border-radius: 999px;
-  color: var(--muted);
-  font-size: 11px;
-  font-weight: 700;
-}
-
-.tag-result-title {
-  color: var(--ink);
-  font-size: 15px;
-  font-weight: 500;
-  line-height: 1.6;
-}
-
-.tag-result-summary {
-  display: -webkit-box;
-  overflow: hidden;
-  color: var(--muted);
-  font-size: 13px;
-  line-height: 1.75;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3;
-}
-
-.tag-result-date {
-  margin-top: auto;
-  color: var(--muted);
-  font-size: 12px;
-  line-height: 1.6;
 }
 
 .profile-card {
@@ -2812,10 +2703,6 @@ button {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .tag-result-list {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
   .gear-detail-heading {
     flex-direction: column;
   }
@@ -3000,10 +2887,6 @@ button {
   }
 
   .gear-detail-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .tag-result-list {
     grid-template-columns: 1fr;
   }
 

@@ -19,6 +19,7 @@ const searchPanel = document.querySelector("#search-panel");
 const searchToggle = document.querySelector("#search-toggle");
 const searchInput = document.querySelector("#search-input");
 const searchHint = document.querySelector("#search-hint");
+const searchThemeButtons = [...document.querySelectorAll("[data-search-theme]")];
 const recentList = document.querySelector("#recent-list");
 const template = document.querySelector("#tile-template");
 const photoTemplate = document.querySelector("#photo-template");
@@ -122,7 +123,7 @@ const filteredItems = () => {
   return state.items.filter((item) => {
     if (state.filter !== "all" && item.source !== state.filter) return false;
     if (!query) return true;
-    return [item.title, item.summary, item.source, sourceLabels[item.source], item.displayDate]
+    return [item.title, item.summary, item.source, sourceLabels[item.source], item.displayDate, ...(item.hashtags || [])]
       .filter(Boolean)
       .some((value) => value.toLowerCase().includes(query));
   });
@@ -663,6 +664,15 @@ searchInput.addEventListener("keydown", (event) => {
     closeSearch({ clearQuery: true });
     searchToggle.focus();
   }
+});
+
+searchThemeButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    const query = button.dataset.searchTheme || "";
+    openSearch();
+    searchInput.value = query;
+    setSearchQuery(query);
+  });
 });
 
 pagerPrev.addEventListener("click", () => {

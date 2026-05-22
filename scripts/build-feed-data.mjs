@@ -35,6 +35,26 @@ const truncate = (value = "", max = 96) => {
   return `${text.slice(0, max).trim()}...`;
 };
 
+const uniqueHashtags = (values = []) => {
+  const seen = new Set();
+  return values
+    .map((value) => String(value || "").trim())
+    .filter(Boolean)
+    .map((value) => value.startsWith("#") ? value : `#${value}`)
+    .filter((value) => {
+      const key = value.toLowerCase();
+      if (seen.has(key)) return false;
+      seen.add(key);
+      return true;
+    });
+};
+
+const extractHashtags = (value = "") => {
+  const text = stripHtml(value);
+  const matches = [...text.matchAll(/(^|[\s　])#([^\s　#]+)/gu)];
+  return uniqueHashtags(matches.map((match) => match[2]));
+};
+
 const textBetween = (source, tag) => {
   const match = source.match(new RegExp(`<${tag}[^>]*>([\\s\\S]*?)<\\/${tag}>`, "i"));
   return match ? decodeEntities(match[1]) : "";
@@ -53,6 +73,21 @@ const fetchText = async (url) => {
   }
 
   return response.text();
+};
+
+const fetchJson = async (url) => {
+  const response = await fetch(url, {
+    headers: {
+      "user-agent": "jun-archive-feed-builder/1.0",
+      accept: "application/json"
+    }
+  });
+
+  if (!response.ok) {
+    throw new Error(`${url} returned ${response.status}`);
+  }
+
+  return response.json();
 };
 
 const fetchGraphql = async (query, variables) => {
@@ -81,6 +116,22 @@ const fetchGraphql = async (query, variables) => {
 };
 
 const toStandfmNodeId = (channelId) => Buffer.from(`Channel:${channelId}`).toString("base64");
+
+const noteKeyFromUrl = (url = "") => {
+  const match = url.match(/\/n\/([a-z0-9]+)/i);
+  return match?.[1] || "";
+};
+
+const fetchNoteHashtags = async (url) => {
+  const noteKey = noteKeyFromUrl(url);
+  if (!noteKey) return [];
+
+  const payload = await fetchJson(`https://note.com/api/v3/notes/${noteKey}`);
+  const notes = payload?.data?.hashtag_notes || payload?.data?.hashtagNotes;
+  if (!Array.isArray(notes)) return [];
+
+  return uniqueHashtags(notes.map((item) => item?.hashtag?.name || item?.name));
+};
 
 const findImage = (source) => {
   const thumbnail = textBetween(source, "media:thumbnail");
@@ -218,6 +269,7 @@ const normalizeItem = (item) => ({
   iso: item.iso || "",
   focalLength: item.focalLength || "",
   focalLength35mm: item.focalLength35mm || "",
+  hashtags: uniqueHashtags(item.hashtags),
   displayDate: item.displayDate || formatDisplayDate(item.takenAt || item.publishedAt, item.source),
   url: item.url,
   pinned: Boolean(item.pinned)
@@ -235,10 +287,24 @@ const parseRssItems = (xml, source, limit) => {
       imageUrl: findImage(item),
       publishedAt: new Date(textBetween(item, "pubDate") || textBetween(item, "dc:date")).toISOString(),
       url: textBetween(item, "link"),
+      hashtags: [],
       pinned: false
     });
   });
 };
+
+const attachNoteHashtags = async (items) =>
+  Promise.all(items.map(async (item) => {
+    try {
+      return normalizeItem({
+        ...item,
+        hashtags: await fetchNoteHashtags(item.url)
+      });
+    } catch (error) {
+      console.warn(`Could not fetch note hashtags for ${item.url}: ${error.message}`);
+      return item;
+    }
+  }));
 
 const parseYouTubeItems = (xml, limit) => {
   const entryMatches = [...xml.matchAll(/<entry\b[\s\S]*?<\/entry>/gi)].map((match) => match[0]);
@@ -255,6 +321,7 @@ const parseYouTubeItems = (xml, limit) => {
       imageUrl: findImage(entry),
       publishedAt: new Date(textBetween(entry, "published") || textBetween(entry, "updated")).toISOString(),
       url: decodeEntities(url),
+      hashtags: extractHashtags(description),
       pinned: false
     });
   });
@@ -279,6 +346,7 @@ fragment ChannelEpisodesFragment_2HEEH6 on Channel {
         episodeId
         title
         publishedAt
+        description
         image {
           url
         }
@@ -296,6 +364,7 @@ fragment ChannelEpisodesFragment_2HEEH6 on Channel {
     episodeId
     title
     publishedAt
+    description
     image {
       url
     }
@@ -316,6 +385,7 @@ const normalizeStandfmEpisode = (episode, pinned = false) =>
     imageUrl: episode?.image?.url || fallbackImage,
     publishedAt: episode?.publishedAt ? new Date(episode.publishedAt).toISOString() : null,
     url: episode?.episodeId ? `https://stand.fm/episodes/${episode.episodeId}` : "",
+    hashtags: extractHashtags(episode?.description || ""),
     pinned: false
   });
 
@@ -419,7 +489,7 @@ const main = async () => {
 
   try {
     const noteXml = await fetchText(config.note.rssUrl);
-    fetchedBySource.note = parseRssItems(noteXml, "note", config.note.limit);
+    fetchedBySource.note = await attachNoteHashtags(parseRssItems(noteXml, "note", config.note.limit));
   } catch (error) {
     errors.push(`note: ${error.message}`);
   }
