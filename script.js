@@ -46,10 +46,10 @@ const tocState = {
 };
 
 const sourceLabels = {
-  note: "note",
-  standfm: "stand.fm",
+  note: "文章",
+  standfm: "音声",
   works: "制作物",
-  youtube: "YouTube",
+  youtube: "動画",
   photo: "写真",
 };
 
@@ -147,10 +147,10 @@ const monthLabel = (value) => {
 };
 
 const tocSourceLabels = {
-  note: "note",
-  standfm: "stand.fm",
+  note: "文章",
+  standfm: "音声",
   works: "制作物",
-  youtube: "YouTube",
+  youtube: "動画",
   photo: "写真",
 };
 
