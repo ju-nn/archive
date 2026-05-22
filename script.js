@@ -19,6 +19,7 @@ const searchPanel = document.querySelector("#search-panel");
 const searchToggle = document.querySelector("#search-toggle");
 const searchInput = document.querySelector("#search-input");
 const searchHint = document.querySelector("#search-hint");
+const recentList = document.querySelector("#recent-list");
 const template = document.querySelector("#tile-template");
 const photoTemplate = document.querySelector("#photo-template");
 const photoModal = document.querySelector("#photo-modal");
@@ -49,6 +50,14 @@ const sourceLabels = {
   standfm: "stand.fm",
   works: "制作物",
   youtube: "YouTube",
+  photo: "写真",
+};
+
+const recentSourceLabels = {
+  note: "文章",
+  standfm: "音声",
+  works: "制作物",
+  youtube: "動画",
   photo: "写真",
 };
 
@@ -122,6 +131,8 @@ const filteredItems = () => {
 const filteredPhotoItems = () => filteredItems().filter((item) => item.source === "photo");
 
 const totalPages = (count) => Math.max(1, Math.ceil(count / PAGE_SIZE));
+
+const isExternalUrl = (url) => /^https?:\/\//.test(url || "");
 
 const monthKey = (value) => {
   const date = new Date(value);
@@ -271,6 +282,45 @@ const render = () => {
   } else {
     grid.dataset.pageCount = String(pages);
   }
+};
+
+const renderRecentItems = () => {
+  if (!recentList) return;
+
+  const recentItems = state.items
+    .filter((item) => item.url && (item.publishedAt || item.takenAt))
+    .slice(0, 5);
+
+  const nodes = recentItems.map((item) => {
+    const link = document.createElement("a");
+    const href = item.source === "photo" ? "#works" : item.url;
+    link.className = "recent-item";
+    link.href = href;
+    if (isExternalUrl(href)) {
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
+    }
+    if (item.source === "photo") {
+      link.addEventListener("click", () => setFilter("photo"));
+    }
+
+    const badge = document.createElement("span");
+    badge.className = "recent-badge";
+    badge.textContent = recentSourceLabels[item.source] || sourceLabels[item.source] || item.source;
+
+    const title = document.createElement("span");
+    title.className = "recent-title";
+    title.textContent = item.title;
+
+    const date = document.createElement("span");
+    date.className = "recent-date";
+    date.textContent = item.displayDate;
+
+    link.append(badge, title, date);
+    return link;
+  });
+
+  recentList.replaceChildren(...nodes);
 };
 
 const renderToc = () => {
@@ -484,6 +534,7 @@ const setItems = (items) => {
   syncSearch();
   state.page = 1;
   setFilter(state.filter);
+  renderRecentItems();
   renderToc();
 };
 

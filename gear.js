@@ -3,10 +3,12 @@ const sectionTemplate = document.querySelector("#gear-detail-section-template");
 const cardTemplate = document.querySelector("#gear-detail-card-template");
 const categoryTemplate = document.querySelector("#gear-category-template");
 const categoryNav = document.querySelector("#gear-category-nav");
+const gearFilterNav = document.querySelector("#gear-filter-nav");
 const gearHeroTitle = document.querySelector("#gear-page-title");
 const gearHeroText = document.querySelector("#gear-hero-text");
 const sharedGearData = window.__GEAR_DATA__;
 let gearTargetTimer = null;
+let activeGearFilter = "all";
 
 const fallbackGearCatalog = {
   associateTag: "jun076-22",
@@ -32,6 +34,14 @@ const fallbackGearCatalog = {
 };
 
 const categoryOrder = ["life", "making", "photo-vlog", "wear", "creature-care", "money-exit"];
+const categoryFilterLabels = {
+  life: "暮らし",
+  making: "開発・AI",
+  "photo-vlog": "カメラ",
+  wear: "身につける",
+  "creature-care": "生きもの",
+  "money-exit": "お金",
+};
 const itemOrders = {
   life: ["stan-rice-cooker", "muji-bed", "panasonic-microwave", "nitori-washer-dryer", "dishwasher", "drip-oneger"],
   making: ["codex-app", "windows-pc", "github-account"],
@@ -120,6 +130,7 @@ const renderGearCategories = (catalog) => {
 
     tile.style.setProperty("--gear-delay", `${index * 40}ms`);
     tile.dataset.tone = category.tone || "neutral";
+    tile.dataset.categoryId = category.id;
 
     if (featured) {
       link.href = `#gear-section-${category.id}`;
@@ -139,6 +150,65 @@ const renderGearCategories = (catalog) => {
   });
 
   categoryNav.replaceChildren(...tiles);
+};
+
+const syncGearFilter = () => {
+  const isAll = activeGearFilter === "all";
+
+  gearFilterNav?.querySelectorAll(".gear-filter-button").forEach((button) => {
+    const isActive = button.dataset.filter === activeGearFilter;
+    button.classList.toggle("is-active", isActive);
+    button.setAttribute("aria-selected", String(isActive));
+    button.tabIndex = isActive ? 0 : -1;
+  });
+
+  categoryNav?.querySelectorAll(".gear-category-card").forEach((card) => {
+    card.hidden = !isAll && card.dataset.categoryId !== activeGearFilter;
+  });
+
+  gearDetail?.querySelectorAll(".gear-detail-section").forEach((section) => {
+    section.hidden = !isAll && section.dataset.categoryId !== activeGearFilter;
+  });
+};
+
+const setGearFilter = (filter) => {
+  activeGearFilter = filter || "all";
+  syncGearFilter();
+};
+
+const renderGearFilters = (catalog) => {
+  if (!gearFilterNav) return;
+
+  const categories = sortCategories(catalog.categories || []);
+  const filters = [
+    { id: "all", label: "すべて" },
+    ...categories.map((category) => ({
+      id: category.id,
+      label: categoryFilterLabels[category.id] || category.title,
+    })),
+  ];
+
+  const buttons = filters.map((filter) => {
+    const button = document.createElement("button");
+    button.className = "gear-filter-button";
+    button.type = "button";
+    button.role = "tab";
+    button.dataset.filter = filter.id;
+    button.textContent = filter.label;
+    button.setAttribute("aria-controls", "gear-detail");
+    button.addEventListener("click", () => {
+      setGearFilter(filter.id);
+      if (filter.id === "all") {
+        history.replaceState(null, "", `${location.pathname}${location.search}`);
+      } else {
+        history.replaceState(null, "", `${location.pathname}${location.search}#gear-section-${filter.id}`);
+      }
+    });
+    return button;
+  });
+
+  gearFilterNav.replaceChildren(...buttons);
+  syncGearFilter();
 };
 
 const renderGearDetail = (catalog) => {
@@ -229,6 +299,8 @@ const focusGearTargetFromHash = () => {
     return;
   }
 
+  setGearFilter(hash.replace("#gear-section-", ""));
+
   const anchor = document.getElementById(hash.slice(1));
   const section = anchor?.closest(".gear-detail-section");
   if (!section) return;
@@ -256,6 +328,7 @@ const renderGearPage = (catalog) => {
   }
   renderGearCategories(catalog);
   renderGearDetail(catalog);
+  renderGearFilters(catalog);
   focusGearTargetFromHash();
 };
 
