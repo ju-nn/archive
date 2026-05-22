@@ -122,7 +122,7 @@ const filteredItems = () => {
   return state.items.filter((item) => {
     if (state.filter !== "all" && item.source !== state.filter) return false;
     if (!query) return true;
-    return [item.title, item.summary, item.source, item.displayDate]
+    return [item.title, item.summary, item.source, sourceLabels[item.source], item.displayDate]
       .filter(Boolean)
       .some((value) => value.toLowerCase().includes(query));
   });
