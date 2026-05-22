@@ -322,6 +322,38 @@ button {
   background: rgba(31, 41, 51, 0.04);
 }
 
+.header-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 28px;
+  padding: 0 12px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--button);
+  color: var(--ink);
+  font-size: 12px;
+  font-weight: 500;
+  text-decoration: none;
+  transition:
+    transform 160ms ease,
+    border-color 160ms ease,
+    background 160ms ease;
+}
+
+.header-button:hover {
+  transform: translateY(-1px);
+  border-color: var(--ink);
+  background: #fffdf8;
+}
+
+.header-button:focus-visible {
+  outline: none;
+  box-shadow:
+    0 0 0 3px rgba(31, 41, 51, 0.08),
+    inset 0 0 0 1px rgba(31, 41, 51, 0.08);
+}
+
 [hidden] {
   display: none !important;
 }

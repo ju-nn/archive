@@ -19,7 +19,7 @@ const searchPanel = document.querySelector("#search-panel");
 const searchToggle = document.querySelector("#search-toggle");
 const searchInput = document.querySelector("#search-input");
 const searchHint = document.querySelector("#search-hint");
-const searchThemeButtons = [...document.querySelectorAll("[data-search-theme]")];
+const searchThemesContainer = document.querySelector(".search-themes");
 const template = document.querySelector("#tile-template");
 const photoTemplate = document.querySelector("#photo-template");
 const photoModal = document.querySelector("#photo-modal");
@@ -50,6 +50,14 @@ const sourceLabels = {
   standfm: "音声",
   works: "制作物",
   youtube: "動画",
+  photo: "写真",
+};
+
+const badgeLabels = {
+  note: "note",
+  standfm: "stand.fm",
+  works: "制作物",
+  youtube: "YouTube",
   photo: "写真",
 };
 
@@ -139,10 +147,10 @@ const monthLabel = (value) => {
 };
 
 const tocSourceLabels = {
-  note: "文章",
-  standfm: "音声",
+  note: "note",
+  standfm: "stand.fm",
   works: "制作物",
-  youtube: "動画",
+  youtube: "YouTube",
   photo: "写真",
 };
 
@@ -252,7 +260,7 @@ const render = () => {
     image.src = item.imageUrl;
     image.alt = item.title;
     const badge = tile.querySelector(".tile-badge");
-    badge.textContent = sourceLabels[item.source] || item.source;
+    badge.textContent = badgeLabels[item.source] || item.source;
     const pin = tile.querySelector(".tile-pin");
     pin.hidden = !item.pinned;
     tile.querySelector(".tile-title").textContent = item.title;
@@ -368,6 +376,42 @@ const renderToc = () => {
   });
 
   updateTocActive();
+};
+
+const renderSearchTags = () => {
+  if (!searchThemesContainer) return;
+
+  const counts = {};
+  state.items.forEach((item) => {
+    if (Array.isArray(item.hashtags)) {
+      item.hashtags.forEach((tag) => {
+        const normalized = tag.trim();
+        if (normalized) {
+          counts[normalized] = (counts[normalized] || 0) + 1;
+        }
+      });
+    }
+  });
+
+  const popularTags = Object.entries(counts)
+    .sort((a, b) => b[1] - a[1])
+    .map(([tag]) => tag)
+    .slice(0, 12);
+
+  if (popularTags.length === 0) {
+    return;
+  }
+
+  searchThemesContainer.replaceChildren();
+  popularTags.forEach((tag) => {
+    const button = document.createElement("button");
+    button.className = "search-theme-button";
+    button.type = "button";
+    const queryVal = tag.startsWith("#") ? tag.slice(1) : tag;
+    button.dataset.searchTheme = queryVal;
+    button.textContent = tag;
+    searchThemesContainer.append(button);
+  });
 };
 
 const amazonUrlForGearItem = (item, associateTag) => {
@@ -488,6 +532,7 @@ const setItems = (items) => {
   state.page = 1;
   setFilter(state.filter);
   renderToc();
+  renderSearchTags();
 };
 
 const setFilter = (filter) => {
@@ -617,14 +662,16 @@ searchInput.addEventListener("keydown", (event) => {
   }
 });
 
-searchThemeButtons.forEach((button) => {
-  button.addEventListener("click", () => {
+if (searchThemesContainer) {
+  searchThemesContainer.addEventListener("click", (event) => {
+    const button = event.target.closest("[data-search-theme]");
+    if (!button) return;
     const query = button.dataset.searchTheme || "";
     openSearch();
     searchInput.value = query;
     setSearchQuery(query);
   });
-});
+}
 
 pagerPrev.addEventListener("click", () => {
   if (state.page > 1) {
