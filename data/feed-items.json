@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-25T20:44:17.152Z",
+  "generatedAt": "2026-05-26T21:00:22.322Z",
   "errors": [],
   "items": [
     {
@@ -43,6 +43,27 @@
       "displayDate": "2026/5/4に公開",
       "url": "https://ju-nn.github.io/nigemiti-xlsx/",
       "pinned": true
+    },
+    {
+      "source": "standfm",
+      "title": "ミニマリストでも物欲は消えない。モノ選びの基準。",
+      "kind": "",
+      "summary": "stand.fmで話した記録です。",
+      "imageUrl": "https://cdn.stand.fm/coverImages/01KSHRDTK2E4207D5Q26T7MXG4.jpg",
+      "fullImageUrl": "https://cdn.stand.fm/coverImages/01KSHRDTK2E4207D5Q26T7MXG4.jpg",
+      "publishedAt": "2026-05-26T09:04:32.566Z",
+      "takenAt": null,
+      "camera": "",
+      "lensModel": "",
+      "aperture": "",
+      "exposureTime": "",
+      "iso": "",
+      "focalLength": "",
+      "focalLength35mm": "",
+      "hashtags": [],
+      "displayDate": "2026/5/26に公開",
+      "url": "https://stand.fm/episodes/6a15620786941a0ac5262e3e",
+      "pinned": false
     },
     {
       "source": "standfm",
