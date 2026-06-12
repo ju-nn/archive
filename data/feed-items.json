@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-11T21:30:28.081Z",
+  "generatedAt": "2026-06-12T21:06:03.751Z",
   "errors": [],
   "items": [
     {
@@ -43,6 +43,27 @@
       "displayDate": "2026/5/4に公開",
       "url": "https://ju-nn.github.io/nigemiti-xlsx/",
       "pinned": true
+    },
+    {
+      "source": "standfm",
+      "title": "【自問自答ラジオ】やりがいのない仕事は続けていいのか？向いてる仕事は見つけ方は？",
+      "kind": "",
+      "summary": "stand.fmで話した記録です。",
+      "imageUrl": "https://cdn.stand.fm/coverImages/01KTX865E2TDEDKJAD28SASTVJ.jpg",
+      "fullImageUrl": "https://cdn.stand.fm/coverImages/01KTX865E2TDEDKJAD28SASTVJ.jpg",
+      "publishedAt": "2026-06-12T09:00:07.806Z",
+      "takenAt": null,
+      "camera": "",
+      "lensModel": "",
+      "aperture": "",
+      "exposureTime": "",
+      "iso": "",
+      "focalLength": "",
+      "focalLength35mm": "",
+      "hashtags": [],
+      "displayDate": "2026/6/12に公開",
+      "url": "https://stand.fm/episodes/6a2ba6adeb235d6cc44aee12",
+      "pinned": false
     },
     {
       "source": "youtube",
