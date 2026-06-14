@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-14T07:03:39.766Z",
+  "generatedAt": "2026-06-14T20:40:48.665Z",
   "errors": [],
   "items": [
     {
@@ -64,6 +64,27 @@
       "displayDate": "2026/5/4に公開",
       "url": "https://ju-nn.github.io/nigemiti-xlsx/",
       "pinned": true
+    },
+    {
+      "source": "standfm",
+      "title": "【自問自答ラジオ】向いてない仕事を続けるべきか？",
+      "kind": "",
+      "summary": "stand.fmで話した記録です。",
+      "imageUrl": "https://cdn.stand.fm/coverImages/01KTX4WB444Z09DVDMJPX2Q913.jpg",
+      "fullImageUrl": "https://cdn.stand.fm/coverImages/01KTX4WB444Z09DVDMJPX2Q913.jpg",
+      "publishedAt": "2026-06-14T09:00:07.185Z",
+      "takenAt": null,
+      "camera": "",
+      "lensModel": "",
+      "aperture": "",
+      "exposureTime": "",
+      "iso": "",
+      "focalLength": "",
+      "focalLength35mm": "",
+      "hashtags": [],
+      "displayDate": "2026/6/14に公開",
+      "url": "https://stand.fm/episodes/6a2b9922eb235d6cc44aed20",
+      "pinned": false
     },
     {
       "source": "standfm",
