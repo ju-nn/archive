@@ -71,6 +71,15 @@
   "works": [
     {
       "source": "works",
+      "title": "もくもくメイト",
+      "summary": "ひとり作業を静かに始めるための、もくもく作業のおともです。",
+      "imageUrl": "./assets/work-mokumoku-mate.svg",
+      "publishedAt": "2026-06-14T00:00:00.000Z",
+      "url": "https://ju-nn.github.io/mokumoku-mate/",
+      "pinned": true
+    },
+    {
+      "source": "works",
       "title": "ジユウノコンパス",
       "summary": "収入と支出から、働きすぎない暮らしまでの距離を静かに測るための診断ツールです。",
       "imageUrl": "./assets/work-jiyu-compass.png",
